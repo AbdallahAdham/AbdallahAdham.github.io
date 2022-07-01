@@ -6,13 +6,58 @@
         <description>Recent content on Abdallah Adham</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 24 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AbdallahAdham.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://AbdallahAdham.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>About</title>
+        <link>https://AbdallahAdham.com/about/</link>
+        <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://AbdallahAdham.com/about/</guid>
+        <description>&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Hello, My name is Abdallah Adham, I&amp;rsquo;m 22 years old and I live in Egypt.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I&amp;rsquo;m enthusiastic about Cyber Security field especially with attacking side such as Pentesting and Web exploitation. I&amp;rsquo;ve been playing CTFs and Machines exploitation since 2 years.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;education&#34;&gt;&lt;strong&gt;Education&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;IT Senior student in faculty of Computers and Artificial Intelligence - Cairo University (2018 - Now).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;work-experience&#34;&gt;&lt;strong&gt;Work Experience&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Junior Penetration Tester in CyberTalents (6/2021 - Now).&lt;/li&gt;
+&lt;li&gt;CCNA Trainee in Cisco (7/2021 - Now).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;certificates&#34;&gt;&lt;strong&gt;Certificates&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.coursera.org/account/accomplishments/certificate/DCLMSLM5CBNQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cybersecurity Roles, Processes &amp;amp; Operating System Security | IBM on Coursera
+(07/2020)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.coursera.org/account/accomplishments/certificate/GHMTQXF3DKH7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cybersecurity Compliance Framework &amp;amp; System Administration | IBM on Coursera
+(08/2020)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youracclaim.com/badges/56d7c111-9b23-4590-9022-4030568b5f19/linked_in_profile&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Introduction to Cybersecurity | Cisco (04/2020)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hackerrank.com/certificates/95d26b874f13&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;HackerRank Certification Test in Python (Basic) | HackerRank (06/2020)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;skills&#34;&gt;&lt;strong&gt;Skills&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Penetration Testing&lt;/li&gt;
+&lt;li&gt;Problem Solving&lt;/li&gt;
+&lt;li&gt;Network Adminstration&lt;/li&gt;
+&lt;li&gt;Team Working&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;languages&#34;&gt;&lt;strong&gt;Languages&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Arabic : Native or Bilingual Proficiency&lt;/li&gt;
+&lt;li&gt;English : Full Professional Proficiency&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Mission Challenges Walkthrough - RCTS CERT CTF 2021</title>
         <link>https://AbdallahAdham.com/p/mission-challenges-walkthrough-rcts-cert-ctf-2021/</link>
         <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/p/mission-challenges-walkthrough-rcts-cert-ctf-2021/</guid>
-        <description>&lt;img src="https://AbdallahAdham.com/post/Mission_RCTS/mission.JPG" alt="Featured image of post Mission Challenges Walkthrough - RCTS CERT CTF 2021" /&gt;&lt;hr&gt;
+        <description>&lt;img src="https://AbdallahAdham.com/post/Mission_RCTS/mission.jpg" alt="Featured image of post Mission Challenges Walkthrough - RCTS CERT CTF 2021" /&gt;&lt;hr&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1544,51 +1589,6 @@
         
         <guid>https://AbdallahAdham.com/archives/</guid>
         <description></description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://AbdallahAdham.com/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://AbdallahAdham.com/</guid>
-        <description>&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Hello, My name is Abdallah Adham, I&amp;rsquo;m 22 years old and I live in Egypt.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;I&amp;rsquo;m enthusiastic about Cyber Security field especially with attacking side such as Pentesting and Web exploitation. I&amp;rsquo;ve been playing CTFs and Machines exploitation since 2 years.&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;education&#34;&gt;&lt;strong&gt;Education&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;IT Senior student in faculty of Computers and Artificial Intelligence - Cairo University (2018 - Now).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;work-experience&#34;&gt;&lt;strong&gt;Work Experience&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Junior Penetration Tester in CyberTalents (6/2021 - Now).&lt;/li&gt;
-&lt;li&gt;CCNA Trainee in Cisco (7/2021 - Now).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;certificates&#34;&gt;&lt;strong&gt;Certificates&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.coursera.org/account/accomplishments/certificate/DCLMSLM5CBNQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Cybersecurity Roles, Processes &amp;amp; Operating System Security | IBM on Coursera
-(07/2020)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.coursera.org/account/accomplishments/certificate/GHMTQXF3DKH7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Cybersecurity Compliance Framework &amp;amp; System Administration | IBM on Coursera
-(08/2020)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youracclaim.com/badges/56d7c111-9b23-4590-9022-4030568b5f19/linked_in_profile&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Introduction to Cybersecurity | Cisco (04/2020)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hackerrank.com/certificates/95d26b874f13&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;HackerRank Certification Test in Python (Basic) | HackerRank (06/2020)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;skills&#34;&gt;&lt;strong&gt;Skills&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Penetration Testing&lt;/li&gt;
-&lt;li&gt;Problem Solving&lt;/li&gt;
-&lt;li&gt;Network Adminstration&lt;/li&gt;
-&lt;li&gt;Team Working&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;languages&#34;&gt;&lt;strong&gt;Languages&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Arabic : Native or Bilingual Proficiency&lt;/li&gt;
-&lt;li&gt;English : Full Professional Proficiency&lt;/li&gt;
-&lt;/ul&gt;
-</description>
         </item>
         <item>
         <title>Links</title>

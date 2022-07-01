@@ -12,9 +12,7 @@
         <pubDate>Tue, 24 Aug 2021 15:33:59 +0200</pubDate>
         
         <guid>https://AbdallahAdham.com/p/mission-challenges-walkthrough-rcts-cert-ctf-2021/</guid>
-        <description>&lt;img src="https://AbdallahAdham.com/post/Mission_RCTS/mission.JPG" alt="Featured image of post Mission Challenges Walkthrough - RCTS CERT CTF 2021" /&gt;&lt;h2 id=&#34;before-we-start-i-just-want-to-say-that-the-reason-for-making-this-writeup-is-becasuse-i-find-it-so-much-fun-and-acts-as-a-real-life-scenario-thats-it-lets-start-sunglasses&#34;&gt;&lt;em&gt;Before we start, I just want to say that the reason for making this writeup is becasuse i find it so much fun and acts as a real-life scenario, That&amp;rsquo;s it, Let&amp;rsquo;s Start&lt;/em&gt; :sunglasses:&lt;/h2&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;table-of-challenges-&#34;&gt;Table of Challenges :&lt;/h3&gt;
+        <description>&lt;img src="https://AbdallahAdham.com/post/Mission_RCTS/mission.JPG" alt="Featured image of post Mission Challenges Walkthrough - RCTS CERT CTF 2021" /&gt;&lt;hr&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -72,7 +70,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/mission.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/mission.JPG&#34;
 	
 	
 	
@@ -84,7 +82,7 @@
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;1-something-suspicious&#34;&gt;&lt;em&gt;1-Something Suspicious&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/Smth_sus.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/Smth_sus.JPG&#34;
 	
 	
 	
@@ -96,7 +94,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;It looks like we are in a blue team in a company and your duty is to investigate some suspicious activity through logs, let&amp;rsquo;s see !&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s first open &lt;strong&gt;ftp.log&lt;/strong&gt; and see what is inside it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/ftp_log.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/ftp_log.JPG&#34;
 	
 	
 	
@@ -108,7 +106,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;mhmm, It looks like there was someone trying to connect to the FTP server and also trying to bruteforce the passcode for entering the server.&lt;/p&gt;
 &lt;p&gt;but there is one of the passwords looks weird and formatted as base64 which is &lt;code&gt;ZmxhZ3tzMG0zdGgxbmc=&lt;/code&gt; let&amp;rsquo;s decode it and see it&amp;rsquo;s output.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/base64_dec.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/base64_dec.JPG&#34;
 	
 	
 	
@@ -119,7 +117,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Well, it&amp;rsquo;s part of the flag &lt;code&gt;flag{s0m3th1ng&lt;/code&gt;, I think that is the second part is located in the &amp;lsquo;&lt;strong&gt;ssh.log&lt;/strong&gt;, let&amp;rsquo;s see it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/ssh_log.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/ssh_log.JPG&#34;
 	
 	
 	
@@ -130,7 +128,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Again, Someone was trying to connect through ssh but the user&amp;rsquo;s name is also weird and looks like it&amp;rsquo;s base64 encode which is &lt;code&gt;X3N1c3AxYzEwdXN9&lt;/code&gt;, let&amp;rsquo;s decode it and see.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/base64_dec2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/base64_dec2.JPG&#34;
 	
 	
 	
@@ -147,7 +145,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2-decrypting-the-payload&#34;&gt;&lt;em&gt;2-Decrypting the payload&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/Decrypt_pay.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/Decrypt_pay.JPG&#34;
 	
 	
 	
@@ -161,7 +159,7 @@
 &lt;p&gt;In order to extract the macros out of the sheet we need to use a tool called &lt;code&gt;olevba&lt;/code&gt; from &lt;a class=&#34;link&#34; href=&#34;https://github.com/decalage2/oletools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Oletools&lt;/a&gt;, Lets do it.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;$ olevba Account_report.xlsm&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/olevba.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/olevba.JPG&#34;
 	
 	
 	
@@ -172,7 +170,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;By scrolling down we notice alot of suspicious Hex and Base64 which seems to be the payload that made the hacker gain access to the network.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/olevba2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/olevba2.JPG&#34;
 	
 	
 	
@@ -391,7 +389,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;3-locked-outside&#34;&gt;&lt;em&gt;3-Locked Outside&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/locked_out.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/locked_out.JPG&#34;
 	
 	
 	
@@ -403,7 +401,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;After we succeeded in locating the payload, Now we need investigate the compromised machine that led to the attack and recover a lost &lt;strong&gt;SSH&lt;/strong&gt; from it. Let&amp;rsquo;s go !&lt;/p&gt;
 &lt;p&gt;First, we need to boot up the machine in our local network, it has the name &lt;strong&gt;lockedout&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/lockedout.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/lockedout.JPG&#34;
 	
 	
 	
@@ -424,7 +422,7 @@
 &lt;p&gt;-sV
 : determine service/version info.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/nmap1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/nmap1.JPG&#34;
 	
 	
 	
@@ -437,7 +435,7 @@
 &lt;p&gt;We can see that there are 3 ports opened for &lt;strong&gt;FTP&lt;/strong&gt;, &lt;strong&gt;SSH&lt;/strong&gt; and &lt;strong&gt;HTTP&lt;/strong&gt;, Let&amp;rsquo;s see what we can do with the FTP server.&lt;/p&gt;
 &lt;p&gt;If we made a Recon process on this ftp server version we will not find any exploit for it unfortunately, So we will see if there is something shared on it.&lt;/p&gt;
 &lt;p&gt;If we try to login to the ftp server with any username except &lt;strong&gt;anonymous&lt;/strong&gt;, It won&amp;rsquo;t connect to it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/ftp.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/ftp.JPG&#34;
 	
 	
 	
@@ -449,7 +447,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;After we sucessfully connected to the server, Now we need to know if there are any shared files that we can use.&lt;/p&gt;
 &lt;p&gt;We located a text file named as &lt;strong&gt;note.txt&lt;/strong&gt;, Let&amp;rsquo;s get it in our machine and see what is inside of it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/note.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/note.JPG&#34;
 	
 	
 	
@@ -461,7 +459,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Unfortunately, If we try to connect with ssh with these credentials it won&amp;rsquo;t connect, So there is another way i think.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s see what is in the web page!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/jenkins.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/jenkins.JPG&#34;
 	
 	
 	
@@ -478,7 +476,7 @@
     &gt;Document&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Done, we found the password which is &lt;strong&gt;admin&lt;/strong&gt; too.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s login and find out what is up there!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/jenkins2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/jenkins2.JPG&#34;
 	
 	
 	
@@ -490,7 +488,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;It looks like a dashboard full of interesting staff that we can use :smiling_imp:.&lt;/p&gt;
 &lt;p&gt;Something look catchy which is &lt;strong&gt;Build Executor Status&lt;/strong&gt;, Let&amp;rsquo;s navigate to it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/jenkins3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/jenkins3.JPG&#34;
 	
 	
 	
@@ -503,7 +501,7 @@
 &lt;p&gt;Wait a minute!&lt;/p&gt;
 &lt;p&gt;It looks like Jenkins executor is allowing a build to run on a node/agent(e.g. build server).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s navigate to the &lt;strong&gt;Master&lt;/strong&gt; and see what is inside!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/jenkins4.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/jenkins4.JPG&#34;
 	
 	
 	
@@ -514,7 +512,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Wow! Is This a &lt;strong&gt;Script console&lt;/strong&gt;, We are getting closer and closer :grin:.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/jenkins5.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/jenkins5.JPG&#34;
 	
 	
 	
@@ -526,7 +524,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Yes, It looks like Jenkins features a Groovy script console which allows one to run arbitrary Groovy scripts within the Jenkins controller runtime or in the runtime on agents.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s run some commands!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/jenkins6.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/jenkins6.JPG&#34;
 	
 	
 	
@@ -554,7 +552,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Now, We initialize our listener to recieve the reverse shell.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/listener.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/listener.JPG&#34;
 	
 	
 	
@@ -567,7 +565,7 @@
 &lt;p&gt;Yes, We are in! :partying_face:&lt;/p&gt;
 &lt;p&gt;Now, We have escalate to &lt;strong&gt;Root&lt;/strong&gt; privilage to navigate to the ssh configuration files.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s see what Jenkins can do under root privilage by running this command &lt;strong&gt;&lt;code&gt;$ sudo -l&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/sudo.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/sudo.JPG&#34;
 	
 	
 	
@@ -582,7 +580,7 @@
 &lt;p&gt;&lt;code&gt;sudo /usr/bin/vim&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Then, inside vim we type &lt;code&gt;:!/bin/sh&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/vim.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/vim.JPG&#34;
 	
 	
 	
@@ -594,7 +592,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Yes, We made it!&lt;/p&gt;
 &lt;p&gt;We are now in root privilage, Let&amp;rsquo;s search for everything having &lt;strong&gt;ssh&lt;/strong&gt; keyword by typing this &lt;code&gt;find / -iname &amp;quot;ssh*&amp;quot; 2&amp;gt;/dev/null&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/find.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/find.JPG&#34;
 	
 	
 	
@@ -605,7 +603,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s navigate to &lt;strong&gt;/etc/ssh/sshd_config&lt;/strong&gt;, and what is inside of it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/sshd.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/sshd.JPG&#34;
 	
 	
 	
@@ -622,7 +620,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;4-changing-our-locks-and-dumping-old-keys&#34;&gt;&lt;em&gt;4-Changing our locks and dumping old keys&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/change_locks.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/change_locks.JPG&#34;
 	
 	
 	
@@ -634,7 +632,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;It seems that the hacker injected a script that maintain the persistence in the machine.&lt;/p&gt;
 &lt;p&gt;While we still have access to the machine, We type this command to all services that are running in crontab &lt;code&gt;sudo crontab -u root -l&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/crontab.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/crontab.JPG&#34;
 	
 	
 	
@@ -645,7 +643,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Well, It seems we found the persistence script named as &lt;strong&gt;stayalive&lt;/strong&gt;, Let&amp;rsquo;s check it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/stayalive.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/stayalive.JPG&#34;
 	
 	
 	
@@ -876,7 +874,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print(xbx[i],end=&amp;#34;&amp;#34;)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/python.JPG&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/python.JPG&#34;
 	
 	
 	
@@ -893,7 +891,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;5-know-your-enemy&#34;&gt;&lt;em&gt;5-Know your enemy&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/know_enemy.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/know_enemy.JPG&#34;
 	
 	
 	
@@ -904,7 +902,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Now our duty is to investigate the source of the attack, Let&amp;rsquo;s see this web page!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hyperion1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hyperion1.JPG&#34;
 	
 	
 	
@@ -915,7 +913,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;It look like a normal web page, We can see the source page.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hyperion2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hyperion2.JPG&#34;
 	
 	
 	
@@ -926,7 +924,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Nothing much to see. Let&amp;rsquo;s head back and see what will happen if we submitted any fake e-mail.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hyperion3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hyperion3.JPG&#34;
 	
 	
 	
@@ -937,7 +935,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;mhmm, Let&amp;rsquo;s see what is going on in the web console.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hyperion4.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hyperion4.JPG&#34;
 	
 	
 	
@@ -958,7 +956,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s decode it and see!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/base64_dec3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/base64_dec3.JPG&#34;
 	
 	
 	
@@ -969,7 +967,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Ooh, It turned into another way of encryption which i believe is &lt;strong&gt;Vigenère Cipher&lt;/strong&gt;, Let&amp;rsquo;s decrypt it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/vignere.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/vignere.JPG&#34;
 	
 	
 	
@@ -980,7 +978,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Another encoding which is i think is &lt;strong&gt;Hexa-decimal&lt;/strong&gt;, Let&amp;rsquo;s decode it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/Hex1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/Hex1.JPG&#34;
 	
 	
 	
@@ -992,7 +990,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;More Encryption!!&lt;/p&gt;
 &lt;p&gt;This time is &lt;strong&gt;Caesar Cipher&lt;/strong&gt; if i&amp;rsquo;m not wrong, Let&amp;rsquo;s encrypt it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/caesar.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/caesar.JPG&#34;
 	
 	
 	
@@ -1003,7 +1001,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Well, This time we need to make a &lt;strong&gt;POST request&lt;/strong&gt; using our beloved &lt;strong&gt;Burpsuite&lt;/strong&gt;, Let&amp;rsquo;s do it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/burp.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/burp.JPG&#34;
 	
 	
 	
@@ -1022,7 +1020,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;I think this pattern is familiar to me, It&amp;rsquo;s &lt;strong&gt;Brainfuck language&lt;/strong&gt;, Let&amp;rsquo;s solve it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/brainfuck.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/brainfuck.JPG&#34;
 	
 	
 	
@@ -1039,7 +1037,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;6-blue-team-becomes-red-team&#34;&gt;&lt;em&gt;6-Blue team becomes Red Team&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/blue_red.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/blue_red.JPG&#34;
 	
 	
 	
@@ -1051,7 +1049,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;The table is reversed now, It&amp;rsquo;s our turn to attack now :smiling_imp:.&lt;/p&gt;
 &lt;p&gt;First, We need to setup the machine in our local network.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hyperion5.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hyperion5.JPG&#34;
 	
 	
 	
@@ -1063,7 +1061,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;It is named as &lt;strong&gt;hyp3r10n&lt;/strong&gt; and assigned with ip address &lt;strong&gt;192.168.1.4&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s do &lt;strong&gt;nmap&lt;/strong&gt; to scan all the ports that are opened in that machine.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/nmap2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/nmap2.JPG&#34;
 	
 	
 	
@@ -1082,7 +1080,7 @@
     &gt;Document&lt;/a&gt;, Let&amp;rsquo;s start it.&lt;/p&gt;
 &lt;p&gt;First, We have to connect to the server with this command &lt;code&gt;redis-cli -h 192.168.1.4&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Then, we type &lt;code&gt;config get *&lt;/code&gt; to find the home of the redis user (usually &lt;strong&gt;/var/lib/redis&lt;/strong&gt; or &lt;strong&gt;/home/redis/.ssh&lt;/strong&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis1.JPG&#34;
 	
 	
 	
@@ -1116,7 +1114,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;And what what we have done.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis2.JPG&#34;
 	
 	
 	
@@ -1128,7 +1126,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Now the last step is to connect to the machine with ssh &lt;code&gt;ssh -i id_rsa redis@192.168.1.4&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt; Use the same passphrase as the one you&amp;rsquo;ve set at ssh_key.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis3.JPG&#34;
 	
 	
 	
@@ -1140,7 +1138,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Yes, We are in!&lt;/p&gt;
 &lt;p&gt;But we entered with redis service .. We need to escalate to the user privilage.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis4.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis4.JPG&#34;
 	
 	
 	
@@ -1151,7 +1149,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;It looks like there is a user named as &lt;strong&gt;hype&lt;/strong&gt;, maybe we can escalate to it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis5.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis5.JPG&#34;
 	
 	
 	
@@ -1164,7 +1162,7 @@
 &lt;p&gt;So, We can escalate to &lt;strong&gt;hype&lt;/strong&gt; by typing this command &lt;code&gt;sudo -u hype /usr/bin/vim /home/hype/backup.sh&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;It will open the &lt;strong&gt;backup.sh&lt;/strong&gt; with &lt;strong&gt;Vim&lt;/strong&gt; under &lt;strong&gt;hype&lt;/strong&gt; privilage.&lt;/p&gt;
 &lt;p&gt;Then inside vim we type &lt;code&gt;:!/bin/ash&lt;/code&gt;, then hit enter.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis6.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis6.JPG&#34;
 	
 	
 	
@@ -1175,7 +1173,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Yes, we are now hype :partying_face:.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis7.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis7.JPG&#34;
 	
 	
 	
@@ -1186,7 +1184,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Now let&amp;rsquo;s head to &lt;strong&gt;/home/hype&lt;/strong&gt; and see what is inside!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis8.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis8.JPG&#34;
 	
 	
 	
@@ -1198,7 +1196,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s see what is inside &lt;strong&gt;user.txt&lt;/strong&gt; ?&lt;/p&gt;
 &lt;p&gt;It is the flag!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/redis9.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/redis9.JPG&#34;
 	
 	
 	
@@ -1214,7 +1212,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;7-getting-the-crown-jewels&#34;&gt;&lt;em&gt;7-Getting the crown jewels&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/crown_jewels.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/crown_jewels.JPG&#34;
 	
 	
 	
@@ -1227,7 +1225,7 @@
 &lt;p&gt;It seems that there is a &lt;strong&gt;Private SSH key&lt;/strong&gt; that we can make use of it..But first we need to find it and crack it&amp;rsquo;s password.&lt;/p&gt;
 &lt;p&gt;If we navigate through &lt;strong&gt;backups&lt;/strong&gt; we will find &lt;strong&gt;ssh directory&lt;/strong&gt;, When we enter it we will find &lt;strong&gt;note.txt&lt;/strong&gt; and  &lt;strong&gt;id_rsa.bak&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If we opened &lt;strong&gt;note.txt&lt;/strong&gt;, it says &lt;code&gt;This is a backup of my private key, just in case&lt;/code&gt;, So &lt;strong&gt;id_rsa.bak&lt;/strong&gt; contains the &lt;strong&gt;Private SSH key&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/root1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/root1.JPG&#34;
 	
 	
 	
@@ -1243,7 +1241,7 @@
 &lt;p&gt;Then, We &lt;strong&gt;Brute-force&lt;/strong&gt; the password hash with a wordlist that containa alot of passwords.&lt;/p&gt;
 &lt;p&gt;We will use the most famous wordlist which is &lt;strong&gt;Rockyou&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/root2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/root2.JPG&#34;
 	
 	
 	
@@ -1256,7 +1254,7 @@
 &lt;p&gt;Hurray! We got the password which is &lt;strong&gt;barcelona1&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;But what is this password for? :thinking:&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s see if we can escalate to &lt;strong&gt;root privilage&lt;/strong&gt; with this password.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/root3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/root3.JPG&#34;
 	
 	
 	
@@ -1268,7 +1266,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Yes, We are now have root privilage :partying_face:.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s head to root directory and see what is inside of it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/root4.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/root4.JPG&#34;
 	
 	
 	
@@ -1279,7 +1277,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s see what is inside &lt;strong&gt;root.txt&lt;/strong&gt;!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/root5.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/root5.JPG&#34;
 	
 	
 	
@@ -1296,7 +1294,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;8-locating-our-attacker&#34;&gt;&lt;em&gt;8-Locating our Attacker&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/locate_hacker.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/locate_hacker.JPG&#34;
 	
 	
 	
@@ -1315,7 +1313,7 @@
 &lt;p&gt;Luckily, The password was also &lt;strong&gt;barcelona1&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;When we unzipped the &lt;strong&gt;home.zip&lt;/strong&gt;, It gave us two outputs which are &lt;strong&gt;IMG_3953.JPG&lt;/strong&gt; and &lt;strong&gt;Wifi config.txt&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If we opened the image this is how it looks.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker1.JPG&#34;
 	
 	
 	
@@ -1346,7 +1344,7 @@
 &lt;p&gt;First, We will head back to image to see if there is any information about it&amp;rsquo;s location.&lt;/p&gt;
 &lt;p&gt;It seems that the image is taken for a pharmacy in &lt;strong&gt;Barcelona, Spain&lt;/strong&gt; and named as &lt;strong&gt;Farmacia J. C. Martinez&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s search for it in &lt;strong&gt;WiGLE.net&lt;/strong&gt; map !&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker2.JPG&#34;
 	
 	
 	
@@ -1371,7 +1369,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Now let&amp;rsquo;s head to the &lt;strong&gt;View&lt;/strong&gt; section and then &lt;strong&gt;Basic Search&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Then, We fill all the information about the &lt;strong&gt;WIFI Configuration&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker3.JPG&#34;
 	
 	
 	
@@ -1382,7 +1380,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Yes, We found it!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker4.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker4.JPG&#34;
 	
 	
 	
@@ -1395,7 +1393,7 @@
 &lt;p&gt;We found the &lt;strong&gt;BSSID : F8:8E:85:C6:56:F8&lt;/strong&gt;, Now we need to find the &lt;strong&gt;Hacker&amp;rsquo;s E-mail&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s head back to our root directory, Then &lt;code&gt;Projects &amp;gt; Scripts&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;And we type &lt;code&gt;ls -al&lt;/code&gt; to list all the contents in the directory whether hidden or not.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker5.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker5.JPG&#34;
 	
 	
 	
@@ -1408,7 +1406,7 @@
 &lt;p&gt;As we can see those scripts &lt;strong&gt;rshell.ino&lt;/strong&gt; and &lt;strong&gt;wifigrabber.ino&lt;/strong&gt; were used by the hacker to hack the &lt;strong&gt;WIFI&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If we opened them, It won&amp;rsquo;t led to anything.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s see what is inside &lt;strong&gt;.git directory&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker6.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker6.JPG&#34;
 	
 	
 	
@@ -1428,7 +1426,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Well, We have a &lt;strong&gt;Github Account&lt;/strong&gt;, Let&amp;rsquo;s go to the link!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker7.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker7.JPG&#34;
 	
 	
 	
@@ -1457,7 +1455,7 @@
 &lt;p&gt;Press Ctrl+F and search for “email”.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/hacker8.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/hacker8.JPG&#34;
 	
 	
 	
@@ -1475,7 +1473,7 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;9-crime-doesnt-pay&#34;&gt;&lt;em&gt;9-Crime doesn&amp;rsquo;t pay&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/crime_pay.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/crime_pay.JPG&#34;
 	
 	
 	
@@ -1526,7 +1524,7 @@
 &lt;h3 id=&#34;i-really-enjoyed-this-series-of-challenges-and-im-looking-forward-to-solve-more-and-more-challenges-and-make-writeups-for-them&#34;&gt;I really enjoyed this series of challenges, and I&amp;rsquo;m looking forward to solve more and more challenges and make writeups for them.&lt;/h3&gt;
 &lt;h3 id=&#34;lastly-id-like-to-thank-my-team-cyb3rth1evez-and-people-who-encouraged-me-to-make-the-writeup-and-also-the-people-who-helped-me-to-be-on-the-way-i-am&#34;&gt;Lastly, I&amp;rsquo;d like to thank my team &lt;strong&gt;Cyb3rTh1eveZ&lt;/strong&gt; and people who encouraged me to make the writeup and also the people who helped me to be on the way i am.&lt;/h3&gt;
 &lt;h3 id=&#34;that-is-all-of-ithappy-hunt-smiling_imp&#34;&gt;That is all of it..Happy Hunt :smiling_imp:!&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/img/RCT_CERT/pyke3.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/assests/img/RCT_CERT/pyke3.gif&#34;
 	
 	
 	

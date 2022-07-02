@@ -7,20 +7,20 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 24 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://AbdallahAdham.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Digital Forensics</title>
+        <title>Digital-Forensics</title>
         <link>https://AbdallahAdham.com/categories/digital-forensics/</link>
         <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/categories/digital-forensics/</guid>
-        <description></description>
+        <description>&lt;img src="https://AbdallahAdham.com/categories/digital-forensics/df.jpg" alt="Featured image of post Digital-Forensics" /&gt;</description>
         </item>
         <item>
-        <title>Malware Analysis</title>
+        <title>Malware-Analysis</title>
         <link>https://AbdallahAdham.com/categories/malware-analysis/</link>
         <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/categories/malware-analysis/</guid>
-        <description></description>
+        <description>&lt;img src="https://AbdallahAdham.com/categories/malware-analysis/ma.jpg" alt="Featured image of post Malware-Analysis" /&gt;</description>
         </item>
         <item>
         <title>OSINT</title>
@@ -28,31 +28,23 @@
         <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/categories/osint/</guid>
-        <description></description>
+        <description>&lt;img src="https://AbdallahAdham.com/categories/osint/osint.jpg" alt="Featured image of post OSINT" /&gt;</description>
         </item>
         <item>
-        <title>PenTesting</title>
-        <link>https://AbdallahAdham.com/categories/pentesting/</link>
+        <title>Pen-Testing</title>
+        <link>https://AbdallahAdham.com/categories/pen-testing/</link>
         <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://AbdallahAdham.com/categories/pentesting/</guid>
-        <description></description>
+        <guid>https://AbdallahAdham.com/categories/pen-testing/</guid>
+        <description>&lt;img src="https://AbdallahAdham.com/categories/pen-testing/pentest.jpg" alt="Featured image of post Pen-Testing" /&gt;</description>
         </item>
         <item>
-        <title>Web Security</title>
+        <title>Web-Security</title>
         <link>https://AbdallahAdham.com/categories/web-security/</link>
         <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/categories/web-security/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Test</title>
-        <link>https://AbdallahAdham.com/categories/test/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://AbdallahAdham.com/categories/test/</guid>
-        <description>&lt;img src="https://AbdallahAdham.com/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <description>&lt;img src="https://AbdallahAdham.com/categories/web-security/web.jpg" alt="Featured image of post Web-Security" /&gt;</description>
         </item>
         
     </channel>

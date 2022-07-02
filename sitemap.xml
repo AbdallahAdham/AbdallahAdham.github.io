@@ -38,10 +38,10 @@
     <loc>https://AbdallahAdham.com/categories/osint/</loc>
     <lastmod>2021-08-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://AbdallahAdham.com/tags/pentesting/</loc>
+    <loc>https://AbdallahAdham.com/categories/pen-testing/</loc>
     <lastmod>2021-08-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://AbdallahAdham.com/categories/pentesting/</loc>
+    <loc>https://AbdallahAdham.com/tags/pentesting/</loc>
     <lastmod>2021-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://AbdallahAdham.com/post/</loc>
@@ -65,7 +65,5 @@
     <loc>https://AbdallahAdham.com/links/</loc>
   </url><url>
     <loc>https://AbdallahAdham.com/search/</loc>
-  </url><url>
-    <loc>https://AbdallahAdham.com/categories/test/</loc>
   </url>
 </urlset>

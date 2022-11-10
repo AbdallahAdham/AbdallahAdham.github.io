@@ -9,10 +9,10 @@
 <meta property='og:description' content='This is a writeup of the Photobomb machine in Hack The Box platform.'>
 <meta property='og:url' content='https://AbdallahAdham.com/p/photobomb-htb-writeup/'>
 <meta property='og:site_name' content='Abdallah Adham'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.JPG' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg' />
 <meta name="twitter:title" content="Photobomb HTB Writeup">
 <meta name="twitter:description" content="This is a writeup of the Photobomb machine in Hack The Box platform."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.JPG' />
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg' />
     </head>
     <body class="
     article-page
@@ -56,8 +56,8 @@
                     
                     
                         
-                        <img src="/img/avatar_hu329470d11bd58ef0ca657bb7de1c9d5d_53587_300x0_resize_box_3.png" width="300"
-                            height="273" class="site-logo" loading="lazy" alt="Avatar">
+                        <img src="/img/avatar_hu75263645e29a61b75309ab4d02f07e73_73571_300x0_resize_q75_box.jpg" width="300"
+                            height="249" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
@@ -68,7 +68,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Abdallah Adham</a></h1>
-            <h2 class="site-description">Jr Penetration Tester</h2>
+            <h2 class="site-description">Penetration Tester</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -293,26 +293,6 @@
             </a>
         </li>
         
-        
-
-        <li >
-            <a href='/links/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                
-                <span>Links</span>
-            </a>
-        </li>
-        
 
         <div class="menu-bottom-section">
             
@@ -346,7 +326,7 @@
         <div class="article-image">
             <a href="/p/photobomb-htb-writeup/">
                 
-                    <img src="/post/Photobomb_HTB/photobomb_htb.JPG" loading="lazy" alt="Featured image of post Photobomb HTB Writeup" />
+                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" alt="Featured image of post Photobomb HTB Writeup" />
                 
             </a>
         </div>
@@ -423,6 +403,7 @@
     
     <hr>
 <h2 id="scanning">Scanning</h2>
+<h3 id="nmap">Nmap</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -700,7 +681,7 @@
 	
 	
 ></p>
-<h3 id="exploitation">Exploitation</h3>
+<h2 id="exploitation">Exploitation</h2>
 <p>Let&rsquo;s start burpsuite and intercept the downloading request.</p>
 <p><img src="/post/Photobomb_HTB/imgs/6.JPG"
 	
@@ -712,6 +693,7 @@
 	
 	
 ></p>
+<h3 id="command-injection">Command Injection</h3>
 <p>So, I have tried to command inject all the parameters with adding <strong>;ls</strong> at the end of each parameter and see what happens.</p>
 <p>Beginning with <strong>photo</strong> parameter:</p>
 <p><img src="/post/Photobomb_HTB/imgs/7.JPG"
@@ -973,6 +955,7 @@
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/$ <span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/cd
@@ -995,21 +978,11 @@
 </span></span><span class="line"><span class="cl">root.txt
 </span></span><span class="line"><span class="cl">root@photobomb:~# cat root.txt
 </span></span><span class="line"><span class="cl">cat root.txt
+</span></span><span class="line"><span class="cl">c40917692c858d54a00d622d840e56c9f4c255ad
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="pwned">Pwned</h4>
-<h1 id="rootedpostphotobomb_htbimgsrootedjpg">&laquo;&laquo;&laquo;&lt; HEAD
-<img src="/post/Photobomb_HTB/imgs/rooted.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rooted"
-	
-	
-></h1>
-<p><img src="/post/Photobomb_HTB/post/Photobomb_HTB/imgs/rooted.JPG"
+</div><p><em>Pwned</em></p>
+<p><img src="/post/Photobomb_HTB/imgs/rooted.JPG"
 	
 	
 	
@@ -1019,21 +992,6 @@
 	
 	
 ></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>c40917692c858d54a00d622d840e56c9f4c255ad</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 
 </section>
 
@@ -1267,22 +1225,26 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#scanning">Scanning</a></li>
+    <li><a href="#scanning">Scanning</a>
+      <ol>
+        <li><a href="#nmap">Nmap</a></li>
+      </ol>
+    </li>
     <li><a href="#enumeration">Enumeration</a>
       <ol>
         <li><a href="#http-enumeration">HTTP Enumeration</a></li>
         <li><a href="#subdomain-enumeration">Subdomain Enumeration</a></li>
         <li><a href="#directory-bruteforce">Directory Bruteforce</a></li>
-        <li><a href="#exploitation">Exploitation</a></li>
+      </ol>
+    </li>
+    <li><a href="#exploitation">Exploitation</a>
+      <ol>
+        <li><a href="#command-injection">Command Injection</a></li>
       </ol>
     </li>
     <li><a href="#privilage-escalation">Privilage Escalation</a>
       <ol>
-        <li><a href="#sudo--l">Sudo -l</a>
-          <ol>
-            <li><a href="#pwned">Pwned</a></li>
-          </ol>
-        </li>
+        <li><a href="#sudo--l">Sudo -l</a></li>
       </ol>
     </li>
   </ol>

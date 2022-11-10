@@ -12,8 +12,9 @@
         <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/p/photobomb-htb-writeup/</guid>
-        <description>&lt;img src="https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.JPG" alt="Featured image of post Photobomb HTB Writeup" /&gt;&lt;hr&gt;
+        <description>&lt;img src="https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg" alt="Featured image of post Photobomb HTB Writeup" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;scanning&#34;&gt;Scanning&lt;/h2&gt;
+&lt;h3 id=&#34;nmap&#34;&gt;Nmap&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -291,7 +292,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;exploitation&#34;&gt;Exploitation&lt;/h3&gt;
+&lt;h2 id=&#34;exploitation&#34;&gt;Exploitation&lt;/h2&gt;
 &lt;p&gt;Let&amp;rsquo;s start burpsuite and intercept the downloading request.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/6.JPG&#34;
 	
@@ -303,6 +304,7 @@
 	
 	
 &gt;&lt;/p&gt;
+&lt;h3 id=&#34;command-injection&#34;&gt;Command Injection&lt;/h3&gt;
 &lt;p&gt;So, I have tried to command inject all the parameters with adding &lt;strong&gt;;ls&lt;/strong&gt; at the end of each parameter and see what happens.&lt;/p&gt;
 &lt;p&gt;Beginning with &lt;strong&gt;photo&lt;/strong&gt; parameter:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/7.JPG&#34;
@@ -564,6 +566,7 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wizard@photobomb:/$ &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/bash&amp;#34;&lt;/span&gt; &amp;gt; /tmp/cd
@@ -586,21 +589,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root.txt
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@photobomb:~# cat root.txt
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat root.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;c40917692c858d54a00d622d840e56c9f4c255ad
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;pwned&#34;&gt;Pwned&lt;/h4&gt;
-&lt;h1 id=&#34;rootedpostphotobomb_htbimgsrootedjpg&#34;&gt;&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD
-&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/rooted.JPG&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;rooted&#34;
-	
-	
-&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/post/Photobomb_HTB/imgs/rooted.JPG&#34;
+&lt;/div&gt;&lt;p&gt;&lt;em&gt;Pwned&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/rooted.JPG&#34;
 	
 	
 	
@@ -610,21 +603,6 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;c40917692c858d54a00d622d840e56c9f4c255ad&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
 </description>
         </item>
         <item>

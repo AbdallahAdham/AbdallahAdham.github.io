@@ -569,7 +569,7 @@
 </div><h2 id="enumeration">Enumeration</h2>
 <h3 id="http-enumeration">HTTP Enumeration</h3>
 <p>Now, We open the browser and see what is in this website.</p>
-<p><img src="/imgs/1.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/1.JPG"
 	
 	
 	
@@ -580,7 +580,7 @@
 	
 ></p>
 <p>There is a <strong>&ldquo;Click here!&rdquo;</strong> button, Let&rsquo;s click on it ans see what happens?</p>
-<p><img src="/imgs/2.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/2.JPG"
 	
 	
 	
@@ -591,7 +591,7 @@
 	
 ></p>
 <p>It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a <strong>&ldquo;401 Authorization Required&rdquo;</strong> under a <strong>/printer</strong> directory.</p>
-<p><img src="/imgs/3.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/3.JPG"
 	
 	
 	
@@ -649,7 +649,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>So, We have found a Javascript file called <strong>photobomb.js</strong>, Let&rsquo;s see what is in it.</p>
-<p><img src="/imgs/4.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/4.JPG"
 	
 	
 	
@@ -690,7 +690,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>It opens a page contans a plenty of images and down there is a button to download any image we want.</p>
-<p><img src="/imgs/5.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/5.JPG"
 	
 	
 	
@@ -702,7 +702,7 @@
 ></p>
 <h3 id="exploitation">Exploitation</h3>
 <p>Let&rsquo;s start burpsuite and intercept the downloading request.</p>
-<p><img src="/imgs/6.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/6.JPG"
 	
 	
 	
@@ -714,7 +714,7 @@
 ></p>
 <p>So, I have tried to command inject all the parameters with adding <strong>;ls</strong> at the end of each parameter and see what happens.</p>
 <p>Beginning with <strong>photo</strong> parameter:</p>
-<p><img src="/imgs/7.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/7.JPG"
 	
 	
 	
@@ -725,7 +725,7 @@
 	
 ></p>
 <p>looks not injectable, Then trying on <strong>dimensions</strong> parameter:</p>
-<p><img src="/imgs/8.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/8.JPG"
 	
 	
 	
@@ -737,7 +737,7 @@
 ></p>
 <p>Also, Not injectable.</p>
 <p>Lastly, The <strong>filetype</strong> parameter:</p>
-<p><img src="/imgs/9.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/9.JPG"
 	
 	
 	
@@ -768,7 +768,7 @@
 </span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4321</span> ...
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/imgs/10.JPG"
+</div><p><img src="/post/Photobomb_HTB/imgs/10.JPG"
 	
 	
 	
@@ -779,7 +779,7 @@
 	
 ></p>
 <p>And we got the <strong>reverse shell</strong>. Yay!</p>
-<p><img src="/imgs/11.JPG"
+<p><img src="/post/Photobomb_HTB/imgs/11.JPG"
 	
 	
 	
@@ -998,8 +998,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="pwned">Pwned</h4>
-<h1 id="rootedimgsrootedjpg">&laquo;&laquo;&laquo;&lt; HEAD
-<img src="/imgs/rooted.JPG"
+<h1 id="rootedpostphotobomb_htbimgsrootedjpg">&laquo;&laquo;&laquo;&lt; HEAD
+<img src="/post/Photobomb_HTB/imgs/rooted.JPG"
 	
 	
 	
@@ -1009,7 +1009,7 @@
 	
 	
 ></h1>
-<p><img src="/post/Photobomb_HTB/imgs/rooted.JPG"
+<p><img src="/post/Photobomb_HTB/post/Photobomb_HTB/imgs/rooted.JPG"
 	
 	
 	

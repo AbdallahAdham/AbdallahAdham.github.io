@@ -160,7 +160,7 @@
 &lt;/div&gt;&lt;h2 id=&#34;enumeration&#34;&gt;Enumeration&lt;/h2&gt;
 &lt;h3 id=&#34;http-enumeration&#34;&gt;HTTP Enumeration&lt;/h3&gt;
 &lt;p&gt;Now, We open the browser and see what is in this website.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/1.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/1.JPG&#34;
 	
 	
 	
@@ -171,7 +171,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;There is a &lt;strong&gt;&amp;ldquo;Click here!&amp;rdquo;&lt;/strong&gt; button, Let&amp;rsquo;s click on it ans see what happens?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/2.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/2.JPG&#34;
 	
 	
 	
@@ -182,7 +182,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a &lt;strong&gt;&amp;ldquo;401 Authorization Required&amp;rdquo;&lt;/strong&gt; under a &lt;strong&gt;/printer&lt;/strong&gt; directory.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/3.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/3.JPG&#34;
 	
 	
 	
@@ -240,7 +240,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;So, We have found a Javascript file called &lt;strong&gt;photobomb.js&lt;/strong&gt;, Let&amp;rsquo;s see what is in it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/4.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/4.JPG&#34;
 	
 	
 	
@@ -281,7 +281,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;It opens a page contans a plenty of images and down there is a button to download any image we want.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/5.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/5.JPG&#34;
 	
 	
 	
@@ -293,7 +293,7 @@
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;exploitation&#34;&gt;Exploitation&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s start burpsuite and intercept the downloading request.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/6.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/6.JPG&#34;
 	
 	
 	
@@ -305,7 +305,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;So, I have tried to command inject all the parameters with adding &lt;strong&gt;;ls&lt;/strong&gt; at the end of each parameter and see what happens.&lt;/p&gt;
 &lt;p&gt;Beginning with &lt;strong&gt;photo&lt;/strong&gt; parameter:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/7.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/7.JPG&#34;
 	
 	
 	
@@ -316,7 +316,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;looks not injectable, Then trying on &lt;strong&gt;dimensions&lt;/strong&gt; parameter:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/8.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/8.JPG&#34;
 	
 	
 	
@@ -328,7 +328,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Also, Not injectable.&lt;/p&gt;
 &lt;p&gt;Lastly, The &lt;strong&gt;filetype&lt;/strong&gt; parameter:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/9.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/9.JPG&#34;
 	
 	
 	
@@ -359,7 +359,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;listening on &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;any&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;4321&lt;/span&gt; ...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/10.JPG&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/10.JPG&#34;
 	
 	
 	
@@ -370,7 +370,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;And we got the &lt;strong&gt;reverse shell&lt;/strong&gt;. Yay!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/11.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/11.JPG&#34;
 	
 	
 	
@@ -589,8 +589,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;pwned&#34;&gt;Pwned&lt;/h4&gt;
-&lt;h1 id=&#34;rootedimgsrootedjpg&#34;&gt;&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD
-&lt;img src=&#34;https://AbdallahAdham.com/imgs/rooted.JPG&#34;
+&lt;h1 id=&#34;rootedpostphotobomb_htbimgsrootedjpg&#34;&gt;&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD
+&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/rooted.JPG&#34;
 	
 	
 	
@@ -600,7 +600,7 @@
 	
 	
 &gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/rooted.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/post/Photobomb_HTB/imgs/rooted.JPG&#34;
 	
 	
 	

